@@ -1,10 +1,10 @@
-# ALVK Proposta Ongoing
+# ALVK Proposta Main
 
 Ambiente estático de propostas comerciais da ALVK, publicado pela Vercel a
 partir da branch `main`:
 
-- Produção: https://proposta.alavancador.com.br/
-- JK Concept: https://proposta.alavancador.com.br/jkconcept
+- Produção: https://alvk-proposta-main.vercel.app/
+- JK Concept: https://alvk-proposta-main.vercel.app/jkconcept
 
 A página inicial é neutra e cada proposta possui uma rota exclusiva. Não há
 listagem pública de clientes.
@@ -84,7 +84,7 @@ npm test
 ```
 
 5. Abra um PR. Após o merge na `main`, a Vercel publica a nova rota
-   automaticamente em `https://proposta.alavancador.com.br/<slug>`.
+   automaticamente em `https://alvk-proposta-main.vercel.app/<slug>`.
 
 Não é necessário registrar o slug em outro arquivo: o build encontra
 automaticamente todos os arquivos `.html` em `app/proposals/`.
