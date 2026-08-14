@@ -1,0 +1,14 @@
+:root{
+/* inline wordmark dot (used next to the "ALVK" logotype) */
+--gradient-dot:linear-gradient(135deg,var(--coral-light),var(--azure));
+--gradient-dot-alt:linear-gradient(135deg,var(--coral),var(--azure));
+/* standalone "point of leverage" mark — full 3-stop spectrum */
+--gradient-mark:linear-gradient(135deg,var(--coral-light),var(--coral-deep),var(--azure));
+--gradient-blob:radial-gradient(circle at 35% 35%,var(--coral-light),var(--coral-deep) 50%,var(--azure));
+/* named gradient system from the brandbook */
+--gradient-coral-flame:linear-gradient(135deg,var(--coral),var(--coral-deep));
+--gradient-fire-ice:linear-gradient(135deg,var(--coral),var(--azure));
+--gradient-ocean-depth:linear-gradient(135deg,var(--azure),var(--sky));
+--gradient-full-spectrum:linear-gradient(135deg,var(--coral-light),var(--coral-deep),var(--azure));
+--gradient-hero:linear-gradient(100deg,var(--azure) 0%,var(--coral) 100%);
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 92" role="img" aria-labelledby="title desc">
+  <title id="title">ALVK</title>
+  <desc id="desc">Logotipo ALVK escuro com ponto em gradiente coral e azul, para fundos claros.</desc>
+  <defs>
+    <linearGradient id="alvk-gradient-light" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF8C42"/>
+      <stop offset="48%" stop-color="#FF4D00"/>
+      <stop offset="100%" stop-color="#4386EA"/>
+    </linearGradient>
+  </defs>
+  <text x="0" y="67" fill="#272727" font-family="Urbanist, Arial, sans-serif" font-size="78" font-weight="800" letter-spacing="-5">ALVK</text>
+  <circle cx="261" cy="23" r="11" fill="url(#alvk-gradient-light)"/>
+</svg>

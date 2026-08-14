@@ -1,0 +1,15 @@
+{
+  "name": "alvk-proposta-ongoing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ambiente estático de propostas comerciais da ALVK.",
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "check": "npm test"
+  }
+}

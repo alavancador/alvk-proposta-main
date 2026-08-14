@@ -1,0 +1,4271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#07152b">
+  <title>Proposta Ongoing | ALVK</title>
+
+  <!--
+    PROPOSTA PERSONALIZADA — NUSHAPE SUPLEMENTOS
+    Versão comercial: ALVK-NSH-2026-01 · emitida em 28/07/2026.
+    Documento confidencial. Ao publicar, use URL não previsível e controle
+    de acesso. "noindex" evita indexação, mas não restringe acesso direto.
+  -->
+
+  <style>
+    :root {
+      --navy-950: #050d1c;
+      --navy-900: #07152b;
+      --navy-800: #0d2140;
+      --navy-700: #17345f;
+      --blue-600: #125bff;
+      --blue-500: #3476ff;
+      --blue-100: #dce8ff;
+      --coral-600: #e95149;
+      --coral-500: #ff6b62;
+      --coral-100: #fff0ee;
+      --green-600: #138965;
+      --green-100: #e7f8f1;
+      --ink-950: #0a1322;
+      --ink-800: #28364b;
+      --ink-600: #59677b;
+      --ink-500: #738096;
+      --line: #dfe5ee;
+      --surface: #f3f6fa;
+      --white: #ffffff;
+      --shadow-sm: 0 12px 36px rgba(8, 23, 48, 0.08);
+      --shadow-lg: 0 24px 80px rgba(4, 16, 39, 0.18);
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 30px;
+      --container: 1180px;
+      --font-sans: "Urbanist", "Inter", "Segoe UI", Arial, sans-serif;
+      --font-serif: Georgia, "Times New Roman", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--navy-950);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--white);
+      color: var(--ink-950);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body,
+    button,
+    a {
+      font-family: var(--font-sans);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      border: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--coral-500);
+      outline-offset: 3px;
+    }
+
+    .progress {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .progress__bar {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue-500), var(--coral-500));
+      transition: width 120ms linear;
+    }
+
+    .proposal-nav {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(5, 13, 28, 0.94);
+      color: var(--white);
+      backdrop-filter: blur(18px);
+    }
+
+    .proposal-nav__inner {
+      width: min(calc(100% - 40px), var(--container));
+      min-height: 70px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .brand__mark {
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--blue-600);
+      box-shadow: inset 0 -7px 14px rgba(0, 0, 0, 0.16);
+      font-size: 13px;
+      letter-spacing: -0.08em;
+    }
+
+    .brand__tag {
+      color: #91a4bf;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .proposal-nav__meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: #a9b8cc;
+      font-size: 12px;
+    }
+
+    .proposal-nav__actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--container));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 104px 0;
+      background: var(--white);
+      scroll-margin-top: 70px;
+    }
+
+    .section--soft {
+      background: var(--surface);
+    }
+
+    .section--navy {
+      background:
+        radial-gradient(circle at 88% 18%, rgba(18, 91, 255, 0.22), transparent 28%),
+        radial-gradient(circle at 8% 84%, rgba(255, 107, 98, 0.12), transparent 26%),
+        var(--navy-900);
+      color: var(--white);
+    }
+
+    .section-heading {
+      max-width: 780px;
+      margin-bottom: 48px;
+    }
+
+    .section-heading--center {
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 17px;
+      color: var(--blue-600);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      border-radius: 99px;
+      background: currentColor;
+    }
+
+    .section--navy .eyebrow {
+      color: #7da7ff;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 890px;
+      margin-bottom: 28px;
+      font-size: clamp(46px, 6.5vw, 84px);
+      line-height: 0.99;
+      letter-spacing: -0.065em;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: clamp(35px, 4vw, 58px);
+      line-height: 1.04;
+      letter-spacing: -0.055em;
+    }
+
+    h3 {
+      margin-bottom: 12px;
+      font-size: 23px;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+    }
+
+    .lead {
+      max-width: 760px;
+      color: var(--ink-600);
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    .section--navy .lead,
+    .section--navy .muted {
+      color: #aebdd0;
+    }
+
+    .muted {
+      color: var(--ink-600);
+    }
+
+    .serif-emphasis {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .text-blue {
+      color: var(--blue-500);
+    }
+
+    .text-coral {
+      color: var(--coral-500);
+    }
+
+    .text-green {
+      color: var(--green-600);
+    }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: var(--blue-600);
+      color: var(--white);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 850;
+      transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: #084ce2;
+      box-shadow: 0 12px 30px rgba(18, 91, 255, 0.25);
+    }
+
+    .button--small {
+      min-height: 38px;
+      padding: 9px 15px;
+      font-size: 12px;
+    }
+
+    .button--secondary {
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink-950);
+    }
+
+    .button--secondary:hover {
+      border-color: #b8c3d2;
+      background: var(--surface);
+      box-shadow: none;
+    }
+
+    .button--ghost {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--white);
+    }
+
+    .button--ghost:hover {
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 70px);
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      padding: 90px 0 82px;
+      background:
+        linear-gradient(90deg, rgba(5, 13, 28, 0.98) 0%, rgba(7, 21, 43, 0.95) 52%, rgba(7, 21, 43, 0.82) 100%),
+        var(--navy-900);
+      color: var(--white);
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      content: "";
+      pointer-events: none;
+      border-radius: 999px;
+      filter: blur(2px);
+    }
+
+    .hero::before {
+      width: 620px;
+      height: 620px;
+      top: -280px;
+      right: -160px;
+      background: radial-gradient(circle, rgba(18, 91, 255, 0.38), transparent 66%);
+    }
+
+    .hero::after {
+      width: 480px;
+      height: 480px;
+      bottom: -300px;
+      left: -180px;
+      background: radial-gradient(circle, rgba(255, 107, 98, 0.2), transparent 65%);
+    }
+
+    .hero__grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.36fr) minmax(330px, 0.64fr);
+      gap: 70px;
+      align-items: center;
+    }
+
+    .hero__copy {
+      max-width: 820px;
+    }
+
+    .hero__eyebrow {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 23px;
+      color: #a7bad4;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero__eyebrow span {
+      color: var(--white);
+    }
+
+    .hero__lead {
+      max-width: 720px;
+      margin-bottom: 34px;
+      color: #bac8d9;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero__facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 40px;
+    }
+
+    .fact {
+      padding: 9px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #aebdd0;
+      font-size: 12px;
+    }
+
+    .fact strong {
+      color: var(--white);
+    }
+
+    .system-card {
+      position: relative;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.065);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(16px);
+    }
+
+    .system-card__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .system-card__top small {
+      color: #9fb0c6;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #b6d8cb;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #31d89d;
+      box-shadow: 0 0 0 5px rgba(49, 216, 157, 0.12);
+    }
+
+    .lane-mini {
+      padding: 19px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 17px;
+      background: rgba(5, 13, 28, 0.34);
+    }
+
+    .lane-mini + .lane-mini {
+      margin-top: 12px;
+    }
+
+    .lane-mini__head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lane-mini__head strong {
+      font-size: 15px;
+    }
+
+    .lane-mini__head span {
+      color: #7fa8ff;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+    }
+
+    .lane-mini p {
+      margin: 7px 0 15px;
+      color: #9fb0c6;
+      font-size: 12px;
+    }
+
+    .lane-mini__bar {
+      height: 6px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .lane-mini__bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--blue-500);
+    }
+
+    [data-bar="operations.evolutionShare"] {
+      width: 70%;
+    }
+
+    [data-bar="operations.supportShare"] {
+      width: 30%;
+    }
+
+    .lane-mini--support .lane-mini__head span {
+      color: #ff9e96;
+    }
+
+    .lane-mini--support .lane-mini__bar span {
+      background: var(--coral-500);
+    }
+
+    .system-card__footer {
+      margin-top: 22px;
+      color: #a7b7ca;
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .diagnosis-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: 62px;
+      align-items: end;
+      margin-bottom: 40px;
+    }
+
+    .diagnosis-intro .section-heading {
+      margin-bottom: 0;
+    }
+
+    .diagnosis-context {
+      padding: 26px;
+      border-left: 4px solid var(--blue-600);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      background: var(--surface);
+      color: var(--ink-800);
+      font-size: 18px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      min-height: 142px;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .metric__label {
+      display: block;
+      margin-bottom: 17px;
+      color: var(--ink-500);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .metric__value {
+      display: block;
+      font-size: clamp(25px, 3vw, 36px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.055em;
+    }
+
+    .metric__detail {
+      display: block;
+      margin-top: 10px;
+      color: var(--ink-600);
+      font-size: 12px;
+    }
+
+    .diagnosis-assets {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .diagnosis-assets article {
+      padding: 20px;
+      border-radius: 17px;
+      background: var(--surface);
+    }
+
+    .diagnosis-assets span,
+    .diagnosis-assets strong {
+      display: block;
+    }
+
+    .diagnosis-assets span {
+      margin-bottom: 8px;
+      color: var(--blue-600);
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .diagnosis-assets strong {
+      font-size: 18px;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .diagnosis-assets p {
+      margin: 8px 0 0;
+      color: var(--ink-600);
+      font-size: 10px;
+    }
+
+    .opportunity {
+      position: relative;
+      margin-top: 18px;
+      padding: 35px;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      background: var(--coral-100);
+    }
+
+    .opportunity::after {
+      position: absolute;
+      content: "";
+      width: 280px;
+      height: 280px;
+      top: -150px;
+      right: -90px;
+      border-radius: 50%;
+      background: rgba(255, 107, 98, 0.13);
+    }
+
+    .opportunity__grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .opportunity__label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--coral-600);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .opportunity__value {
+      color: var(--coral-600);
+      font-size: clamp(35px, 5vw, 58px);
+      font-weight: 950;
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .opportunity__copy {
+      margin-bottom: 12px;
+      color: #6f3531;
+      font-size: 19px;
+    }
+
+    .opportunity__formula {
+      margin: 0;
+      color: #8a514c;
+      font-size: 12px;
+    }
+
+    .fine-print {
+      margin: 14px 0 0;
+      color: var(--ink-500);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 62px;
+      align-items: center;
+    }
+
+    .image-slot {
+      position: relative;
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1.5px dashed rgba(255, 107, 98, 0.68);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(18, 91, 255, 0.08), rgba(255, 107, 98, 0.08)),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.025) 0 12px, rgba(255, 255, 255, 0.06) 12px 24px);
+      color: #d9e2ee;
+      text-align: center;
+    }
+
+    .image-slot--light {
+      background:
+        linear-gradient(135deg, rgba(18, 91, 255, 0.055), rgba(255, 107, 98, 0.055)),
+        repeating-linear-gradient(45deg, #f7f9fc 0 12px, #eef2f7 12px 24px);
+      color: var(--ink-600);
+    }
+
+    .image-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-slot__copy {
+      max-width: 260px;
+      padding: 28px;
+    }
+
+    .image-slot__copy strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--coral-500);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .image-slot__copy span {
+      font-size: 13px;
+    }
+
+    .proof-quote {
+      margin: 25px 0 28px;
+      color: #d8e1ed;
+      font-family: var(--font-serif);
+      font-size: clamp(25px, 3.5vw, 40px);
+      font-style: italic;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    .proof-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .proof-metric {
+      padding: 19px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .proof-metric strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--white);
+      font-size: 25px;
+      letter-spacing: -0.045em;
+    }
+
+    .proof-metric span {
+      color: #9fb0c6;
+      font-size: 11px;
+    }
+
+    .lanes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+
+    .lane {
+      position: relative;
+      padding: 34px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .lane--evolution {
+      border-color: #bdd1ff;
+      background: linear-gradient(145deg, #ffffff 35%, #edf3ff);
+    }
+
+    .lane--support {
+      border-color: #ffd0cc;
+      background: linear-gradient(145deg, #ffffff 35%, #fff2f0);
+    }
+
+    .lane__number {
+      display: block;
+      margin-bottom: 23px;
+      color: var(--blue-600);
+      font-size: 56px;
+      font-weight: 950;
+      line-height: 1;
+      letter-spacing: -0.07em;
+    }
+
+    .lane--support .lane__number {
+      color: var(--coral-600);
+    }
+
+    .lane__badge {
+      position: absolute;
+      top: 27px;
+      right: 27px;
+      padding: 7px 10px;
+      border-radius: 99px;
+      background: var(--blue-100);
+      color: var(--blue-600);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lane--support .lane__badge {
+      background: #ffe0dd;
+      color: var(--coral-600);
+    }
+
+    .lane ul,
+    .scope-card ul,
+    .plan-card ul,
+    .investment-card ul {
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .lane li,
+    .scope-card li,
+    .plan-card li,
+    .investment-card li {
+      position: relative;
+      padding: 10px 0 10px 24px;
+      border-top: 1px solid rgba(10, 19, 34, 0.08);
+      color: var(--ink-800);
+      font-size: 14px;
+    }
+
+    .lane li::before,
+    .scope-card li::before,
+    .plan-card li::before,
+    .investment-card li::before {
+      position: absolute;
+      top: 14px;
+      left: 2px;
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue-600);
+      box-shadow: 0 0 0 4px var(--blue-100);
+    }
+
+    .lane--support li::before {
+      background: var(--coral-600);
+      box-shadow: 0 0 0 4px #ffe0dd;
+    }
+
+    .tradeoff {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 24px 28px;
+      border-radius: var(--radius-md);
+      background: var(--navy-900);
+      color: var(--white);
+    }
+
+    .tradeoff__label {
+      padding: 8px 11px;
+      border-radius: 99px;
+      background: var(--coral-500);
+      color: var(--navy-950);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tradeoff p {
+      margin: 0;
+      color: #c5d0de;
+      font-size: 14px;
+    }
+
+    .cycle {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .cycle-step {
+      position: relative;
+      min-height: 172px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--white);
+    }
+
+    .cycle-step:not(:last-child)::after {
+      position: absolute;
+      z-index: 2;
+      content: "→";
+      top: 26px;
+      right: -18px;
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--navy-900);
+      color: var(--white);
+      font-size: 13px;
+    }
+
+    .cycle-step--approval {
+      border-color: var(--blue-600);
+      background: var(--blue-600);
+      color: var(--white);
+      box-shadow: 0 18px 45px rgba(18, 91, 255, 0.23);
+    }
+
+    .cycle-step__number {
+      display: block;
+      margin-bottom: 28px;
+      color: var(--blue-600);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+    }
+
+    .cycle-step--approval .cycle-step__number {
+      color: #bed1ff;
+    }
+
+    .cycle-step strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 16px;
+    }
+
+    .cycle-step p {
+      margin: 0;
+      color: var(--ink-600);
+      font-size: 12px;
+    }
+
+    .cycle-step--approval p {
+      color: #d8e4ff;
+    }
+
+    .signature-line {
+      max-width: 760px;
+      margin: 42px auto 0;
+      color: var(--ink-800);
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3vw, 34px);
+      font-style: italic;
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    .scope-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+    }
+
+    .scope-card {
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+    }
+
+    .scope-card--core {
+      border-color: var(--blue-600);
+      box-shadow: 0 18px 55px rgba(18, 91, 255, 0.1);
+    }
+
+    .scope-card__label {
+      display: inline-block;
+      margin-bottom: 22px;
+      padding: 7px 10px;
+      border-radius: 99px;
+      background: var(--blue-100);
+      color: var(--blue-600);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .scope-card--modules .scope-card__label {
+      background: #e9edf3;
+      color: var(--ink-600);
+    }
+
+    .scope-card li strong {
+      display: block;
+      color: var(--ink-950);
+    }
+
+    .scope-card li span {
+      display: block;
+      margin-top: 3px;
+      color: var(--ink-600);
+      font-size: 12px;
+    }
+
+    .scope-note {
+      margin-top: 18px;
+      padding: 22px 25px;
+      border: 1px solid #cad8f6;
+      border-radius: var(--radius-md);
+      background: #edf3ff;
+      color: #294779;
+      font-size: 14px;
+    }
+
+    .project-module {
+      padding: 38px;
+      border: 1px solid #bdd1ff;
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(18, 91, 255, 0.15), transparent 25%),
+        var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .project-module[hidden] {
+      display: none !important;
+    }
+
+    .project-module__grid {
+      display: grid;
+      grid-template-columns: 1fr 0.52fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .project-module__price {
+      padding: 28px;
+      border-radius: var(--radius-md);
+      background: var(--navy-900);
+      color: var(--white);
+    }
+
+    .project-module__price small {
+      display: block;
+      margin-bottom: 8px;
+      color: #9fb0c6;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .project-module__price strong {
+      display: block;
+      font-size: 39px;
+      letter-spacing: -0.055em;
+    }
+
+    .project-module__price span {
+      color: #b7c5d6;
+      font-size: 12px;
+    }
+
+    .practice-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+
+    .practice-grid > *,
+    .board-frame,
+    .visibility-card {
+      min-width: 0;
+    }
+
+    .board-frame {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .board-frame__bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 4px 4px 14px;
+      color: var(--ink-500);
+      font-size: 11px;
+    }
+
+    .board-frame__dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .board-frame__dots i {
+      width: 7px;
+      height: 7px;
+      display: block;
+      border-radius: 50%;
+      background: #c9d1dc;
+    }
+
+    .board-frame .image-slot {
+      min-height: 410px;
+      border-radius: 19px;
+    }
+
+    .visibility-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 32px;
+      border-radius: var(--radius-lg);
+      background: var(--navy-900);
+      color: var(--white);
+    }
+
+    .visibility-card__list {
+      display: grid;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .visibility-item {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 13px;
+      align-items: start;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .visibility-item__check {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(18, 91, 255, 0.3);
+      color: #bad0ff;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .visibility-item strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 13px;
+    }
+
+    .visibility-item span {
+      color: #9fb0c6;
+      font-size: 11px;
+    }
+
+    .estimate-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      margin-top: 23px;
+    }
+
+    .estimate {
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.07);
+      text-align: center;
+    }
+
+    .estimate strong {
+      display: block;
+      color: var(--white);
+      font-size: 20px;
+    }
+
+    .estimate span {
+      color: #9fb0c6;
+      font-size: 10px;
+    }
+
+    .request-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .request-step {
+      position: relative;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--white);
+    }
+
+    .request-step__number {
+      display: block;
+      margin-bottom: 22px;
+      color: var(--blue-600);
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    .request-step strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .request-step p {
+      margin: 0;
+      color: var(--ink-600);
+      font-size: 11px;
+    }
+
+    .table-wrap {
+      margin-top: 30px;
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--white);
+    }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 17px 18px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #edf1f6;
+      color: var(--ink-600);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    td {
+      color: var(--ink-800);
+      font-size: 13px;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .severity {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 900;
+    }
+
+    .severity::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue-600);
+    }
+
+    .severity--p1::before {
+      background: var(--coral-600);
+      box-shadow: 0 0 0 4px #ffe5e2;
+    }
+
+    .severity--p2::before {
+      background: #d49016;
+      box-shadow: 0 0 0 4px #fff0cf;
+    }
+
+    .plans-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 25px;
+    }
+
+    .billing-toggle {
+      display: inline-flex;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+    }
+
+    .billing-toggle button {
+      min-height: 38px;
+      padding: 8px 15px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-600);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .billing-toggle button.is-active {
+      background: var(--navy-900);
+      color: var(--white);
+    }
+
+    .discount-pill {
+      padding: 7px 10px;
+      border-radius: 99px;
+      background: var(--green-100);
+      color: var(--green-600);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .plan-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 31px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .plan-card.is-recommended {
+      border: 2px solid var(--blue-600);
+      box-shadow: 0 24px 60px rgba(18, 91, 255, 0.14);
+    }
+
+    .plan-card.is-selected {
+      outline: 4px solid rgba(18, 91, 255, 0.14);
+      outline-offset: 2px;
+    }
+
+    .plan-card__recommended {
+      position: absolute;
+      top: 17px;
+      right: 17px;
+      display: none;
+      padding: 6px 9px;
+      border-radius: 99px;
+      background: var(--blue-600);
+      color: var(--white);
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .plan-card.is-recommended .plan-card__recommended {
+      display: inline-flex;
+    }
+
+    .plan-card__name {
+      margin-bottom: 8px;
+      color: var(--ink-500);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .plan-card__thesis {
+      min-height: 66px;
+      margin-bottom: 24px;
+      color: var(--ink-800);
+      font-size: 18px;
+      font-weight: 750;
+      line-height: 1.3;
+    }
+
+    .plan-card__price {
+      display: flex;
+      align-items: flex-end;
+      gap: 7px;
+      margin-bottom: 4px;
+    }
+
+    .plan-card__price strong {
+      font-size: clamp(35px, 4vw, 47px);
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .plan-card__price span {
+      padding-bottom: 5px;
+      color: var(--ink-500);
+      font-size: 11px;
+    }
+
+    .plan-card__annual {
+      min-height: 34px;
+      color: var(--green-600);
+      font-size: 11px;
+    }
+
+    .plan-card__spec {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin: 18px 0 10px;
+    }
+
+    .plan-spec {
+      padding: 12px;
+      border-radius: 13px;
+      background: var(--surface);
+    }
+
+    .plan-spec strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 16px;
+    }
+
+    .plan-spec span {
+      color: var(--ink-600);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .plan-card ul {
+      flex: 1;
+      margin-bottom: 26px;
+    }
+
+    .plan-card li::before {
+      width: 7px;
+      height: 7px;
+      box-shadow: 0 0 0 3px var(--blue-100);
+    }
+
+    .plan-card__select {
+      width: 100%;
+    }
+
+    .plan-card.is-selected .plan-card__select {
+      background: var(--navy-900);
+    }
+
+    .plan-note {
+      max-width: 850px;
+      margin: 24px auto 0;
+      color: var(--ink-500);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .rule-card {
+      min-height: 215px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 19px;
+      background: rgba(255, 255, 255, 0.055);
+    }
+
+    .rule-card__number {
+      display: block;
+      margin-bottom: 35px;
+      color: #6f96e8;
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+    }
+
+    .rule-card h3 {
+      color: var(--white);
+      font-size: 17px;
+    }
+
+    .rule-card p {
+      margin: 0;
+      color: #aebdd0;
+      font-size: 12px;
+    }
+
+    .investment-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .investment-card {
+      padding: 36px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+    }
+
+    .investment-card--selection {
+      background:
+        radial-gradient(circle at 95% 5%, rgba(18, 91, 255, 0.16), transparent 30%),
+        var(--navy-900);
+      color: var(--white);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .investment-card__label {
+      display: block;
+      margin-bottom: 15px;
+      color: var(--blue-600);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .investment-card--selection .investment-card__label {
+      color: #82aaff;
+    }
+
+    .selected-plan-name {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 31px;
+      font-weight: 950;
+      letter-spacing: -0.045em;
+    }
+
+    .selected-plan-price {
+      display: block;
+      margin-bottom: 7px;
+      font-size: clamp(44px, 6vw, 70px);
+      font-weight: 950;
+      line-height: 1;
+      letter-spacing: -0.065em;
+    }
+
+    .selected-plan-period {
+      color: #aebdd0;
+      font-size: 13px;
+    }
+
+    .selection-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 27px;
+    }
+
+    .selection-summary div {
+      padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .selection-summary strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 18px;
+    }
+
+    .selection-summary span {
+      color: #9fb0c6;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .setup-price {
+      display: block;
+      margin: 14px 0 8px;
+      font-size: 44px;
+      font-weight: 950;
+      letter-spacing: -0.055em;
+    }
+
+    .setup-waiver {
+      display: inline-flex;
+      margin-top: 16px;
+      padding: 8px 11px;
+      border-radius: 99px;
+      background: var(--green-100);
+      color: var(--green-600);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .investment-card li::before {
+      background: var(--green-600);
+      box-shadow: 0 0 0 4px var(--green-100);
+    }
+
+    .guarantee {
+      padding: 48px;
+      border: 1px solid #b7c9ee;
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 94% 10%, rgba(18, 91, 255, 0.15), transparent 26%),
+        #edf3ff;
+    }
+
+    .guarantee__head {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .guarantee__seal {
+      width: 180px;
+      height: 180px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--blue-600);
+      color: var(--white);
+      box-shadow: 0 20px 55px rgba(18, 91, 255, 0.26);
+      text-align: center;
+      transform: rotate(-4deg);
+    }
+
+    .guarantee__seal strong {
+      display: block;
+      font-size: 49px;
+      line-height: 0.9;
+      letter-spacing: -0.07em;
+    }
+
+    .guarantee__seal span {
+      display: block;
+      margin-top: 7px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .guarantee__promise {
+      color: #18335e;
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 3.5vw, 39px);
+      font-style: italic;
+      line-height: 1.2;
+    }
+
+    .guarantee__conditions {
+      margin-top: 16px;
+      color: #50688d;
+      font-size: 11px;
+    }
+
+    .first-month {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 35px;
+    }
+
+    .first-month__item {
+      padding: 22px;
+      border: 1px solid #c9d6ee;
+      border-radius: 17px;
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    .first-month__item span {
+      display: block;
+      margin-bottom: 22px;
+      color: var(--blue-600);
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    .first-month__item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #17345f;
+      font-size: 16px;
+    }
+
+    .first-month__item p {
+      margin: 0;
+      color: #5c7191;
+      font-size: 11px;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .timeline__item {
+      position: relative;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: var(--white);
+    }
+
+    .timeline__item::before {
+      position: absolute;
+      content: "";
+      top: -5px;
+      left: 22px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--blue-600);
+      box-shadow: 0 0 0 6px var(--blue-100);
+    }
+
+    .timeline__item small {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--ink-500);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .timeline__item strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+
+    .timeline__item p {
+      margin: 0;
+      color: var(--ink-600);
+      font-size: 11px;
+    }
+
+    .closing {
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0;
+      scroll-margin-top: 70px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(18, 91, 255, 0.28), transparent 30%),
+        radial-gradient(circle at 10% 85%, rgba(255, 107, 98, 0.15), transparent 25%),
+        var(--navy-950);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .closing__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .closing h2 {
+      margin-bottom: 24px;
+      font-size: clamp(42px, 6vw, 76px);
+    }
+
+    .closing__lead {
+      max-width: 720px;
+      margin: 0 auto 34px;
+      color: #aebdd0;
+      font-size: 19px;
+    }
+
+    .closing__selection {
+      width: fit-content;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 0 auto 28px;
+      padding: 15px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      text-align: left;
+    }
+
+    .closing__selection small {
+      display: block;
+      color: #8fa2bd;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .closing__selection strong {
+      display: block;
+      margin-top: 2px;
+      font-size: 18px;
+    }
+
+    .closing__selection-price {
+      padding-left: 20px;
+      border-left: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .closing__actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .closing__availability {
+      margin-top: 24px;
+      color: #90a3bd;
+      font-size: 11px;
+    }
+
+    .closing__availability strong {
+      color: #d6dfeb;
+    }
+
+    .phase-visual {
+      position: relative;
+      min-height: 430px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 46px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(255, 107, 98, 0.23), transparent 31%),
+        radial-gradient(circle at 0% 100%, rgba(18, 91, 255, 0.31), transparent 36%),
+        rgba(255, 255, 255, 0.055);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .phase-visual::after {
+      position: absolute;
+      content: "";
+      width: 180px;
+      height: 180px;
+      right: -65px;
+      bottom: -90px;
+      border: 34px solid rgba(255, 255, 255, 0.035);
+      border-radius: 50%;
+    }
+
+    .phase-visual__badge {
+      width: fit-content;
+      margin-bottom: 30px;
+      padding: 7px 10px;
+      border-radius: 99px;
+      background: var(--green-100);
+      color: var(--green-600);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .phase-visual__mark {
+      color: var(--white);
+      font-size: clamp(38px, 6vw, 62px);
+      font-weight: 950;
+      letter-spacing: -0.065em;
+    }
+
+    .phase-visual h3 {
+      margin-top: 4px;
+      color: #9ebcff;
+      font-size: 19px;
+    }
+
+    .phase-visual p {
+      max-width: 440px;
+      margin: 13px 0 25px;
+      color: #b8c5d7;
+      font-size: 14px;
+    }
+
+    .phase-visual__steps {
+      display: grid;
+      gap: 9px;
+    }
+
+    .phase-visual__steps span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #dce5f0;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .phase-visual__steps i {
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(18, 91, 255, 0.25);
+      color: #b9ceff;
+      font-style: normal;
+    }
+
+    .board-mock {
+      min-height: 410px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(132px, 1fr));
+      gap: 9px;
+      padding: 13px;
+      overflow-x: auto;
+      border-radius: 19px;
+      background: #edf1f6;
+    }
+
+    .board-column {
+      padding: 10px;
+      border-radius: 13px;
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    .board-column > small {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 11px;
+      color: var(--ink-600);
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .board-column > small b {
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 7px;
+      background: #e2e7ee;
+      color: var(--ink-500);
+      font-size: 9px;
+    }
+
+    .board-card {
+      margin-bottom: 9px;
+      padding: 12px;
+      border: 1px solid #dce2eb;
+      border-radius: 11px;
+      background: var(--white);
+      box-shadow: 0 7px 18px rgba(8, 23, 48, 0.06);
+    }
+
+    .board-card--active {
+      border-color: #aec6ff;
+      box-shadow: 0 8px 24px rgba(18, 91, 255, 0.12);
+    }
+
+    .board-card--done {
+      opacity: 0.78;
+    }
+
+    .board-card__tag {
+      display: inline-flex;
+      margin-bottom: 9px;
+      padding: 4px 6px;
+      border-radius: 99px;
+      background: var(--blue-100);
+      color: var(--blue-600);
+      font-size: 7px;
+      font-weight: 950;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .board-card__tag--coral {
+      background: var(--coral-100);
+      color: var(--coral-600);
+    }
+
+    .board-card strong,
+    .board-card em {
+      display: block;
+    }
+
+    .board-card strong {
+      color: var(--ink-800);
+      font-size: 10px;
+      line-height: 1.3;
+    }
+
+    .board-card em {
+      margin-top: 8px;
+      color: var(--ink-500);
+      font-size: 8px;
+      font-style: normal;
+    }
+
+    .roadmap-grid,
+    .ramp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .roadmap-card,
+    .ramp-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 31px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .roadmap-card--featured {
+      border-color: #a9c2ff;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(18, 91, 255, 0.12), transparent 34%),
+        var(--white);
+    }
+
+    .roadmap-card__head {
+      margin-bottom: 19px;
+    }
+
+    .roadmap-card__head span,
+    .ramp-card__stage {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--blue-600);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .roadmap-card__head strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: -0.045em;
+    }
+
+    .roadmap-card ul,
+    .ramp-card ul {
+      flex: 1;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .roadmap-card li,
+    .ramp-card li {
+      position: relative;
+      padding: 10px 0 10px 22px;
+      border-top: 1px solid rgba(10, 19, 34, 0.08);
+      color: var(--ink-800);
+      font-size: 12px;
+    }
+
+    .roadmap-card li::before,
+    .ramp-card li::before {
+      position: absolute;
+      top: 15px;
+      left: 2px;
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue-600);
+      box-shadow: 0 0 0 3px var(--blue-100);
+    }
+
+    .roadmap-card > p {
+      margin: 22px 0 0;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--ink-600);
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .pilot-success {
+      display: grid;
+      grid-template-columns: 0.8fr repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pilot-success > span,
+    .pilot-success > div {
+      min-height: 110px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 21px;
+      background: var(--navy-900);
+      color: var(--white);
+    }
+
+    .pilot-success > span {
+      color: #84aaff;
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .pilot-success strong {
+      font-size: 24px;
+      letter-spacing: -0.045em;
+    }
+
+    .pilot-success small {
+      margin-top: 4px;
+      color: #9fb0c6;
+      font-size: 9px;
+    }
+
+    .ramp-card {
+      box-shadow: none;
+    }
+
+    .ramp-card--entry {
+      border: 2px solid var(--blue-600);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(18, 91, 255, 0.15), transparent 35%),
+        var(--white);
+      box-shadow: 0 24px 60px rgba(18, 91, 255, 0.14);
+    }
+
+    .ramp-card > p {
+      min-height: 66px;
+      margin: 20px 0 18px;
+      color: var(--ink-600);
+      font-size: 13px;
+    }
+
+    .ramp-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .ramp-summary div {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: var(--white);
+    }
+
+    .ramp-summary span,
+    .ramp-summary strong {
+      display: block;
+    }
+
+    .ramp-summary span {
+      margin-bottom: 8px;
+      color: var(--ink-500);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .ramp-summary strong {
+      font-size: 24px;
+      letter-spacing: -0.04em;
+    }
+
+    .ramp-summary div:nth-child(3) strong,
+    .ramp-summary div:nth-child(4) strong {
+      color: var(--green-600);
+    }
+
+    .contract-total {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .contract-total span {
+      color: #9fb0c6;
+      font-size: 10px;
+    }
+
+    .contract-total strong {
+      color: var(--white);
+      font-size: 24px;
+      letter-spacing: -0.04em;
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .founder-card {
+      min-height: 260px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 19px;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .founder-card > span {
+      display: block;
+      margin-bottom: 35px;
+      color: var(--blue-600);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+    }
+
+    .founder-card h3 {
+      margin-bottom: 9px;
+      font-size: 18px;
+    }
+
+    .founder-card p {
+      margin: 0;
+      color: var(--ink-600);
+      font-size: 12px;
+    }
+
+    .founder-protection {
+      display: grid;
+      grid-template-columns: 0.35fr 1fr;
+      gap: 28px;
+      align-items: start;
+      margin-top: 18px;
+      padding: 28px;
+      border-radius: var(--radius-md);
+      background: var(--coral-100);
+      color: #693b37;
+    }
+
+    .founder-protection strong {
+      color: var(--coral-600);
+      font-size: 14px;
+    }
+
+    .founder-protection p {
+      margin: 0;
+      font-size: 12px;
+    }
+
+    .acceptance-status {
+      min-height: 20px;
+      margin: 12px auto 0;
+      color: #bcd0ff;
+      font-size: 11px;
+    }
+
+    .footer {
+      padding: 30px 0;
+      background: var(--navy-950);
+      color: #7f91aa;
+      font-size: 10px;
+    }
+
+    .footer__grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer__legal {
+      text-align: right;
+    }
+
+    .print-only {
+      display: none;
+    }
+
+    @media (max-width: 1020px) {
+      .hero__grid,
+      .diagnosis-intro,
+      .proof-grid,
+      .practice-grid,
+      .project-module__grid,
+      .guarantee__head {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 0;
+      }
+
+      .hero__grid {
+        gap: 50px;
+      }
+
+      .system-card {
+        max-width: 680px;
+      }
+
+      .metrics,
+      .diagnosis-assets,
+      .rules-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cycle {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .cycle-step:not(:last-child)::after {
+        display: none;
+      }
+
+      .plan-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .plan-card {
+        max-width: 720px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .plan-card.is-recommended {
+        order: -1;
+      }
+
+      .roadmap-grid,
+      .ramp-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .roadmap-card,
+      .ramp-card {
+        max-width: 760px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .pilot-success,
+      .ramp-summary,
+      .founder-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pilot-success > span {
+        grid-column: 1 / -1;
+        min-height: 72px;
+      }
+
+      .guarantee__seal {
+        width: 140px;
+        height: 140px;
+      }
+
+      .guarantee__seal strong {
+        font-size: 40px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .proposal-nav__inner,
+      .container {
+        width: min(calc(100% - 28px), var(--container));
+      }
+
+      .proposal-nav__meta,
+      .proposal-nav__actions .button--ghost {
+        display: none;
+      }
+
+      .section {
+        padding: 74px 0;
+      }
+
+      h1 {
+        font-size: clamp(42px, 15vw, 63px);
+      }
+
+      h2 {
+        font-size: clamp(33px, 11vw, 46px);
+      }
+
+      .hero {
+        padding: 70px 0 62px;
+      }
+
+      .hero__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics,
+      .diagnosis-assets,
+      .lanes,
+      .scope-grid,
+      .request-flow,
+      .first-month,
+      .timeline,
+      .investment-grid,
+      .rules-grid,
+      .pilot-success,
+      .ramp-summary,
+      .founder-grid,
+      .founder-protection {
+        grid-template-columns: 1fr;
+      }
+
+      .opportunity__grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .proof-metrics,
+      .cycle {
+        grid-template-columns: 1fr;
+      }
+
+      .cycle-step {
+        min-height: 0;
+      }
+
+      .plans-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .plan-card,
+      .scope-card,
+      .lane,
+      .investment-card,
+      .guarantee,
+      .project-module {
+        padding: 26px;
+      }
+
+      .phase-visual,
+      .roadmap-card,
+      .ramp-card,
+      .founder-card {
+        padding: 26px;
+      }
+
+      .pilot-success > span {
+        grid-column: auto;
+      }
+
+      .board-mock {
+        grid-template-columns: repeat(4, 150px);
+      }
+
+      .selection-summary {
+        grid-template-columns: 1fr;
+      }
+
+      .closing {
+        padding: 90px 0;
+      }
+
+      .closing__selection {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .closing__selection-price {
+        width: 100%;
+        padding: 12px 0 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        border-left: 0;
+      }
+
+      .footer__grid {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer__legal {
+        text-align: left;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 11mm;
+      }
+
+      html,
+      body {
+        background: #ffffff !important;
+      }
+
+      body {
+        color: #0a1322;
+        font-size: 10pt;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .progress,
+      .proposal-nav,
+      .screen-only,
+      .billing-toggle,
+      .plan-card__select,
+      .closing__actions {
+        display: none !important;
+      }
+
+      .print-only {
+        display: block;
+      }
+
+      .container {
+        width: 100%;
+        max-width: none;
+      }
+
+      .section,
+      .hero,
+      .closing {
+        min-height: auto;
+        padding: 13mm 0;
+      }
+
+      .hero {
+        min-height: 270mm;
+        display: flex;
+      }
+
+      .hero__grid {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 43pt;
+      }
+
+      h2 {
+        font-size: 29pt;
+      }
+
+      h3 {
+        font-size: 15pt;
+      }
+
+      .lead,
+      .hero__lead {
+        font-size: 12pt;
+      }
+
+      .section[data-page-break="before"],
+      .closing {
+        break-before: page;
+      }
+
+      .plan-card,
+      .lane,
+      .scope-card,
+      .metric,
+      .rule-card,
+      .investment-card,
+      .guarantee,
+      .project-module,
+      .image-slot,
+      .phase-visual,
+      .roadmap-card,
+      .ramp-card,
+      .founder-card,
+      .founder-protection {
+        break-inside: avoid;
+        box-shadow: none !important;
+      }
+
+      .hero__grid,
+      .diagnosis-intro,
+      .proof-grid,
+      .practice-grid,
+      .project-module__grid,
+      .guarantee__head {
+        gap: 8mm;
+      }
+
+      .plan-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .roadmap-grid,
+      .ramp-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .ramp-summary,
+      .founder-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .pilot-success {
+        grid-template-columns: 0.8fr repeat(4, 1fr);
+      }
+
+      .pilot-success > span {
+        grid-column: auto;
+      }
+
+      .plan-card {
+        padding: 5mm;
+      }
+
+      .plan-card__price strong {
+        font-size: 25pt;
+      }
+
+      .plan-card__thesis {
+        min-height: 15mm;
+        font-size: 10pt;
+      }
+
+      .rules-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .rule-card {
+        min-height: 46mm;
+        padding: 5mm;
+      }
+
+      .rule-card__number {
+        margin-bottom: 7mm;
+      }
+
+      #roadmap .section-heading {
+        margin-bottom: 6mm;
+      }
+
+      #roadmap .roadmap-card {
+        padding: 4mm;
+      }
+
+      #roadmap .roadmap-card__head {
+        margin-bottom: 3mm;
+      }
+
+      #roadmap .roadmap-card__head strong {
+        font-size: 13pt;
+      }
+
+      #roadmap .roadmap-card li {
+        padding: 2mm 0 2mm 5mm;
+        font-size: 7.5pt;
+      }
+
+      #roadmap .roadmap-card > p {
+        margin-top: 3mm;
+        padding-top: 3mm;
+        font-size: 7pt;
+      }
+
+      #roadmap .pilot-success {
+        margin-top: 4mm;
+      }
+
+      #roadmap .pilot-success > span,
+      #roadmap .pilot-success > div {
+        min-height: 20mm;
+        padding: 3mm;
+      }
+
+      .timeline {
+        break-inside: avoid;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress" aria-hidden="true">
+    <span class="progress__bar" id="proposal-progress"></span>
+  </div>
+
+  <header class="proposal-nav screen-only">
+    <div class="proposal-nav__inner">
+      <a class="brand" href="#inicio" aria-label="ALVK — voltar ao início">
+        <span class="brand__mark">AΛ</span>
+        <span>
+          <span data-field="brand.shortName">ALVK</span>
+          <small class="brand__tag">Ongoing</small>
+        </span>
+      </a>
+
+      <div class="proposal-nav__meta">
+        <span>Proposta <strong data-field="proposal.number">ALVK-NSH-2026-01</strong></span>
+        <span>Válida até <strong data-field="proposal.validUntil">04/08/2026</strong></span>
+      </div>
+
+      <div class="proposal-nav__actions">
+        <button class="button button--small button--ghost" type="button" data-print>
+          Gerar PDF
+        </button>
+        <a class="button button--small" href="#condicao">Ver condição</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="hero__eyebrow">
+            Proposta personalizada para
+            <span data-field="client.name">NuShape Suplementos</span>
+          </p>
+
+          <h1>
+            A implantação colocou a NuShape online.
+            Agora vamos transformar a loja em um
+            <span class="text-blue">canal digital.</span>
+          </h1>
+
+          <p class="hero__lead">
+            A estrutura já existe. A fase 2 instala a rotina que transforma dados,
+            oportunidades e demandas da operação em prioridades claras, melhorias
+            contínuas e aprendizado acumulado — sem depender de projetos isolados.
+          </p>
+
+          <div class="hero__actions">
+            <a class="button" href="#sistema">Conhecer o sistema</a>
+            <a class="button button--ghost" href="#diagnostico">Ver diagnóstico</a>
+          </div>
+
+          <div class="hero__facts">
+            <span class="fact">Plataforma: <strong data-field="client.platform">Nuvemshop</strong></span>
+            <span class="fact">Go-live: <strong data-field="client.goLiveDate">09/04/2026</strong></span>
+            <span class="fact">Kickoff proposto: <strong data-field="proposal.kickoffDate">05/08/2026</strong></span>
+          </div>
+        </div>
+
+        <aside class="system-card" aria-label="Resumo do sistema Ongoing">
+          <div class="system-card__top">
+            <small>Sistema ALVK em operação</small>
+            <span class="status">Ciclo contínuo</span>
+          </div>
+
+          <div class="lane-mini">
+            <div class="lane-mini__head">
+              <strong>Evolução proativa</strong>
+              <span data-field="operations.evolutionShare">70%</span>
+            </div>
+            <p>Roadmap orientado por dados, impacto e capacidade.</p>
+            <div class="lane-mini__bar">
+              <span data-bar="operations.evolutionShare"></span>
+            </div>
+          </div>
+
+          <div class="lane-mini lane-mini--support">
+            <div class="lane-mini__head">
+              <strong>Sustentação reativa</strong>
+              <span data-field="operations.supportShare">30%</span>
+            </div>
+            <p>Chamados, falhas e ajustes sem consumir o roadmap em silêncio.</p>
+            <div class="lane-mini__bar">
+              <span data-bar="operations.supportShare"></span>
+            </div>
+          </div>
+
+          <p class="system-card__footer">
+            Você aprova as prioridades. A ALVK conduz o caminho.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="diagnostico">
+      <div class="container">
+        <div class="diagnosis-intro">
+          <div class="section-heading">
+            <p class="eyebrow">01 · Ponto de partida</p>
+            <h2>
+              A demanda já existe.
+              O digital precisa <span class="serif-emphasis">provar a rotina.</span>
+            </h2>
+          </div>
+
+          <div class="diagnosis-context">
+            A NuShape já possui produto, margem competitiva, relacionamento local e uma
+            loja virtual implantada. O próximo gargalo não é “ter um site”: é fazer o
+            canal medir, converter, recuperar e estimular recompra de forma contínua.
+            Antes de comprar mais tráfego, precisamos preparar a operação para aproveitar
+            melhor o tráfego que já chega.
+          </div>
+        </div>
+
+        <div class="metrics" role="group" aria-label="Indicadores do diagnóstico">
+          <article class="metric">
+            <span class="metric__label">Visitas no recorte</span>
+            <strong class="metric__value" data-field="diagnosis.monthlySessions">2.828</strong>
+            <span class="metric__detail" data-field="diagnosis.sessionsDetail">Painel Nuvemshop disponibilizado pela NuShape</span>
+          </article>
+
+          <article class="metric">
+            <span class="metric__label">Conversão atual</span>
+            <strong class="metric__value" data-field="diagnosis.currentConversion">0,18%</strong>
+            <span class="metric__detail" data-field="diagnosis.conversionDetail">5 pedidos pagos no recorte analisado</span>
+          </article>
+
+          <article class="metric">
+            <span class="metric__label">Ticket médio</span>
+            <strong class="metric__value" data-field="diagnosis.averageOrderValue">R$ 217,46</strong>
+            <span class="metric__detail" data-field="diagnosis.ticketDetail">Receita online de R$ 1.087,32 no recorte</span>
+          </article>
+
+          <article class="metric">
+            <span class="metric__label">Ponto crítico</span>
+            <strong class="metric__value" data-field="diagnosis.mainMetric">13,89%</strong>
+            <span class="metric__detail" data-field="diagnosis.mainConstraint">Só 5 de 36 checkouts iniciados viraram pedidos pagos</span>
+          </article>
+        </div>
+
+        <div class="diagnosis-assets" role="group" aria-label="Ativos e contexto da operação">
+          <article>
+            <span>Audiência própria</span>
+            <strong>1.794 seguidores</strong>
+            <p>Instagram local já ativo, ainda com espaço para integrar conteúdo, loja e recompra.</p>
+          </article>
+          <article>
+            <span>Demanda validada</span>
+            <strong>R$ 102.850,67</strong>
+            <p>Faturamento físico acumulado no último ano informado pela NuShape.</p>
+          </article>
+          <article>
+            <span>Vantagem de margem</span>
+            <strong>Acesso à indústria</strong>
+            <p>Relação direta com distribuição cria espaço competitivo para oferta e aquisição.</p>
+          </article>
+          <article>
+            <span>Aquisição atual</span>
+            <strong>Zero Ads</strong>
+            <p>O crescimento inicial pode começar por conversão, base física e retenção antes da mídia.</p>
+          </article>
+        </div>
+
+        <article class="opportunity">
+          <div class="opportunity__grid">
+            <div>
+              <span class="opportunity__label">Custo mensal da inércia · cenário conservador</span>
+              <strong class="opportunity__value" data-field="diagnosis.opportunityRange">
+                R$ 3,8–5,1 mil/mês
+              </strong>
+            </div>
+
+            <div>
+              <p class="opportunity__copy">
+                Levar a conversão de <strong>0,18%</strong> para uma faixa inicial de
+                <strong data-field="diagnosis.conversionScenario">0,80% a 1,00%</strong>
+                representaria esta receita adicional potencial, mantidos o tráfego
+                e o ticket médio do recorte.
+              </p>
+              <p class="opportunity__formula" data-field="diagnosis.formula">
+                Fórmula: (2.828 × conversão-alvo de 0,80%–1,00% − 5 pedidos atuais) × R$ 217,46.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <p class="fine-print" data-field="diagnosis.disclaimer">
+          Para a simulação, o recorte de 2.828 visitas foi tratado como mensal. A janela,
+          a qualidade do tracking e a origem das vendas serão validadas no ciclo 1.
+          O cálculo é um cenário de decisão, não promessa de resultado; estoque, preço,
+          oferta, sazonalidade, aprovações e atuação da NuShape também influenciam a receita.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--navy" id="prova" data-page-break="before">
+      <div class="container proof-grid">
+        <div class="phase-visual" aria-label="Fase 1 concluída e fase 2 proposta">
+          <span class="phase-visual__badge">Fundação entregue</span>
+          <div class="phase-visual__mark">nu.shape</div>
+          <h3>Loja Nuvemshop no ar</h3>
+          <p>
+            A implantação criou a base transacional. O Ongoing ativa a camada de
+            dados, conversão, retenção e governança que transforma a base em canal.
+          </p>
+          <div class="phase-visual__steps">
+            <span><i>✓</i> Estrutura implantada</span>
+            <span><i>✓</i> Go-live realizado</span>
+            <span><i>→</i> Evolução contínua</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="eyebrow">02 · Fase 1 concluída</p>
+          <h2 data-field="case.title">A base está pronta. O próximo valor vem do uso disciplinado dela.</h2>
+          <p class="proof-quote" data-field="case.quote">
+            “A implantação entregou a loja. O Ongoing transforma a loja em canal.”
+          </p>
+          <p class="muted" data-field="case.context">
+            A NuShape parte de uma operação física validada, relacionamento local,
+            acesso competitivo à indústria e uma loja virtual construída pela ALVK.
+            Isso reduz o risco de fundação e permite concentrar a próxima fase no que
+            realmente move o digital: mensuração, experiência, recompra e cadência.
+          </p>
+
+          <div class="proof-metrics">
+            <div class="proof-metric">
+              <strong data-field="case.metric1Value">09/04/26</strong>
+              <span data-field="case.metric1Label">Go-live da loja virtual</span>
+            </div>
+            <div class="proof-metric">
+              <strong data-field="case.metric2Value">R$ 102,8 mil</strong>
+              <span data-field="case.metric2Label">Faturamento físico no último ano</span>
+            </div>
+            <div class="proof-metric">
+              <strong data-field="case.metric3Value">R$ 8,6 mil</strong>
+              <span data-field="case.metric3Label">Média mensal simples do físico</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="sistema">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">03 · O Sistema ALVK</p>
+          <h2>
+            Duas esteiras. Um ciclo mensal.
+            <span class="serif-emphasis">Nenhuma prioridade invisível.</span>
+          </h2>
+          <p class="lead">
+            A capacidade contratada é distribuída entre sustentação e evolução.
+            A ALVK analisa, recomenda e estima. O cliente aprova. A execução acontece
+            no ClickUp e o mês termina com aprendizado, não apenas com uma lista de tarefas.
+          </p>
+        </div>
+
+        <div class="lanes">
+          <article class="lane lane--evolution">
+            <span class="lane__badge">Proativa</span>
+            <span class="lane__number" data-field="operations.evolutionShare">70%</span>
+            <h3>Esteira de evolução</h3>
+            <p class="muted">
+              Melhorias priorizadas pelo potencial de impacto, esforço, urgência e dependências.
+            </p>
+            <ul>
+              <li>Análise de dados, experiência e operação.</li>
+              <li>Roadmap mensal estimado por card.</li>
+              <li>Testes, implementações e aprendizado acumulado.</li>
+              <li>Recomendação ativa da ALVK — não um menu passivo.</li>
+            </ul>
+          </article>
+
+          <article class="lane lane--support">
+            <span class="lane__badge">Reativa</span>
+            <span class="lane__number" data-field="operations.supportShare">30%</span>
+            <h3>Esteira de sustentação</h3>
+            <p class="muted">
+              Chamados da operação entram por um canal único, recebem severidade e são tratados com rastreabilidade.
+            </p>
+            <ul>
+              <li>Formulário no portal com card automático.</li>
+              <li>Triagem por impacto: P1, P2 ou P3.</li>
+              <li>SLA de primeira resposta, não promessa irreal de solução.</li>
+              <li>Limite mensal que protege o roadmap de evolução.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="tradeoff">
+          <span class="tradeoff__label">Trade-off explícito</span>
+          <p>
+            Se a sustentação ultrapassar
+            <strong data-field="operations.supportShare">30%</strong>
+            da capacidade, decidimos juntos: contratar excedente previamente aprovado,
+            trocar uma prioridade do roadmap ou levar a demanda ao próximo ciclo.
+          </p>
+        </div>
+
+        <div class="cycle" role="group" aria-label="Ciclo mensal ALVK">
+          <article class="cycle-step">
+            <span class="cycle-step__number">01</span>
+            <strong>Analisamos</strong>
+            <p>Dados, chamados, comportamento, operação e restrições do negócio.</p>
+          </article>
+          <article class="cycle-step">
+            <span class="cycle-step__number">02</span>
+            <strong>Propomos</strong>
+            <p>Roadmap priorizado com hipótese, impacto e estimativa por card.</p>
+          </article>
+          <article class="cycle-step cycle-step--approval">
+            <span class="cycle-step__number">03</span>
+            <strong>Você aprova</strong>
+            <p>O cliente mantém a decisão; a ALVK preserva a autoria estratégica.</p>
+          </article>
+          <article class="cycle-step">
+            <span class="cycle-step__number">04</span>
+            <strong>Executamos</strong>
+            <p>Trabalho visível no board, com validação e histórico da entrega.</p>
+          </article>
+          <article class="cycle-step">
+            <span class="cycle-step__number">05</span>
+            <strong>Aprendemos</strong>
+            <p>Report, consumo por esteira, impactos e próximo ciclo recomendado.</p>
+          </article>
+        </div>
+
+        <p class="signature-line">
+          “O cliente não compra uma fila de tarefas. Instala uma rotina que sabe
+          o que fazer agora — e o que conscientemente deixar para depois.”
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="escopo" data-page-break="before">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">04 · Escopo com fronteiras</p>
+          <h2>
+            Um núcleo contínuo.
+            <span class="serif-emphasis">Módulos quando o trabalho exige outra operação.</span>
+          </h2>
+          <p class="lead">
+            O programa Start atua sobre um núcleo amplo, mas mantém uma única frente
+            ativa por vez. Essa fronteira protege as 10 horas mensais para que a NuShape
+            conclua prioridades relevantes, em vez de iniciar muitas tarefas sem impacto.
+          </p>
+        </div>
+
+        <div class="scope-grid">
+          <article class="scope-card scope-card--core">
+            <span class="scope-card__label">Núcleo do Ongoing</span>
+            <h3>Operação e evolução da loja</h3>
+            <ul>
+              <li>
+                <strong>Estabilidade e sustentação</strong>
+                <span>Disponibilidade, falhas, configurações e apoio técnico vinculado à loja.</span>
+              </li>
+              <li>
+                <strong>CRO e experiência</strong>
+                <span>Navegação, PDP, carrinho, checkout, merchandising e hipóteses de conversão.</span>
+              </li>
+              <li>
+                <strong>Mensuração e qualidade técnica</strong>
+                <span>Tracking, diagnóstico e correções compatíveis com a Nuvemshop e o stack contratado.</span>
+              </li>
+              <li>
+                <strong>SEO técnico</strong>
+                <span>Indexação, estrutura, metadados, redirecionamentos e problemas rastreáveis.</span>
+              </li>
+              <li>
+                <strong>Retenção e automações leves</strong>
+                <span>Recuperação, recompra e rotinas diretamente relacionadas ao canal digital.</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="scope-card scope-card--modules">
+            <span class="scope-card__label">Módulos anexáveis</span>
+            <h3>Operações com rotina própria</h3>
+            <ul>
+              <li>
+                <strong>Gestão de mídia paga</strong>
+                <span>Não incluída nesta fase. Operação de campanhas, verba, criativos e otimização possuem módulo próprio.</span>
+              </li>
+              <li>
+                <strong>Inbound e CRM</strong>
+                <span>Calendário, jornadas, segmentações, campanhas e operação de base.</span>
+              </li>
+              <li>
+                <strong>Conteúdo e SEO editorial</strong>
+                <span>Pesquisa, pauta, produção, revisão e publicação recorrente.</span>
+              </li>
+              <li>
+                <strong>Catálogo e marketplaces</strong>
+                <span>Rotina operacional de produtos, canais, qualidade e integrações.</span>
+              </li>
+              <li>
+                <strong>Projetos e integrações complexas</strong>
+                <span>Implantação, migração, redesign ou desenvolvimento com escopo próprio.</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="scope-note">
+          <strong>Como funciona:</strong> o cliente pode solicitar qualquer item elegível.
+          A ALVK transforma solicitações em backlog, recomenda a prioridade e apresenta
+          a estimativa. A execução começa após aprovação e disponibilidade de capacidade.
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="pratica">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">05 · Na prática</p>
+          <h2>
+            Visibilidade para decidir.
+            <span class="serif-emphasis">Sem auditoria de minuto.</span>
+          </h2>
+          <p class="lead">
+            O ClickUp concentra solicitações, estimativas, aprovações, status e entregas.
+            O timesheet detalhado continua interno; o cliente acompanha o que realmente
+            importa para governar capacidade e prioridade.
+          </p>
+        </div>
+
+        <div class="practice-grid">
+          <div class="board-frame">
+            <div class="board-frame__bar">
+              <div class="board-frame__dots"><i></i><i></i><i></i></div>
+              <span>Board compartilhado · ClickUp</span>
+            </div>
+            <div class="board-mock" aria-label="Visão ilustrativa do board compartilhado da NuShape">
+              <div class="board-column">
+                <small>Backlog <b>3</b></small>
+                <article class="board-card">
+                  <span class="board-card__tag">Conversão</span>
+                  <strong>Revisar PDP da curva A</strong>
+                  <em>M · aguardando estimativa</em>
+                </article>
+                <article class="board-card">
+                  <span class="board-card__tag board-card__tag--coral">Sustentação</span>
+                  <strong>Investigar abandono no pagamento</strong>
+                  <em>P1 · evidências anexadas</em>
+                </article>
+              </div>
+              <div class="board-column">
+                <small>Aprovado <b>2</b></small>
+                <article class="board-card">
+                  <span class="board-card__tag">Dados</span>
+                  <strong>Validar eventos do checkout</strong>
+                  <em>M · prioridade do ciclo</em>
+                </article>
+              </div>
+              <div class="board-column">
+                <small>Em execução <b>1</b></small>
+                <article class="board-card board-card--active">
+                  <span class="board-card__tag">Vitrine</span>
+                  <strong>Quick wins do ciclo 1</strong>
+                  <em>P · publicação em validação</em>
+                </article>
+              </div>
+              <div class="board-column">
+                <small>Concluído <b>2</b></small>
+                <article class="board-card board-card--done">
+                  <span class="board-card__tag">Fundação</span>
+                  <strong>Implantação Nuvemshop</strong>
+                  <em>✓ entregue em 09/04/2026</em>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="visibility-card">
+            <div>
+              <p class="eyebrow">O cliente acompanha</p>
+              <h3>Transparência suficiente para governar.</h3>
+
+              <div class="visibility-card__list">
+                <div class="visibility-item">
+                  <span class="visibility-item__check">✓</span>
+                  <div>
+                    <strong>Estimativa antes da aprovação</strong>
+                    <span>Hipótese, tamanho e dependências visíveis por card.</span>
+                  </div>
+                </div>
+                <div class="visibility-item">
+                  <span class="visibility-item__check">✓</span>
+                  <div>
+                    <strong>Saldo de capacidade do ciclo</strong>
+                    <span>Consumo agregado por esteira, sem exposição minuto a minuto.</span>
+                  </div>
+                </div>
+                <div class="visibility-item">
+                  <span class="visibility-item__check">✓</span>
+                  <div>
+                    <strong>Report agregado por esteira</strong>
+                    <span>Sustentação, evolução, aprendizados e próximos passos.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="estimate-row" role="group" aria-label="Referência de estimativas">
+              <div class="estimate">
+                <strong>P</strong>
+                <span>até 2h</span>
+              </div>
+              <div class="estimate">
+                <strong>M</strong>
+                <span>até 4h</span>
+              </div>
+              <div class="estimate">
+                <strong>G</strong>
+                <span>até 8h</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="request-flow">
+          <article class="request-step">
+            <span class="request-step__number">01</span>
+            <strong>Cliente solicita</strong>
+            <p>Formulário único cria o card com contexto, urgência e evidências.</p>
+          </article>
+          <article class="request-step">
+            <span class="request-step__number">02</span>
+            <strong>ALVK classifica</strong>
+            <p>Definimos severidade, elegibilidade, dependências e impacto.</p>
+          </article>
+          <article class="request-step">
+            <span class="request-step__number">03</span>
+            <strong>ALVK recomenda</strong>
+            <p>Estimamos e propomos prioridade ou troca consciente no roadmap.</p>
+          </article>
+          <article class="request-step">
+            <span class="request-step__number">04</span>
+            <strong>Cliente aprova</strong>
+            <p>O card segue para execução conforme a capacidade e a fila do plano.</p>
+          </article>
+        </div>
+
+        <div class="table-wrap">
+          <table aria-label="Matriz de severidade e SLA">
+            <thead>
+              <tr>
+                <th scope="col">Severidade</th>
+                <th scope="col">Quando se aplica</th>
+                <th scope="col">Ongoing Start</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="severity severity--p1">P1 · Crítico</span></td>
+                <td>Loja, checkout, pagamento ou receita diretamente bloqueados.</td>
+                <td data-field="plans.start.slaP1">24h úteis</td>
+              </tr>
+              <tr>
+                <td><span class="severity severity--p2">P2 · Funcional</span></td>
+                <td>Função relevante comprometida, mas operação continua disponível.</td>
+                <td data-field="plans.start.slaP2">48h úteis</td>
+              </tr>
+              <tr>
+                <td><span class="severity">P3 · Evolução</span></td>
+                <td>Melhorias, ajustes, testes e novos pedidos sem impacto crítico imediato.</td>
+                <td>Triagem no ciclo de priorização e estimativa antes da execução.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="fine-print">
+          Os prazos acima são de primeira resposta dentro do horário comercial definido
+          em contrato. Diagnóstico, solução e publicação dependem da complexidade,
+          aprovações, acessos e terceiros.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="roadmap">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">06 · Primeiros 90 dias</p>
+          <h2>
+            A fase 2 já começa com uma tese.
+            <span class="serif-emphasis">Cada ciclo prepara o próximo.</span>
+          </h2>
+          <p class="lead">
+            O roadmap abaixo é a direção inicial, não uma fila imutável. As prioridades
+            serão confirmadas após acesso aos dados, validação técnica e aprovação da NuShape.
+          </p>
+        </div>
+
+        <div class="roadmap-grid">
+          <article class="roadmap-card">
+            <div class="roadmap-card__head">
+              <span>Ciclo 1</span>
+              <strong>Medir e destravar</strong>
+            </div>
+            <ul>
+              <li>Quick wins de vitrine, consistência e confiança.</li>
+              <li>Kit de tracking completo e eventos críticos validados.</li>
+              <li>Google Business Profile conectado à jornada digital.</li>
+              <li>Investigação da quebra de 16 pagamentos para 5 pedidos pagos, com dados do gateway.</li>
+            </ul>
+            <p>Saída do ciclo: diagnóstico consolidado, baseline confiável e gargalos priorizados.</p>
+          </article>
+
+          <article class="roadmap-card roadmap-card--featured">
+            <div class="roadmap-card__head">
+              <span>Ciclo 2</span>
+              <strong>Converter e conectar</strong>
+            </div>
+            <ul>
+              <li>PDPs da curva A orientadas a decisão e confiança.</li>
+              <li>Revisão de parcelamento e oferta para o ticket de R$ 217,46.</li>
+              <li>Captura da base física com QR no balcão e incentivo à primeira compra online.</li>
+              <li>Rotina de recuperação de carrinho implantada e mensurada.</li>
+            </ul>
+            <p>Saída do ciclo: jornada comercial mais clara e loja física alimentando o digital.</p>
+          </article>
+
+          <article class="roadmap-card">
+            <div class="roadmap-card__head">
+              <span>Ciclo 3</span>
+              <strong>Reter e preparar escala</strong>
+            </div>
+            <ul>
+              <li>Rotina de recompra por ciclo de consumo via WhatsApp e e-mail.</li>
+              <li>Segmentações iniciais por categoria, produto e comportamento.</li>
+              <li>Pixel, catálogos e públicos preparados para futura mídia.</li>
+              <li>Critérios objetivos para decidir quando ativar Ads e ampliar o plano.</li>
+            </ul>
+            <p>Saída do ciclo: retenção ativa e base técnica pronta para aquisição paga.</p>
+          </article>
+        </div>
+
+        <div class="pilot-success">
+          <span>Critérios do piloto</span>
+          <div>
+            <strong>3 ciclos</strong>
+            <small>rodados pelo processo oficial</small>
+          </div>
+          <div>
+            <strong>≤ 30%</strong>
+            <small>da capacidade em sustentação</small>
+          </div>
+          <div>
+            <strong>0,8%–1,0%</strong>
+            <small>faixa-direção de conversão</small>
+          </div>
+          <div>
+            <strong>1 rotina</strong>
+            <small>de recompra ativa e medida</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="condicao" data-page-break="before">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">07 · Condição cliente-fundador</p>
+          <h2>
+            O método começa completo.
+            <span class="serif-emphasis">O investimento amadurece em três degraus.</span>
+          </h2>
+          <p class="lead">
+            A NuShape recebe a capacidade integral do Start desde o primeiro mês.
+            A rampa sobe por data — nunca por faturamento — para preservar a parceria,
+            eliminar apurações mensais e manter o incentivo de crescimento alinhado.
+          </p>
+        </div>
+
+        <div class="ramp-grid" role="group" aria-label="Rampa fixa de investimento">
+          <article class="ramp-card ramp-card--entry">
+            <span class="ramp-card__stage">Meses 1 a 3 · Ativação</span>
+            <div class="plan-card__price">
+              <strong>R$ 1.500</strong>
+              <span>/mês</span>
+            </div>
+            <p>Entrada protegida para instalar o processo e provar o primeiro roadmap.</p>
+            <ul>
+              <li>10h de capacidade mensal.</li>
+              <li>Uma frente ativa por vez.</li>
+              <li>Update semanal, report mensal e call trimestral.</li>
+              <li>Diagnóstico, quick wins e roadmap de 90 dias.</li>
+            </ul>
+          </article>
+
+          <article class="ramp-card">
+            <span class="ramp-card__stage">Meses 4 a 6 · Tração</span>
+            <div class="plan-card__price">
+              <strong>R$ 1.900</strong>
+              <span>/mês</span>
+            </div>
+            <p>O canal ganha histórico, rotina de conversão e primeiras alavancas de retenção.</p>
+            <ul>
+              <li>Mesma capacidade de 10h/mês.</li>
+              <li>Uma frente ativa por vez.</li>
+              <li>Mesma cadência, SLA e governança.</li>
+              <li>CRO, recuperação e base física conectada.</li>
+            </ul>
+          </article>
+
+          <article class="ramp-card">
+            <span class="ramp-card__stage">Meses 7 a 12 · Tabela plena</span>
+            <div class="plan-card__price">
+              <strong>R$ 2.400</strong>
+              <span>/mês</span>
+            </div>
+            <p>A rotina madura opera no valor oficial do Ongoing Start.</p>
+            <ul>
+              <li>10h de capacidade mensal.</li>
+              <li>Uma frente ativa por vez.</li>
+              <li>Mesma cadência, SLA e governança.</li>
+              <li>Rotina madura e backlog orientado por dados.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="ramp-summary">
+          <div>
+            <span>Investimento em 12 meses</span>
+            <strong>R$ 24.600</strong>
+          </div>
+          <div>
+            <span>Tabela Start no período</span>
+            <strong>R$ 28.800</strong>
+          </div>
+          <div>
+            <span>Benefício fundador</span>
+            <strong>R$ 4.200</strong>
+          </div>
+          <div>
+            <span>Economia efetiva</span>
+            <strong>14,6%</strong>
+          </div>
+        </div>
+
+        <p class="plan-note">
+          Os degraus são fixos no contrato e não sobem nem descem conforme o faturamento.
+          A capacidade mensal não representa dedicação exclusiva; o consumo ocorre por
+          cards aprovados, dependências e prioridade do ciclo.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--navy" id="regras">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">08 · Regras do jogo</p>
+          <h2>
+            Previsibilidade só existe quando
+            <span class="serif-emphasis">os limites também são claros.</span>
+          </h2>
+          <p class="lead">
+            Estas regras evitam passivos de capacidade, urgências artificiais e
+            discussões tardias sobre o que deveria ter sido combinado antes.
+          </p>
+        </div>
+
+        <div class="rules-grid">
+          <article class="rule-card">
+            <span class="rule-card__number">01</span>
+            <h3>Capacidade por esteira</h3>
+            <p>
+              Sustentação limitada a
+              <strong data-field="operations.supportShare">30%</strong>.
+              O excedente exige troca de prioridade ou capacidade adicional.
+            </p>
+          </article>
+
+          <article class="rule-card">
+            <span class="rule-card__number">02</span>
+            <h3>Rollover controlado</h3>
+            <p>
+              Até <strong data-field="commercial.rollover">20%</strong> da capacidade
+              não utilizada passa por um único mês e depois expira, sem acumulação composta.
+            </p>
+          </article>
+
+          <article class="rule-card">
+            <span class="rule-card__number">03</span>
+            <h3>Excedente aprovado</h3>
+            <p>
+              Só executamos capacidade adicional com aprovação prévia, por
+              <strong data-field="commercial.extraHour">R$ 320/h</strong>.
+            </p>
+          </article>
+
+          <article class="rule-card">
+            <span class="rule-card__number">04</span>
+            <h3>Fora do escopo</h3>
+            <p>
+              Verba de mídia, apps, licenças, fotografia, vídeo, produção de conteúdo
+              recorrente, operação de Ads e terceiros são contratados separadamente.
+            </p>
+          </article>
+
+          <article class="rule-card">
+            <span class="rule-card__number">05</span>
+            <h3>Permanência mínima</h3>
+            <p>
+              O programa fundador possui compromisso de
+              <strong data-field="commercial.minimumTerm">12 meses</strong>,
+              necessário para validar e amadurecer a rotina completa.
+            </p>
+          </article>
+
+          <article class="rule-card">
+            <span class="rule-card__number">06</span>
+            <h3>Saída previsível</h3>
+            <p>
+              Após os 12 meses, permanece quem percebe valor. Não renovação ou
+              cancelamento com <strong data-field="commercial.noticePeriod">30 dias</strong>
+              de aviso prévio.
+            </p>
+          </article>
+
+          <article class="rule-card">
+            <span class="rule-card__number">07</span>
+            <h3>Reajuste</h3>
+            <p>
+              Não há reajuste dentro da rampa. Na renovação, o valor vigente poderá ser
+              reajustado pelo IPCA positivo acumulado ou índice substituto contratual.
+            </p>
+          </article>
+
+          <article class="rule-card">
+            <span class="rule-card__number">08</span>
+            <h3>Dependências</h3>
+            <p>
+              Prazos pausam quando faltarem acessos, materiais, aprovações ou retorno
+              de plataformas e fornecedores externos.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="investimento" data-page-break="before">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">09 · Investimento e ativação</p>
+          <h2>
+            A rampa reduz o risco de entrada.
+            <span class="serif-emphasis">O método começa completo no mês 1.</span>
+          </h2>
+        </div>
+
+        <div class="investment-grid">
+          <article class="investment-card investment-card--selection">
+            <span class="investment-card__label">Programa selecionado</span>
+            <strong class="selected-plan-name" data-selected-plan-name>Start · Cliente-Fundador</strong>
+            <strong class="selected-plan-price" data-selected-plan-price>R$ 1.500</strong>
+            <span class="selected-plan-period" data-selected-plan-period>por mês nos meses 1 a 3</span>
+
+            <div class="selection-summary">
+              <div>
+                <strong data-selected-hours>10h/mês</strong>
+                <span>capacidade desde o início</span>
+              </div>
+              <div>
+                <strong data-selected-streams>1</strong>
+                <span>frente ativa</span>
+              </div>
+              <div>
+                <strong data-field="commercial.minimumTerm">12 meses</strong>
+                <span>prazo mínimo</span>
+              </div>
+            </div>
+
+            <div class="contract-total">
+              <span>Investimento contratual total</span>
+              <strong data-field="commercial.contractTotal">R$ 24.600</strong>
+            </div>
+          </article>
+
+          <article class="investment-card">
+            <span class="investment-card__label">Ativação reconhecida</span>
+            <h3>Setup do Sistema ALVK</h3>
+            <strong class="setup-price" data-field="commercial.setupFee">Isento</strong>
+            <p class="muted">
+              A NuShape já passou pela implantação ALVK e realizou o go-live em 09/04/2026.
+              Por isso, não haverá cobrança de setup. A revalidação de acessos, tracking,
+              ClickUp e backlog entra no primeiro ciclo do Ongoing.
+            </p>
+
+            <span class="setup-waiver" data-field="commercial.setupWaiver">
+              Benefício para cliente originado de implantação ALVK.
+            </span>
+
+            <ul>
+              <li data-field="commercial.paymentTerms">
+                Mensalidades antecipadas conforme a rampa fixa.
+              </li>
+              <li>
+                Primeiro pagamento no aceite; os seguintes vencem na mesma data dos meses subsequentes.
+              </li>
+              <li>
+                Tributos incluídos; despesas extraordinárias somente mediante aprovação.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fundador">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">10 · Programa cliente-fundador</p>
+          <h2>
+            A condição especial não reduz o método.
+            <span class="serif-emphasis">Ela transforma benefício em parceria de validação.</span>
+          </h2>
+          <p class="lead">
+            A ALVK investe R$ 4.200 na rampa de entrada. Em troca, a NuShape ajuda a
+            validar o produto Ongoing com transparência, disciplina de processo e uma
+            história real que possa orientar as próximas operações.
+          </p>
+        </div>
+
+        <div class="founder-grid">
+          <article class="founder-card">
+            <span>01</span>
+            <h3>Case aberto com dados</h3>
+            <p>
+              Autorização para uso da marca, logo e indicadores agregados do projeto,
+              com revisão factual prévia e preservação de informações comerciais sensíveis.
+            </p>
+          </article>
+          <article class="founder-card">
+            <span>02</span>
+            <h3>Depoimento em vídeo</h3>
+            <p>
+              Participação em um depoimento curto após pelo menos três ciclos concluídos,
+              registrando a experiência real — sem roteiro de elogio ou promessa pré-definida.
+            </p>
+          </article>
+          <article class="founder-card">
+            <span>03</span>
+            <h3>Feedback estruturado</h3>
+            <p>
+              Preenchimento de uma avaliação mensal breve sobre formulário, board,
+              update, report, aprovações e clareza do processo.
+            </p>
+          </article>
+          <article class="founder-card">
+            <span>04</span>
+            <h3>Disciplina operacional</h3>
+            <p>
+              Solicitações pelo formulário, aprovações no ClickUp e disponibilização
+              tempestiva de acessos, dados, materiais e responsáveis.
+            </p>
+          </article>
+        </div>
+
+        <div class="founder-protection">
+          <strong>Proteção da condição especial</strong>
+          <p>
+            A rampa é pessoal, intransferível, concedida uma única vez e não renovável.
+            Ela está condicionada ao compromisso de 12 meses e às contrapartidas acima.
+            Se a NuShape encerrar antecipadamente sem inadimplemento da ALVK, será devida
+            a diferença entre os valores pagos e a tabela Start de R$ 2.400 para os meses
+            já usufruídos. Eventos, cálculo e cobrança serão detalhados no contrato.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="garantia">
+      <div class="container">
+        <div class="guarantee">
+          <div class="guarantee__head">
+            <div class="guarantee__seal" role="img" aria-label="Garantia de 30 dias">
+              <div>
+                <strong>30</strong>
+                <span>dias para instalar a rotina</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="eyebrow">11 · Reversão de risco</p>
+              <h2>Primeiro mês com entregáveis verificáveis.</h2>
+              <p class="guarantee__promise">
+                “Se não entregarmos o diagnóstico, o roadmap de 90 dias e três quick wins
+                aprovados e publicados, a primeira mensalidade será devolvida.”
+              </p>
+              <p class="guarantee__conditions">
+                Válida quando todos os acessos e materiais forem disponibilizados no prazo,
+                o kickoff tiver ocorrido e as aprovações do cliente não interromperem a execução.
+                A garantia cobre os entregáveis definidos, não resultado financeiro.
+              </p>
+            </div>
+          </div>
+
+          <div class="first-month">
+            <article class="first-month__item">
+              <span>01</span>
+              <strong>Diagnóstico completo</strong>
+              <p>Leitura técnica, comportamental e operacional com oportunidades priorizadas.</p>
+            </article>
+            <article class="first-month__item">
+              <span>02</span>
+              <strong>Roadmap de 90 dias</strong>
+              <p>Hipóteses, prioridades, estimativas e dependências para os próximos ciclos.</p>
+            </article>
+            <article class="first-month__item">
+              <span>03</span>
+              <strong>Três quick wins no ar</strong>
+              <p>Ajustes aprovados de vitrine, confiança e mensuração, escolhidos após a varredura inicial.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="timeline" role="group" aria-label="Próximos passos">
+          <article class="timeline__item">
+            <small>Hoje</small>
+            <strong>Aceite e plano</strong>
+            <p>Aceite da proposta, formalização contratual e primeira mensalidade.</p>
+          </article>
+          <article class="timeline__item">
+            <small data-field="proposal.accessDeadline">04/08</small>
+            <strong>Acessos e briefing</strong>
+            <p>Plataforma, analytics, ferramentas, histórico e responsáveis.</p>
+          </article>
+          <article class="timeline__item">
+            <small data-field="proposal.kickoffDate">05/08/2026</small>
+            <strong>Kickoff</strong>
+            <p>Imersão, regras do canal, metas, restrições e primeiro ciclo.</p>
+          </article>
+          <article class="timeline__item">
+            <small data-field="proposal.firstCycleDate">12/08/2026</small>
+            <strong>Primeiro roadmap</strong>
+            <p>Prioridades, estimativas e início das entregas aprovadas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" id="aceite" data-page-break="before">
+      <div class="container closing__inner">
+        <p class="eyebrow">12 · Próximo passo</p>
+        <h2>
+          A loja já existe.
+          <span class="serif-emphasis text-blue">Agora ela precisa operar como canal.</span>
+        </h2>
+        <p class="closing__lead">
+          A partir do aceite, a NuShape entra na fase 2 com uma agenda simples:
+          medir corretamente, priorizar o que move o canal, executar com rastreabilidade
+          e transformar cada ciclo em aprendizado para o próximo.
+        </p>
+
+        <div class="closing__selection">
+          <div>
+            <small>Programa escolhido</small>
+            <strong data-selected-plan-name>Start · Cliente-Fundador</strong>
+          </div>
+          <div class="closing__selection-price">
+            <small>Entrada · meses 1 a 3</small>
+            <strong data-selected-plan-price>R$ 1.500/mês</strong>
+          </div>
+        </div>
+
+        <div class="closing__actions screen-only">
+          <button class="button" type="button" data-copy-accept>Copiar texto de aceite</button>
+          <button class="button button--ghost" type="button" data-print>Gerar PDF</button>
+        </div>
+
+        <p class="closing__availability">
+          Para aceitar, copie o texto e responda no mesmo e-mail ou WhatsApp de envio,
+          completando nome e cargo. O aceite será formalizado no contrato definitivo.
+        </p>
+        <p class="acceptance-status screen-only" data-acceptance-status aria-live="polite"></p>
+
+        <div class="print-only">
+          <p>
+            Texto de aceite:
+            <span data-field="commercial.acceptanceText">
+              ACEITO a proposta ALVK-NSH-2026-01 para contratação do Ongoing Start
+              Cliente-Fundador NuShape, pelo prazo mínimo de 12 meses e investimento
+              total de R$ 24.600 conforme a rampa apresentada. Nome e cargo:
+            </span>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <strong data-field="brand.legalName">Alavancador Soluções Digitais LTDA</strong><br>
+        CNPJ <span data-field="brand.cnpj">58.495.838/0001-83</span> ·
+        <span data-field="brand.city">Vila Velha/ES</span>
+      </div>
+      <div class="footer__legal">
+        Proposta <span data-field="proposal.number">ALVK-NSH-2026-01</span> ·
+        Emitida em <span data-field="proposal.issueDate">28/07/2026</span><br>
+        Documento confidencial para
+        <span data-field="client.name">NuShape Suplementos</span>.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /*
+      ================================================================
+      CONFIGURAÇÃO CENTRAL DA PROPOSTA
+      Preencha somente este objeto para personalizar o documento.
+      ================================================================
+    */
+    const PROPOSAL_DATA = {
+      brand: {
+        shortName: "ALVK",
+        legalName: "Alavancador Soluções Digitais LTDA",
+        cnpj: "58.495.838/0001-83",
+        city: "Vila Velha/ES"
+      },
+
+      client: {
+        name: "NuShape Suplementos",
+        companyName: "NuShape Suplementos",
+        contactName: "Sócios da NuShape",
+        platform: "Nuvemshop",
+        goLiveDate: "09/04/2026"
+      },
+
+      proposal: {
+        number: "ALVK-NSH-2026-01",
+        issueDate: "28/07/2026",
+        validUntil: "04/08/2026",
+        kickoffDate: "05/08/2026",
+        accessDeadline: "04/08",
+        firstCycleDate: "12/08/2026"
+      },
+
+      diagnosis: {
+        monthlySessions: "2.828",
+        sessionsDetail: "Painel Nuvemshop disponibilizado pela NuShape",
+        currentConversion: "0,18%",
+        conversionDetail: "5 pedidos pagos no recorte analisado",
+        averageOrderValue: "R$ 217,46",
+        ticketDetail: "Receita online de R$ 1.087,32 no recorte",
+        mainMetric: "13,89%",
+        mainConstraint: "Só 5 de 36 checkouts iniciados viraram pedidos pagos",
+        opportunityRange: "R$ 3,8–5,1 mil/mês",
+        conversionScenario: "0,80% a 1,00%",
+        formula: "Fórmula: (2.828 × conversão-alvo de 0,80%–1,00% − 5 pedidos atuais) × R$ 217,46.",
+        disclaimer:
+          "Para a simulação, o recorte de 2.828 visitas foi tratado como mensal. A janela, a qualidade do tracking e a origem das vendas serão validadas no ciclo 1. O cálculo é um cenário de decisão, não promessa de resultado; estoque, preço, oferta, sazonalidade, aprovações e atuação da NuShape também influenciam a receita."
+      },
+
+      case: {
+        title: "A base está pronta. O próximo valor vem do uso disciplinado dela.",
+        quote: "“A implantação entregou a loja. O Ongoing transforma a loja em canal.”",
+        context:
+          "A NuShape parte de uma operação física validada, relacionamento local, acesso competitivo à indústria e uma loja virtual construída pela ALVK. Isso reduz o risco de fundação e permite concentrar a próxima fase no que realmente move o digital: mensuração, experiência, recompra e cadência.",
+        metric1Value: "09/04/26",
+        metric1Label: "Go-live da loja virtual",
+        metric2Value: "R$ 102,8 mil",
+        metric2Label: "Faturamento físico no último ano",
+        metric3Value: "R$ 8,6 mil",
+        metric3Label: "Média mensal simples do físico"
+      },
+
+      operations: {
+        evolutionShare: "70%",
+        supportShare: "30%"
+      },
+
+      plans: {
+        start: {
+          name: "Start · Cliente-Fundador",
+          thesis: "Para fortalecer e estruturar o canal digital com cadência contínua.",
+          monthlyPrice: 2400,
+          hours: 10,
+          activeStreams: 1,
+          slaP1: "24h úteis",
+          slaP2: "48h úteis"
+        }
+      },
+
+      commercial: {
+        recommendedPlan: "start",
+        selectedPlan: "start",
+        entryPrice: 1500,
+        standardPrice: 2400,
+        setupFee: "Isento",
+        setupWaiver: "Benefício para cliente originado de implantação ALVK.",
+        extraHour: "R$ 320/h",
+        rollover: "20%",
+        minimumTerm: "12 meses",
+        noticePeriod: "30 dias",
+        paymentTerms: "Mensalidades antecipadas conforme a rampa fixa.",
+        contractTotal: "R$ 24.600",
+        standardTotal: "R$ 28.800",
+        founderBenefit: "R$ 4.200",
+        acceptanceText:
+          "ACEITO a proposta ALVK-NSH-2026-01 para contratação do Ongoing Start · Cliente-Fundador NuShape, pelo prazo mínimo de 12 meses e investimento total de R$ 24.600, conforme a rampa: meses 1 a 3 por R$ 1.500/mês; meses 4 a 6 por R$ 1.900/mês; meses 7 a 12 por R$ 2.400/mês. Declaro ciência das regras, contrapartidas e formalização em contrato. Nome e cargo:"
+      },
+
+      projectModule: {
+        show: false,
+        title: "",
+        description: "",
+        scopeSummary: "",
+        price: "",
+        paymentTerms: "",
+        ongoingBridge: "O plano Ongoing inicia após a entrega ou Go-live do projeto."
+      },
+
+      images: {
+        case: "",
+        clickup: ""
+      },
+
+      links: {
+        accept: "",
+        schedule: ""
+      }
+    };
+
+    (() => {
+      const state = {
+        billing: "monthly",
+        selectedPlan: PROPOSAL_DATA.commercial.selectedPlan
+      };
+
+      const getValue = (path) =>
+        path.split(".").reduce((value, key) => value && value[key], PROPOSAL_DATA);
+
+      const isPlaceholder = (value) =>
+        typeof value !== "string" || value.trim() === "" || value.trim().startsWith("[");
+
+      const formatCurrency = (value) =>
+        new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+          maximumFractionDigits: 0
+        }).format(value);
+
+      const annualDiscountRate = () => {
+        const raw = String(PROPOSAL_DATA.commercial.annualDiscount || "0").replace(",", ".");
+        return Math.max(0, Math.min(100, Number.parseFloat(raw) || 0)) / 100;
+      };
+
+      const annualTotal = (plan) =>
+        Math.round(plan.monthlyPrice * 12 * (1 - annualDiscountRate()));
+
+      const effectiveMonthly = (plan) => Math.round(annualTotal(plan) / 12);
+
+      const bindText = () => {
+        document.querySelectorAll("[data-field]").forEach((element) => {
+          const value = getValue(element.dataset.field);
+          if (value !== undefined && value !== null) element.textContent = value;
+        });
+
+        document.querySelectorAll("[data-bar]").forEach((element) => {
+          const value = getValue(element.dataset.bar);
+          if (value) element.style.width = value;
+        });
+      };
+
+      const bindImages = () => {
+        document.querySelectorAll("[data-image]").forEach((slot) => {
+          const source = getValue(slot.dataset.image);
+          if (isPlaceholder(source)) return;
+
+          const image = document.createElement("img");
+          image.src = source;
+          image.alt = slot.dataset.alt || "Imagem da proposta";
+          image.loading = "lazy";
+          slot.replaceChildren(image);
+        });
+      };
+
+      const bindProjectModule = () => {
+        document.querySelectorAll('[data-module="project"]').forEach((module) => {
+          module.hidden = !PROPOSAL_DATA.projectModule.show;
+        });
+      };
+
+      const renderPlans = () => {
+        document.querySelectorAll("[data-plan]").forEach((card) => {
+          const key = card.dataset.plan;
+          const plan = PROPOSAL_DATA.plans[key];
+          if (!plan) return;
+
+          card.classList.toggle(
+            "is-recommended",
+            key === PROPOSAL_DATA.commercial.recommendedPlan
+          );
+          card.classList.toggle("is-selected", key === state.selectedPlan);
+
+          card.querySelector("[data-plan-name]").textContent = plan.name;
+          card.querySelector("[data-plan-thesis]").textContent = plan.thesis;
+          card.querySelector("[data-plan-hours]").textContent = `${plan.hours}h`;
+          card.querySelector("[data-plan-streams]").textContent = plan.activeStreams;
+          card.querySelector("[data-select-plan]").textContent =
+            key === state.selectedPlan ? `Plano ${plan.name} selecionado` : `Escolher ${plan.name}`;
+
+          const price = card.querySelector("[data-plan-price]");
+          const period = card.querySelector("[data-plan-period]");
+          const annual = card.querySelector("[data-plan-annual]");
+
+          if (state.billing === "annual") {
+            price.textContent = formatCurrency(effectiveMonthly(plan));
+            period.textContent = "/mês equivalente";
+            annual.textContent = `${formatCurrency(annualTotal(plan))} à vista por 12 meses`;
+          } else {
+            price.textContent = formatCurrency(plan.monthlyPrice);
+            period.textContent = "/mês";
+            annual.innerHTML = "&nbsp;";
+          }
+        });
+
+        renderSelectedPlan();
+      };
+
+      const renderSelectedPlan = () => {
+        const plan = PROPOSAL_DATA.plans[state.selectedPlan];
+        if (!plan) return;
+
+        const displayedPrice = formatCurrency(PROPOSAL_DATA.commercial.entryPrice);
+        const displayedPeriod = "por mês nos meses 1 a 3";
+
+        document.querySelectorAll("[data-selected-plan-name]").forEach((element) => {
+          element.textContent = plan.name;
+        });
+        document.querySelectorAll("[data-selected-plan-price]").forEach((element) => {
+          element.textContent = displayedPrice;
+        });
+        document.querySelectorAll("[data-selected-plan-period]").forEach((element) => {
+          element.textContent = displayedPeriod;
+        });
+        document.querySelectorAll("[data-selected-hours]").forEach((element) => {
+          element.textContent = `${plan.hours}h`;
+        });
+        document.querySelectorAll("[data-selected-streams]").forEach((element) => {
+          element.textContent = plan.activeStreams;
+        });
+
+        updateAcceptLink();
+      };
+
+      const safeLink = (value) => (isPlaceholder(value) ? "#" : value);
+
+      const updateAcceptLink = () => {
+        document.querySelectorAll("[data-accept-link]").forEach((link) => {
+          const raw = PROPOSAL_DATA.links.accept;
+          if (isPlaceholder(raw)) {
+            link.href = "#";
+            link.dataset.unconfigured = "true";
+            return;
+          }
+
+          try {
+            const url = new URL(raw, window.location.href);
+            url.searchParams.set("plano", state.selectedPlan);
+            url.searchParams.set("proposta", PROPOSAL_DATA.proposal.number);
+            link.href = url.toString();
+            delete link.dataset.unconfigured;
+          } catch {
+            link.href = raw;
+          }
+        });
+      };
+
+      const bindLinks = () => {
+        document.querySelectorAll("[data-schedule-link]").forEach((link) => {
+          link.href = safeLink(PROPOSAL_DATA.links.schedule);
+          if (isPlaceholder(PROPOSAL_DATA.links.schedule)) {
+            link.dataset.unconfigured = "true";
+          }
+        });
+
+        document.querySelectorAll('[data-unconfigured="true"]').forEach((link) => {
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            window.alert(
+              "Configure o link correspondente no objeto PROPOSAL_DATA antes de enviar a proposta."
+            );
+          });
+        });
+      };
+
+      const bindInteractions = () => {
+        document.querySelectorAll("[data-billing]").forEach((button) => {
+          button.addEventListener("click", () => {
+            state.billing = button.dataset.billing;
+            document.querySelectorAll("[data-billing]").forEach((item) => {
+              item.classList.toggle("is-active", item === button);
+            });
+            renderPlans();
+          });
+        });
+
+        document.querySelectorAll("[data-select-plan]").forEach((button) => {
+          button.addEventListener("click", () => {
+            state.selectedPlan = button.closest("[data-plan]").dataset.plan;
+            renderPlans();
+            document.querySelector("#investimento").scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          });
+        });
+
+        document.querySelectorAll("[data-print]").forEach((button) => {
+          button.addEventListener("click", () => window.print());
+        });
+
+        document.querySelectorAll("[data-copy-accept]").forEach((button) => {
+          button.addEventListener("click", async () => {
+            const acceptanceText = PROPOSAL_DATA.commercial.acceptanceText;
+            const status = document.querySelector("[data-acceptance-status]");
+            let copied = false;
+
+            try {
+              await navigator.clipboard.writeText(acceptanceText);
+              copied = true;
+            } catch {
+              const helper = document.createElement("textarea");
+              helper.value = acceptanceText;
+              helper.setAttribute("readonly", "");
+              helper.style.position = "fixed";
+              helper.style.opacity = "0";
+              document.body.appendChild(helper);
+              helper.select();
+              copied = document.execCommand("copy");
+              helper.remove();
+            }
+
+            if (copied) {
+              button.textContent = "Texto copiado";
+              if (status) {
+                status.textContent =
+                  "Cole o texto no mesmo e-mail ou WhatsApp de envio e complete nome e cargo.";
+              }
+            } else if (status) {
+              status.textContent =
+                "Não foi possível copiar automaticamente. Use o texto de aceite exibido na versão em PDF.";
+            }
+          });
+        });
+
+        const progress = document.querySelector("#proposal-progress");
+        const updateProgress = () => {
+          const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+          const percentage = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+          progress.style.width = `${Math.min(100, Math.max(0, percentage))}%`;
+        };
+
+        window.addEventListener("scroll", updateProgress, { passive: true });
+        updateProgress();
+      };
+
+      const setMetadata = () => {
+        document.title = `Proposta Ongoing | ${PROPOSAL_DATA.client.name} · ALVK`;
+      };
+
+      bindText();
+      bindImages();
+      bindProjectModule();
+      renderPlans();
+      bindLinks();
+      bindInteractions();
+      setMetadata();
+    })();
+  </script>
+</body>
+</html>

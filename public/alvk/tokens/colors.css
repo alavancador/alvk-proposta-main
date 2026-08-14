@@ -1,0 +1,48 @@
+:root{
+/* base palette — coral (energy/primary) */
+--coral-light:#FF8C42;
+--coral:#FF6B35;
+--coral-deep:#FF4D00;
+--ember:#E03D00;
+/* base palette — azure (trust/secondary) */
+--sky:#00C2FF;
+--cloudy:#3397F0;
+--azure:#4386EA;
+--spectrum:#184BFF;
+/* base palette — neutrals */
+--dark:#272727;
+--snow:#FFFCFC;
+--white:#FFFFFF;
+--bg:#0D0D0D;
+--bg-2:#141414;
+--surface:#1C1C1C;
+--border:#2A2A2A;
+--muted:#666666;
+--dim:#AAAAAA;
+--gray-light:#999999;
+--gray-ink:#333333;
+/* harmonized addition — not in source brandbook, tuned in oklch to sit alongside azure at similar chroma/lightness */
+--success:oklch(0.64 0.15 155);
+
+/* semantic aliases */
+--color-bg:var(--bg);
+--color-bg-alt:var(--bg-2);
+--color-surface:var(--surface);
+--color-border:var(--border);
+--color-text:var(--snow);
+--color-text-dim:var(--dim);
+--color-text-muted:var(--muted);
+--color-primary:var(--coral);
+--color-primary-hover:var(--coral-deep);
+--color-primary-light:var(--coral-light);
+--color-secondary:var(--azure);
+--color-secondary-hover:var(--spectrum);
+--color-info:var(--sky);
+--color-warning:var(--coral-light);
+--color-success:var(--success);
+--color-danger:var(--ember);
+--color-on-primary:var(--white);
+--color-on-secondary:var(--white);
+--color-on-dark:var(--snow);
+--color-on-light:var(--dark);
+}

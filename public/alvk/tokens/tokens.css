@@ -1,0 +1,132 @@
+/*
+ * ALVK Design System — Tokens v1.0.0
+ * Fonte: ALVK_Brandbook.html (tokens de marca) + extensões de acessibilidade
+ * Use este arquivo antes de styles/components.css.
+ */
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("../assets/fonts/urbanist/Urbanist-Variable.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 100 900;
+}
+
+:root {
+  /* Brand primitives */
+  --alvk-color-coral-sunrise: #ff8c42;
+  --alvk-color-coral-pop: #ff6b35;
+  --alvk-color-coral-blaze: #ff4d00;
+  --alvk-color-coral-ember: #e03d00;
+  --alvk-color-blue-sky: #00c2ff;
+  --alvk-color-blue-cloudy: #3397f0;
+  --alvk-color-blue-azure: #4386ea;
+  --alvk-color-blue-spectrum: #184bff;
+  --alvk-color-neutral-0: #ffffff;
+  --alvk-color-neutral-snow: #fffcfc;
+  --alvk-color-neutral-700: #272727;
+  --alvk-color-neutral-800: #1c1c1c;
+  --alvk-color-neutral-850: #141414;
+  --alvk-color-neutral-900: #0d0d0d;
+  --alvk-color-neutral-600: #2a2a2a;
+  --alvk-color-neutral-muted: #666666;
+
+  /* Semantic colors — superfície escura é o ambiente principal da marca */
+  --alvk-color-background-canvas: var(--alvk-color-neutral-900);
+  --alvk-color-background-subtle: var(--alvk-color-neutral-850);
+  --alvk-color-background-surface: var(--alvk-color-neutral-800);
+  --alvk-color-background-raised: var(--alvk-color-neutral-700);
+  --alvk-color-background-inverse: var(--alvk-color-neutral-snow);
+  --alvk-color-content-primary: var(--alvk-color-neutral-snow);
+  /* Extensão funcional: #666 do brandbook não atende texto pequeno sobre #0d0d0d. */
+  --alvk-color-content-secondary: #a7a7a7;
+  --alvk-color-content-tertiary: #757575;
+  --alvk-color-content-inverse: var(--alvk-color-neutral-900);
+  --alvk-color-content-brand: var(--alvk-color-coral-pop);
+  --alvk-color-content-info: var(--alvk-color-blue-sky);
+  --alvk-color-border-subtle: var(--alvk-color-neutral-600);
+  --alvk-color-border-strong: #555555;
+  --alvk-color-border-focus: var(--alvk-color-blue-sky);
+  --alvk-color-action-primary: var(--alvk-color-coral-pop);
+  --alvk-color-action-primary-hover: var(--alvk-color-coral-blaze);
+  --alvk-color-action-secondary: var(--alvk-color-blue-azure);
+  --alvk-color-action-secondary-hover: var(--alvk-color-blue-cloudy);
+  --alvk-color-status-success: var(--alvk-color-blue-sky);
+  --alvk-color-status-danger: var(--alvk-color-coral-ember);
+
+  /* Gradients e efeitos característicos */
+  --alvk-gradient-brand: linear-gradient(135deg, #ff8c42 0%, #ff4d00 48%, #4386ea 100%);
+  --alvk-gradient-coral: linear-gradient(135deg, #ff6b35 0%, #ff4d00 100%);
+  --alvk-gradient-duo: linear-gradient(135deg, #ff6b35 0%, #4386ea 100%);
+  --alvk-gradient-blue: linear-gradient(135deg, #4386ea 0%, #00c2ff 100%);
+  --alvk-gradient-line: linear-gradient(90deg, transparent 0%, #ff6b35 30%, #4386ea 70%, transparent 100%);
+  --alvk-shadow-glow-coral: 0 0 40px rgb(255 107 53 / 0.4), 0 0 20px rgb(67 134 234 / 0.3);
+  --alvk-shadow-glow-blue: 0 0 50px rgb(67 134 234 / 0.4);
+  --alvk-shadow-raised: 0 20px 60px rgb(0 0 0 / 0.28);
+
+  /* Typography */
+  --alvk-font-family-sans: Urbanist, Avenir, Montserrat, Arial, sans-serif;
+  --alvk-font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --alvk-font-weight-light: 200;
+  --alvk-font-weight-book: 300;
+  --alvk-font-weight-regular: 400;
+  --alvk-font-weight-medium: 500;
+  --alvk-font-weight-semibold: 600;
+  --alvk-font-weight-bold: 700;
+  --alvk-font-weight-extrabold: 800;
+  --alvk-font-weight-black: 900;
+  --alvk-font-size-2xs: 0.6875rem; /* 11px */
+  --alvk-font-size-xs: 0.75rem; /* 12px */
+  --alvk-font-size-sm: 0.875rem; /* 14px */
+  --alvk-font-size-md: 1rem; /* 16px */
+  --alvk-font-size-lg: 1.125rem; /* 18px */
+  --alvk-font-size-xl: 1.25rem; /* 20px */
+  --alvk-font-size-2xl: 1.5rem; /* 24px */
+  --alvk-font-size-3xl: 2rem; /* 32px */
+  --alvk-font-size-4xl: 2.5rem; /* 40px */
+  --alvk-font-size-5xl: 3.75rem; /* 60px */
+  --alvk-font-size-display: clamp(4.5rem, 10vw, 8.125rem);
+  --alvk-line-height-tight: 1;
+  --alvk-line-height-heading: 1.1;
+  --alvk-line-height-body: 1.6;
+  --alvk-line-height-relaxed: 1.75;
+  --alvk-letter-spacing-tight: -0.06em;
+  --alvk-letter-spacing-heading: -0.04em;
+  --alvk-letter-spacing-label: 0.18em;
+
+  /* Spacing */
+  --alvk-space-0: 0;
+  --alvk-space-1: 0.25rem; /* 4px */
+  --alvk-space-2: 0.5rem; /* 8px */
+  --alvk-space-3: 0.75rem; /* 12px */
+  --alvk-space-4: 1rem; /* 16px */
+  --alvk-space-5: 1.25rem; /* 20px */
+  --alvk-space-6: 1.5rem; /* 24px */
+  --alvk-space-8: 2rem; /* 32px */
+  --alvk-space-10: 2.5rem; /* 40px */
+  --alvk-space-12: 3rem; /* 48px */
+  --alvk-space-15: 3.75rem; /* 60px */
+  --alvk-space-16: 4rem; /* 64px */
+  --alvk-space-20: 5rem; /* 80px */
+  --alvk-space-24: 6rem; /* 96px */
+  --alvk-space-30: 7.5rem; /* 120px */
+
+  /* Shape, motion and layout */
+  --alvk-radius-xs: 0.25rem;
+  --alvk-radius-sm: 0.5rem;
+  --alvk-radius-md: 0.75rem;
+  --alvk-radius-lg: 1rem;
+  --alvk-radius-xl: 1.25rem;
+  --alvk-radius-2xl: 1.5rem;
+  --alvk-radius-full: 9999px;
+  --alvk-border-width-default: 1px;
+  --alvk-duration-fast: 150ms;
+  --alvk-duration-standard: 200ms;
+  --alvk-duration-slow: 400ms;
+  --alvk-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --alvk-ease-emphasized: cubic-bezier(0.23, 1, 0.32, 1);
+  --alvk-content-max-width: 75rem;
+  --alvk-control-height-sm: 2.25rem;
+  --alvk-control-height-md: 2.75rem;
+  --alvk-control-height-lg: 3.25rem;
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+<defs><linearGradient id="markGrad" x1="15%" y1="15%" x2="85%" y2="85%"><stop offset="0%" stop-color="#FF8C42"></stop><stop offset="50%" stop-color="#FF4D00"></stop><stop offset="100%" stop-color="#4386EA"></stop></linearGradient></defs>
+<circle cx="60" cy="60" r="60" fill="url(#markGrad)"></circle>
+</svg>

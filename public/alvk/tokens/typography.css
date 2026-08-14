@@ -1,0 +1,43 @@
+@font-face{
+font-family:'Urbanist';
+src:url('../assets/fonts/urbanist/Urbanist-Variable.ttf') format('truetype');
+font-style:normal;
+font-weight:100 900;
+font-display:swap;
+}
+@font-face{
+font-family:'Urbanist';
+src:url('../assets/fonts/urbanist/Urbanist-Italic-VariableFont_wght.ttf') format('truetype');
+font-style:italic;
+font-weight:100 900;
+font-display:swap;
+}
+:root{
+--font-sans:'Urbanist',sans-serif;
+--font-mono:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+/* the brand's own documented 4-step system: ExtraLight / Regular / SemiBold / ExtraBold */
+--weight-extralight:200;
+--weight-regular:400;
+--weight-semibold:600;
+--weight-extrabold:800;
+--weight-black:900;
+--tracking-tightest:-6px;
+--tracking-tighter:-3px;
+--tracking-tight:-1px;
+--tracking-normal:0;
+--tracking-wide:1px;
+--tracking-wider:2px;
+--tracking-widest:4px;
+--text-display:clamp(60px,10vw,130px);
+--text-h1:clamp(40px,6vw,60px);
+--text-h2:clamp(32px,4vw,40px);
+--text-h3:clamp(22px,2.5vw,28px);
+--text-body-lg:17px;
+--text-body:15px;
+--text-caption:11px;
+--leading-tight:0.9;
+--leading-snug:1.1;
+--leading-normal:1.5;
+--leading-relaxed:1.7;
+--leading-loose:1.8;
+}

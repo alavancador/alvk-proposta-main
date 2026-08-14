@@ -1,0 +1,11 @@
+:root{
+--duration-fast:0.2s; /* @kind other */
+--duration-base:0.3s; /* @kind other */
+--duration-slow:0.4s; /* @kind other */
+--duration-drift:8s; /* @kind other */
+--duration-pulse:2s; /* @kind other */
+--ease-standard:ease; /* @kind other */
+--ease-in-out:ease-in-out; /* @kind other */
+/* signature "expand" easing used on the interactive color strip */
+--ease-brand:cubic-bezier(.23,1,.32,1); /* @kind other */
+}
