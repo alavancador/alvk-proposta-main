@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Proposta comercial — Implantação de e-commerce × ALVK</title>
+<meta name="description" content="Proposta padrão ALVK para implantação de e-commerce: 3 planos de implantação e 3 planos de sustentação mensal, com escopo, cronograma, condições de pagamento e termos.">
+<meta name="theme-color" content="#0d0d0d">
+<meta property="og:title" content="Proposta comercial — Implantação de e-commerce × ALVK">
+<meta property="og:description" content="Do catálogo ao primeiro pedido: e-commerce implantado com homologação real e sustentação contínua.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23ff8c42'/%3E%3Cstop offset='1' stop-color='%234386ea'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%230d0d0d'/%3E%3Ccircle cx='16' cy='16' r='7' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Motor de animação (CDN). Se qualquer um falhar, .anim não é aplicado
+     e a proposta renderiza estática, com todo o conteúdo visível. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>if (window.gsap && window.ScrollTrigger) document.documentElement.classList.add('anim');</script>
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}#bg-canvas{display:none}</style></noscript>
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --coral-light:#ff8c42;--coral:#ff6b35;--coral-deep:#ff4d00;--ember:#e03d00;
+  --sky:#00c2ff;--cloudy:#3397f0;--azure:#4386ea;--spectrum:#184bff;
+
+  --bg:#0a0a0c;--bg-2:rgba(255,255,255,.018);
+  --surface:rgba(255,255,255,.035);--surface-2:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.17);--hair:rgba(255,255,255,.05);
+  --panel-hover:rgba(255,255,255,.065);
+  --glow:0 0 40px rgba(255,107,53,.20);--glow-azure:0 0 40px rgba(67,134,234,.18);
+  --text:#fffcfc;--muted:#aeaeb2;--faint:#79797f;
+
+  --action:var(--coral);--trust:var(--azure);
+  --grad:linear-gradient(90deg,var(--coral),var(--azure));
+  --grad-mark:linear-gradient(135deg,var(--coral-light),var(--azure));
+
+  --ff:'Urbanist',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --fm:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+
+  --maxw:1180px;--pad-x:clamp(20px,5vw,56px);--hdr:72px;
+  --r-sm:12px;--r-md:18px;--r-lg:24px;--r-xl:32px;--r-pill:999px;
+  --sh-1:0 18px 40px -22px rgba(0,0,0,.9),0 2px 10px -6px rgba(255,107,53,.10);
+  --sh-2:0 34px 80px -36px rgba(0,0,0,1),0 4px 18px -10px rgba(255,107,53,.14);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr) + 18px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);background-attachment:fixed;color:var(--text);font-family:var(--ff);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body.locked{overflow:hidden}
+img,svg,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+h1,h2,h3,h4,p,dd,figure{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+table{border-collapse:collapse}
+:focus-visible{outline:2px solid var(--sky);outline-offset:3px;border-radius:4px}
+::selection{background:var(--coral);color:#0d0d0d}
+
+#bg-canvas{position:fixed;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;opacity:.9}
+@media(max-width:760px){#bg-canvas{opacity:.38}}
+.header,main,.footer,.drawer,.drawer-bg{position:relative;z-index:1}
+.header{z-index:60}
+.skip-link{position:fixed;z-index:120;top:10px;left:12px;padding:10px 14px;border-radius:var(--r-sm);background:var(--text);color:var(--bg);font-weight:700;transform:translateY(-180%);transition:transform .2s ease}
+.skip-link:focus{transform:none}
+
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad-x)}
+.sec{position:relative;padding-block:clamp(84px,8.5vw,128px);border-top:1px solid var(--hair)}
+.sec--soft{background:var(--bg-2)}
+.sec--dark{background:transparent}
+
+/* Cabeçalho de seção -------------------------------------- */
+.sec__head{max-width:78ch}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px;font-family:var(--fm);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.eyebrow b{color:var(--coral-light);font-weight:600}
+.eyebrow i{display:block;width:26px;height:1px;background:var(--line-2);font-style:normal}
+.title{max-width:20ch;font-size:clamp(32px,4.2vw,54px);font-weight:800;letter-spacing:-.04em;line-height:1.04;text-wrap:balance}
+.title--sm{max-width:24ch;font-size:clamp(28px,3.3vw,42px);letter-spacing:-.032em;line-height:1.08}
+.lead{max-width:68ch;margin-top:20px;color:var(--muted);font-size:clamp(15px,1.15vw,17px);line-height:1.72}
+
+/* Botões --------------------------------------------------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 26px;border:1px solid transparent;border-radius:var(--r-pill);font-size:13.5px;font-weight:700;letter-spacing:.01em;transition:transform .25s var(--ease),background-color .25s ease,border-color .25s ease,box-shadow .25s ease,color .25s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn--primary{background:linear-gradient(135deg,var(--coral-light) 0%,var(--coral) 48%,var(--coral-deep) 100%);color:#fff;box-shadow:0 12px 26px -8px rgba(233,77,29,.5),inset 0 1px 0 rgba(255,255,255,.3)}
+.btn--primary:hover{box-shadow:0 18px 36px -10px rgba(233,77,29,.62),inset 0 1px 0 rgba(255,255,255,.3)}
+.btn--ghost{border-color:var(--line-2);color:var(--text);background:rgba(255,255,255,.04)}
+.btn--ghost:hover{border-color:#5a5a60;background:rgba(255,255,255,.08)}
+.btn--outline{border-color:var(--line-2);color:var(--text);background:transparent;width:100%}
+.btn--outline:hover{border-color:var(--azure);color:var(--sky);background:rgba(67,134,234,.08)}
+.btn--solid{background:linear-gradient(135deg,var(--coral-light) 0%,var(--coral) 48%,var(--coral-deep) 100%);color:#fff;width:100%;box-shadow:0 12px 26px -8px rgba(233,77,29,.5),inset 0 1px 0 rgba(255,255,255,.3)}
+.btn--solid:hover{box-shadow:0 18px 36px -10px rgba(233,77,29,.62),inset 0 1px 0 rgba(255,255,255,.3)}
+.btn--block{width:100%}
+
+/* Reveal --------------------------------------------------- */
+html.anim [data-reveal]{opacity:0}
+html:not(.anim) [data-reveal]{opacity:0;transform:translateY(50px);transition:opacity 1.05s var(--ease),transform 1.05s var(--ease);transition-delay:var(--d,0ms)}
+html:not(.anim) [data-reveal].show{opacity:1;transform:none}
+.d1{--d:150ms}.d2{--d:300ms}.d3{--d:450ms}.d4{--d:600ms}
+.magnetic{will-change:transform}
+
+/* Marca ---------------------------------------------------- */
+.wordmark{display:inline-flex;align-items:flex-start;font-size:28px;font-weight:800;letter-spacing:-.05em;line-height:1;white-space:nowrap}
+.wordmark__dot{width:.26em;height:.26em;margin:.05em 0 0 .09em;border-radius:999px;background:var(--grad-mark);flex:none}
+
+/* ============================================================
+   HEADER / NAV
+   ============================================================ */
+.progress{position:fixed;z-index:70;inset:0 0 auto;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--grad)}
+.header{position:fixed;z-index:60;inset:14px 0 auto;background:none;border:0}
+.header__in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:58px;padding:0 10px 0 20px;border:1px solid var(--line);border-radius:var(--r-pill);background:rgba(10,10,12,.6);box-shadow:0 12px 34px -18px rgba(0,0,0,.9);-webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);transition:background-color .35s ease,border-color .35s ease,box-shadow .35s ease}
+.header.solid .header__in{background:rgba(10,10,12,.82);border-color:var(--line-2);box-shadow:0 16px 40px -18px rgba(0,0,0,1)}
+.brand{display:flex;align-items:center;color:var(--text)}
+.header__tag{margin-left:14px;padding-left:14px;border-left:1px solid var(--line-2);color:var(--faint);font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.nav{display:none;align-items:center;gap:2px}
+.nav a{padding:8px 12px;border-radius:8px;color:var(--muted);font-size:12.5px;font-weight:600;white-space:nowrap;transition:color .2s ease,background-color .2s ease}
+.nav a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.header__right{display:flex;align-items:center;gap:12px}
+.header__client{display:none;align-items:center;gap:8px;color:var(--muted);font-family:var(--fm);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.header__client::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--grad-mark)}
+.burger{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line);border-radius:10px}
+.burger span,.burger::before,.burger::after{content:"";display:block;width:18px;height:1.5px;border-radius:999px;background:var(--text)}
+.burger span{margin:4.5px 0}
+.drawer-bg{position:fixed;inset:0;z-index:80;background:rgba(13,13,13,.7);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s ease}
+.drawer-bg.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;inset:0 0 0 auto;z-index:90;display:flex;flex-direction:column;width:min(88vw,380px);padding:18px 26px 34px;background:rgba(10,10,12,.95);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border-left:1px solid var(--line);transform:translateX(101%);transition:transform .42s var(--ease)}
+.drawer.open{transform:none}
+.drawer__top{display:flex;align-items:center;justify-content:space-between;height:54px;margin-bottom:24px}
+.drawer__close{display:grid;place-items:center;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;font-size:24px;line-height:1}
+.drawer nav a{display:flex;align-items:center;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line);font-size:20px;font-weight:700;letter-spacing:-.02em}
+.drawer nav a span{font-family:var(--fm);font-size:11px;font-weight:500;color:var(--faint)}
+.drawer nav a:hover{color:var(--sky)}
+.drawer .btn{margin-top:auto}
+
+/* ============================================================
+   HERO / CAPA
+   ============================================================ */
+.hero{position:relative;display:flex;align-items:center;min-height:100svh;padding-block:calc(var(--hdr) + 56px) 56px;overflow:hidden;background:transparent}
+.hero__glow{position:absolute;inset:0;z-index:0;background:radial-gradient(60% 50% at 88% 12%,rgba(67,134,234,.20),transparent 70%),radial-gradient(52% 46% at 4% 92%,rgba(255,77,0,.16),transparent 70%)}
+.hero__grid{position:absolute;inset:0;z-index:0;opacity:.3;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:78px 78px;-webkit-mask-image:radial-gradient(ellipse 78% 62% at 46% 42%,#000,transparent 76%);mask-image:radial-gradient(ellipse 78% 62% at 46% 42%,#000,transparent 76%)}
+.hero__in{position:relative;z-index:2;width:100%}
+.hero__badge{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid var(--line-2);border-radius:999px;background:rgba(255,255,255,.03);font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hero__badge i{width:6px;height:6px;border-radius:50%;background:var(--grad-mark);flex:none}
+.hero h1{max-width:15ch;margin-top:26px;font-size:clamp(38px,6vw,78px);font-weight:800;letter-spacing:-.05em;line-height:.98;text-wrap:balance}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--coral-light),var(--azure));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero__desc{max-width:56ch;margin-top:22px;color:var(--muted);font-size:clamp(15px,1.15vw,17.5px);line-height:1.7}
+.hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero__meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:52px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--line);overflow:hidden}
+.hero__meta div{padding:18px 20px;background:rgba(255,255,255,.03)}
+.hero__meta small{display:block;color:var(--faint);font-family:var(--fm);font-size:9.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.hero__meta strong{display:block;margin-top:7px;font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.3}
+
+/* ============================================================
+   CONTEXTO
+   ============================================================ */
+.split{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(40px,6vw,84px);align-items:start}
+.facts{display:grid;gap:10px;margin-top:34px}
+.fact{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;padding:18px 20px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface)}
+.fact b{font-family:var(--fm);font-size:11px;font-weight:600;color:var(--sky);letter-spacing:.08em;padding-top:2px}
+.fact strong{display:block;font-size:14.5px;font-weight:700;letter-spacing:-.01em}
+.fact span{display:block;margin-top:3px;color:var(--muted);font-size:13px;line-height:1.55}
+
+.aside-card{position:sticky;top:calc(var(--hdr) + 24px);padding:30px;border:1px solid var(--line);border-radius:var(--r-lg);background:linear-gradient(180deg,rgba(67,134,234,.09),transparent 46%),var(--surface);box-shadow:var(--sh-1)}
+.aside-card h3{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.25}
+.aside-card p{margin-top:12px;color:var(--muted);font-size:13.5px;line-height:1.65}
+.aside-card .quote{margin-top:24px;padding-top:22px;border-top:1px solid var(--line);font-size:16px;font-weight:700;letter-spacing:-.02em;line-height:1.35}
+.aside-card .quote + span{display:block;margin-top:12px;color:var(--faint);font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+
+/* Comparativo antes/depois --------------------------------- */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+.panel{padding:30px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface)}
+.panel--new{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,107,53,.07),transparent 40%),var(--surface-2);border-color:rgba(255,107,53,.28)}
+.panel--new::before{content:"";position:absolute;inset:0 0 auto;height:2px;background:var(--grad)}
+.panel h3{display:flex;align-items:center;gap:10px;margin-bottom:20px;font-size:17px;font-weight:800;letter-spacing:-.02em}
+.panel h3 span{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.panel li{display:flex;gap:11px;padding:11px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px;line-height:1.55}
+.panel li::before{content:"";flex:none;width:15px;height:15px;margin-top:3px;background:var(--faint);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='5' fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='5' fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat}
+.panel--new li::before{background:var(--coral);-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M9.55 17.35 4.2 12l1.4-1.4 3.95 3.95 8.85-8.85L19.8 7.1z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M9.55 17.35 4.2 12l1.4-1.4 3.95 3.95 8.85-8.85L19.8 7.1z'/%3E%3C/svg%3E")}
+
+/* Nota / callout ------------------------------------------- */
+.note{margin-top:22px;padding:18px 22px;border:1px solid var(--line);border-left:2px solid var(--azure);border-radius:0 var(--r-md) var(--r-md) 0;background:rgba(67,134,234,.06);color:var(--muted);font-size:13px;line-height:1.6}
+.note--coral{border-left-color:var(--coral);background:rgba(255,107,53,.06)}
+.note strong{color:var(--text)}
+
+/* ============================================================
+   INTERLÚDIO (RISCO)
+   ============================================================ */
+.film{position:relative;display:flex;align-items:center;min-height:64vh;padding-block:clamp(72px,9vw,110px);overflow:hidden;border-top:1px solid var(--hair);background:radial-gradient(56% 60% at 10% 84%,rgba(255,77,0,.16),transparent 70%),radial-gradient(52% 56% at 92% 10%,rgba(67,134,234,.15),transparent 70%),var(--bg)}
+.film__in{position:relative;z-index:2;width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.chips span{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line-2);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:12px;font-weight:600}
+.chips span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--coral)}
+
+/* ============================================================
+   MÉTODO (FASES)
+   ============================================================ */
+.phases{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+.phase{position:relative;overflow:hidden;padding:32px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface)}
+.phase--a{background:linear-gradient(180deg,rgba(67,134,234,.08),transparent 42%),var(--surface-2)}
+.phase__label{display:inline-flex;align-items:center;gap:9px;font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sky)}
+.phase--a .phase__label{color:var(--coral-light)}
+.phase h3{margin-top:18px;font-size:23px;font-weight:800;letter-spacing:-.03em;line-height:1.15}
+.phase > p{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6}
+.phase ul{margin-top:22px;display:grid;gap:10px;padding-top:20px;border-top:1px solid var(--line)}
+.phase li{display:flex;gap:10px;color:var(--muted);font-size:13px;line-height:1.5}
+.phase li::before{content:"";flex:none;width:14px;height:14px;margin-top:3px;background:var(--azure);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M9.55 17.35 4.2 12l1.4-1.4 3.95 3.95 8.85-8.85L19.8 7.1z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M9.55 17.35 4.2 12l1.4-1.4 3.95 3.95 8.85-8.85L19.8 7.1z'/%3E%3C/svg%3E") center/contain no-repeat}
+.phase--a li::before{background:var(--coral)}
+
+/* ============================================================
+   ESCOPO
+   ============================================================ */
+.scope{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.scope-card{position:relative;padding:28px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface);transition:border-color .3s ease,transform .3s var(--ease)}
+.scope-card:hover{border-color:var(--line-2);background:var(--panel-hover);transform:translateY(-5px);box-shadow:var(--glow-azure)}
+.scope-card b{display:block;font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--sky)}
+.scope-card h3{margin:14px 0 16px;font-size:18px;font-weight:800;letter-spacing:-.025em;line-height:1.25}
+.scope-card ul{display:grid;gap:9px;padding-top:16px;border-top:1px solid var(--line)}
+.scope-card li{display:flex;gap:10px;color:var(--muted);font-size:13px;line-height:1.5}
+.scope-card li::before{content:"";flex:none;width:5px;height:5px;margin-top:8px;border-radius:50%;background:var(--coral)}
+
+/* ============================================================
+   PLANOS (implantação + sustentação)
+   ============================================================ */
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px;align-items:stretch}
+.plan{position:relative;display:flex;flex-direction:column;padding:32px 28px 30px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface);transition:border-color .3s ease,transform .3s var(--ease),box-shadow .3s ease}
+.plan:hover{border-color:var(--line-2);background:var(--panel-hover);transform:translateY(-5px);box-shadow:var(--sh-2),var(--glow-azure)}
+.plan--featured:hover{box-shadow:var(--sh-2),var(--glow)}
+.plan--featured{border-color:rgba(255,107,53,.42);background:linear-gradient(180deg,rgba(255,107,53,.08),transparent 44%),var(--surface-2);box-shadow:0 30px 70px -34px rgba(255,107,53,.45)}
+.plan--featured::before{content:"";position:absolute;inset:-1px -1px auto;height:3px;border-radius:var(--r-lg) var(--r-lg) 0 0;background:linear-gradient(90deg,var(--coral-light),var(--coral-deep) 55%,var(--azure))}
+.plan__ribbon{position:absolute;top:-11px;left:28px;padding:5px 12px;border-radius:999px;background:var(--coral);color:#0d0d0d;font-family:var(--fm);font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.plan__tier{font-family:var(--fm);font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sky)}
+.plan--featured .plan__tier{color:var(--coral-light)}
+.plan__name{margin-top:13px;font-size:22px;font-weight:800;letter-spacing:-.03em;line-height:1.15}
+.plan__for{margin-top:10px;color:var(--muted);font-size:13px;line-height:1.55}
+.plan__price{margin-top:22px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.plan__price small{display:block;color:var(--faint);font-family:var(--fm);font-size:9.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.plan__amount{display:flex;align-items:baseline;gap:5px;margin-top:10px;font-variant-numeric:tabular-nums}
+.plan__amount i{font-style:normal;color:var(--muted);font-size:15px;font-weight:700}
+.plan__amount b{font-size:clamp(29px,2.9vw,37px);font-weight:800;letter-spacing:-.045em;line-height:1}
+.plan__amount em{font-style:normal;margin-left:1px;color:var(--faint);font-size:14px;font-weight:600}
+.plan--featured .plan__amount b{color:var(--coral-light)}
+.plan__terms{margin-top:9px;color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.plan__specs{margin-top:18px}
+.plan__specs div{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.plan__specs dt{color:var(--faint);font-size:12px}
+.plan__specs dd{color:var(--text);font-size:12.5px;font-weight:700;text-align:right}
+.plan__list{margin-top:20px;margin-bottom:26px;display:grid;gap:10px}
+.plan__list li{display:flex;gap:10px;color:var(--muted);font-size:13px;line-height:1.5}
+.plan__list li::before{content:"";flex:none;width:15px;height:15px;margin-top:2px;background:var(--azure);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M9.55 17.35 4.2 12l1.4-1.4 3.95 3.95 8.85-8.85L19.8 7.1z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M9.55 17.35 4.2 12l1.4-1.4 3.95 3.95 8.85-8.85L19.8 7.1z'/%3E%3C/svg%3E") center/contain no-repeat}
+.plan--featured .plan__list li::before{background:var(--coral)}
+.plan__cta{margin-top:auto;padding-top:22px;border-top:1px solid var(--line)}
+.plan__foot{margin-top:12px;text-align:center;color:var(--faint);font-size:11.5px}
+
+/* Matriz comparativa --------------------------------------- */
+.matrix{margin-top:20px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface);overflow:hidden}
+.matrix__head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:20px 26px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03)}
+.matrix__head h3{font-size:15px;font-weight:800;letter-spacing:-.015em}
+.matrix__head p{color:var(--faint);font-size:11.5px}
+.matrix__scroll{overflow-x:auto}
+.matrix table{width:100%;min-width:720px}
+.matrix th,.matrix td{padding:13px 20px;border-bottom:1px solid var(--line);font-size:12.5px;vertical-align:middle}
+.matrix thead th{background:rgba(255,255,255,.045);color:var(--faint);font-family:var(--fm);font-size:9.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;text-align:center}
+.matrix thead th:first-child{text-align:left}
+.matrix tbody th{text-align:left;color:var(--muted);font-size:12.5px;font-weight:600}
+.matrix tbody td{text-align:center;color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+.matrix tbody tr:last-child th,.matrix tbody tr:last-child td{border-bottom:0}
+.matrix .col-rec{background:rgba(255,107,53,.055)}
+.matrix thead .col-rec{color:var(--coral-light)}
+.mk{display:inline-block;width:16px;height:16px}
+.mk--yes{background:var(--sky);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M9.55 17.35 4.2 12l1.4-1.4 3.95 3.95 8.85-8.85L19.8 7.1z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M9.55 17.35 4.2 12l1.4-1.4 3.95 3.95 8.85-8.85L19.8 7.1z'/%3E%3C/svg%3E") center/contain no-repeat}
+.col-rec .mk--yes{background:var(--coral)}
+.mk--no{background:var(--line-2);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='5' y='11' width='14' height='2' fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='5' y='11' width='14' height='2' fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* Credencial ----------------------------------------------- */
+.credential{display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;margin-top:44px;padding:30px 34px;border:1px solid var(--line);border-radius:var(--r-lg);background:linear-gradient(120deg,rgba(255,77,0,.08),transparent 42%),linear-gradient(280deg,rgba(67,134,234,.1),transparent 44%),var(--surface)}
+.credential h3{font-size:20px;font-weight:800;letter-spacing:-.025em;line-height:1.25}
+.credential p{max-width:64ch;margin-top:9px;color:var(--muted);font-size:13.5px;line-height:1.6}
+.credential a{display:inline-flex;align-items:center;gap:7px;margin-top:14px;color:var(--sky);font-size:12.5px;font-weight:700}
+.credential a:hover{color:var(--coral-light)}
+.credential__stats{display:flex;gap:32px}
+.credential__stats strong{display:block;font-size:26px;font-weight:800;letter-spacing:-.035em;line-height:1;background:var(--grad-mark);-webkit-background-clip:text;background-clip:text;color:transparent}
+.credential__stats span{display:block;margin-top:7px;color:var(--faint);font-family:var(--fm);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase}
+
+/* ============================================================
+   CRONOGRAMA
+   ============================================================ */
+.timeline{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px}
+.timeline::before{content:"";position:absolute;inset:0 0 auto;top:7px;height:1px;background:linear-gradient(90deg,var(--coral),var(--azure));opacity:.5}
+.step{position:relative;padding:32px 22px 26px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface)}
+.step::before{content:"";position:absolute;top:-6px;left:22px;width:13px;height:13px;border:3px solid #0a0a0c;border-radius:50%;background:var(--grad-mark)}
+.step b{display:block;font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--sky)}
+.step h3{margin-top:16px;font-size:16.5px;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.step p{margin-top:10px;color:var(--muted);font-size:12.5px;line-height:1.55}
+.sec--soft .step::before{border-color:#0c0c0e}
+
+/* ============================================================
+   INVESTIMENTO
+   ============================================================ */
+.invest{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(40px,6vw,80px);align-items:start}
+.pricebox{padding:34px;border:1px solid var(--line);border-radius:var(--r-lg);background:linear-gradient(180deg,rgba(67,134,234,.07),transparent 38%),var(--surface);box-shadow:var(--sh-2)}
+.pricebox__tag{display:inline-flex;padding:5px 11px;border:1px solid rgba(255,107,53,.35);border-radius:999px;background:rgba(255,107,53,.09);color:var(--coral-light);font-family:var(--fm);font-size:9.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase}
+.price-row{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid var(--line)}
+.price-row span{color:var(--muted);font-size:13px}
+.price-row strong{font-size:15px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.price-total{padding-top:24px}
+.price-total small{display:block;color:var(--faint);font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.price-total strong{display:block;margin-top:10px;font-size:clamp(40px,4.6vw,60px);font-weight:800;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(100deg,var(--coral-light),var(--coral-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.pay-title{margin-top:26px;color:var(--faint);font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.pays{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.pay{padding:20px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg-2)}
+.pay--best{border-color:rgba(0,194,255,.3);background:rgba(0,194,255,.05)}
+.pay b{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sky)}
+.pay--best b{color:var(--sky)}
+.pay strong{display:block;margin-top:10px;font-size:21px;font-weight:800;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.pay span{display:block;margin-top:5px;color:var(--muted);font-size:12px}
+.pay small{display:block;margin-top:4px;color:var(--faint);font-size:11px;font-variant-numeric:tabular-nums}
+.extras{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.6}
+.extras strong{color:var(--text)}
+
+/* Termos --------------------------------------------------- */
+.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.term{padding:26px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface)}
+.term h3{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:800;letter-spacing:-.015em}
+.term h3::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--grad-mark);flex:none}
+.term ul{margin-top:16px;display:grid;gap:9px;padding-top:15px;border-top:1px solid var(--line)}
+.term li{display:flex;gap:9px;color:var(--muted);font-size:12.5px;line-height:1.55}
+.term li::before{content:"";flex:none;width:4px;height:4px;margin-top:8px;border-radius:50%;background:var(--faint)}
+
+/* Aceite / próximos passos --------------------------------- */
+.accept{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;margin-top:44px}
+.accept__box::after{content:"";position:absolute;z-index:0;top:-60%;left:50%;width:620px;height:620px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,107,53,.16),transparent 62%);pointer-events:none}
+.accept__box > *{position:relative;z-index:1}
+.accept__box{position:relative;overflow:hidden;padding:34px;border:1px solid var(--line);border-radius:var(--r-lg);background:linear-gradient(150deg,rgba(255,77,0,.1),transparent 46%),linear-gradient(300deg,rgba(67,134,234,.11),transparent 46%),var(--surface)}
+.accept__box::before{content:"";position:absolute;inset:0 0 auto;height:2px;background:var(--grad)}
+.accept__box h3{max-width:24ch;font-size:23px;font-weight:800;letter-spacing:-.03em;line-height:1.2}
+.steps-ol{margin:22px 0 26px;display:grid;gap:12px}
+.steps-ol li{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:baseline;color:var(--muted);font-size:13.5px}
+.steps-ol li b{font-family:var(--fm);font-size:11px;font-weight:600;color:var(--coral-light)}
+.sign{padding:34px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface)}
+.sign h4{font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.sign__fields{display:grid;gap:26px;margin-top:26px}
+.sign__line{padding-bottom:9px;border-bottom:1px solid var(--line-2)}
+.sign__line span{display:block;color:var(--faint);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.sign__line em{display:block;height:22px;font-style:normal}
+.sign p{margin-top:22px;color:var(--faint);font-size:11.5px;line-height:1.55}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{padding:52px 0 26px;border-top:1px solid var(--line);background:transparent;color:var(--muted)}
+.footer__grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end}
+.footer .wordmark{margin-bottom:14px;color:var(--text);font-size:34px}
+.footer p{font-size:13px;max-width:44ch}
+.footer__right{text-align:right;font-size:12.5px;line-height:1.7}
+.footer__right b{color:var(--text)}
+.footer__bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);color:var(--faint);font-size:11.5px}
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+@media(min-width:1100px){
+  .nav{display:flex}.header__client{display:flex}.burger{display:none}
+  .plan__for{min-height:3.1em}.plan__name{min-height:1.3em}
+}
+@media(max-width:1099px){
+  .hero__meta{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  .split,.invest{grid-template-columns:1fr}
+  .aside-card{position:static}
+  .compare,.phases,.accept{grid-template-columns:1fr}
+  .scope,.terms{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:repeat(2,1fr)}
+  .timeline::before{display:none}
+  .plans-grid{grid-template-columns:1fr;max-width:520px}
+  .credential{grid-template-columns:1fr;gap:26px}
+}
+@media(max-width:640px){
+  :root{--pad-x:20px;--hdr:64px}
+  .sec{padding-block:62px}
+  .header__tag{display:none}
+  .hero{min-height:auto;padding-block:calc(var(--hdr) + 48px) 48px}
+  .hero h1{max-width:13ch}
+  .hero__actions{display:grid}.hero__actions .btn{width:100%}
+  .hero__meta{grid-template-columns:1fr;margin-top:38px}
+  .scope,.terms,.timeline,.pays{grid-template-columns:1fr}
+  .panel,.phase,.scope-card,.plan,.pricebox,.accept__box,.sign,.term,.credential{padding:24px}
+  .plans-grid{max-width:none}
+  .credential__stats{flex-wrap:wrap;gap:24px}
+  .matrix__head{display:block}.matrix__head p{margin-top:8px}
+  .footer__grid{grid-template-columns:1fr}.footer__right{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+  html [data-reveal]{opacity:1!important;transform:none!important}
+}
+
+/* ============================================================
+   IMPRESSÃO / PDF
+   ============================================================ */
+@media print{
+  @page{margin:14mm}
+  :root{--text:#111;--muted:#4a4a4a;--faint:#6b6b6b;--line:#d6d6d6;--line-2:#b9b9b9;--surface:#fff;--surface-2:#fff;--bg:#fff;--bg-2:#fff;--panel-hover:#fff;--glow:none;--glow-azure:none}
+  *{box-shadow:none!important;text-shadow:none!important}
+  html,body{background:#fff!important;color:#111!important;font-size:10.5pt}
+  .header,.drawer,.drawer-bg,.skip-link,.progress,.hero__glow,.hero__grid,.plan__cta,.btn,#bg-canvas,.accept__box::after{display:none!important}
+  .hero,.film,.sec,.footer,.sec--soft{min-height:auto!important;background:#fff!important;padding-block:20px!important;border-top:1px solid #ddd}
+  .hero{padding-top:0!important}
+  .hero h1,.title{max-width:none;font-size:22pt!important;color:#111!important}
+  .hero__desc,.lead{font-size:11pt!important;color:#333!important}
+  .wrap{max-width:none;padding-inline:0}
+  .hero__meta div{background:#fff!important;backdrop-filter:none!important}
+  .hero h1 em,.credential__stats strong,.price-total strong{-webkit-text-fill-color:#111;color:#111!important;background:none!important}
+  .panel,.phase,.scope-card,.plan,.step,.pricebox,.pay,.accept__box,.sign,.term,.credential,.matrix,.fact,.aside-card,.note{border:1px solid #ccc!important;background:#fff!important;break-inside:avoid}
+  .plan--featured{border:1.5px solid #ff6b35!important}
+  .plan--featured .plan__amount b{color:#d94b16!important}
+  .split,.invest{grid-template-columns:1fr}
+  .plans-grid,.scope,.terms{grid-template-columns:repeat(3,1fr)!important;max-width:none}
+  .timeline{grid-template-columns:repeat(4,1fr)!important}
+  .compare,.phases,.accept{grid-template-columns:1fr 1fr}
+  .matrix table{min-width:0}
+  .matrix .col-rec{background:#fff6f1!important}
+  .aside-card{display:none}
+  .sec,.film{break-inside:auto}
+  #planos,#sustentacao,#investimento,#aceite{break-before:page}
+}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="header" id="header">
+  <div class="wrap">
+   <div class="header__in">
+    <div class="brand">
+      <a class="logo" href="#topo" aria-label="ALVK — início"><span class="wordmark" aria-hidden="true">ALVK<span class="wordmark__dot"></span></span></a>
+      <span class="header__tag">Proposta comercial</span>
+    </div>
+    <nav class="nav" aria-label="Navegação da proposta">
+      <a href="#contexto">Contexto</a>
+      <a href="#metodo">Método</a>
+      <a href="#escopo">Escopo</a>
+      <a href="#planos">Implantação</a>
+      <a href="#sustentacao">Sustentação</a>
+      <a href="#cronograma">Cronograma</a>
+      <a href="#investimento">Investimento</a>
+    </nav>
+    <div class="header__right">
+      <span class="header__client" data-cfg="clientName">[CLIENTE]</span>
+      <button type="button" class="burger" id="burger" aria-label="Abrir menu" aria-controls="drawer" aria-expanded="false"><span></span></button>
+    </div>
+   </div>
+  </div>
+</header>
+
+<button class="drawer-bg" id="drawerBg" type="button" aria-label="Fechar menu" tabindex="-1"></button>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu de navegação" aria-hidden="true" inert>
+  <div class="drawer__top">
+    <span class="wordmark" role="img" aria-label="ALVK">ALVK<span class="wordmark__dot" aria-hidden="true"></span></span>
+    <button type="button" class="drawer__close" id="drawerClose" aria-label="Fechar menu">×</button>
+  </div>
+  <nav aria-label="Navegação do menu">
+    <a href="#contexto">Contexto <span>01</span></a>
+    <a href="#metodo">Método <span>02</span></a>
+    <a href="#escopo">Escopo <span>03</span></a>
+    <a href="#planos">Implantação <span>04</span></a>
+    <a href="#sustentacao">Sustentação <span>05</span></a>
+    <a href="#cronograma">Cronograma <span>06</span></a>
+    <a href="#investimento">Investimento <span>07</span></a>
+    <a href="#aceite">Aceite <span>09</span></a>
+  </nav>
+  <a class="btn btn--primary magnetic" href="#planos">Ver planos</a>
+</aside>
+
+<main id="conteudo">
+
+<!-- ============================= CAPA ============================= -->
+<section class="hero" id="topo">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="wrap hero__in">
+    <span class="hero__badge" data-reveal><i></i> Proposta comercial · ALVK <span aria-hidden="true">&rarr;</span> <span data-cfg="clientName">[CLIENTE]</span></span>
+    <h1 class="d1" data-reveal>Seu e-commerce no ar, <em>do catálogo ao primeiro pedido.</em></h1>
+    <p class="hero__desc d2" data-reveal>Implantação completa da loja virtual — plataforma, identidade, catálogo, pagamentos, frete e integrações — com homologação real antes do go-live e sustentação contínua para manter a operação evoluindo depois dele.</p>
+    <div class="hero__actions d3" data-reveal>
+      <a class="btn btn--primary magnetic" href="#planos">Ver planos de implantação</a>
+      <a class="btn btn--ghost magnetic" href="#sustentacao">Ver planos de sustentação</a>
+    </div>
+    <div class="hero__meta d4" data-reveal>
+      <div><small>Preparada para</small><strong data-cfg="clientName">[CLIENTE]</strong></div>
+      <div><small>Data de emissão</small><strong data-cfg="proposalDate">29 de agosto de 2026</strong></div>
+      <div><small>Validade</small><strong data-cfg="validity">15 dias corridos</strong></div>
+      <div><small>Meta de entrega</small><strong data-cfg="deadline">Go-live em até 4 semanas</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 01 · CONTEXTO ============================= -->
+<section class="sec" id="contexto">
+  <div class="wrap split">
+    <div data-reveal>
+      <span class="eyebrow"><b>01</b><i></i> Contexto</span>
+      <h2 class="title">Sua marca já tem clientes. Falta o canal que vende 24 horas por dia.</h2>
+      <p class="lead">A implantação transforma a operação atual — produto, catálogo e audiência — em um e-commerce estruturado para vender com segurança: sem improviso no checkout e sem retrabalho depois do lançamento.</p>
+      <div class="facts">
+        <div class="fact"><b>01</b><div><strong>Marca validada</strong><span>Público e produto já existem. O projeto canaliza para o digital uma demanda que hoje depende de atendimento manual.</span></div></div>
+        <div class="fact"><b>02</b><div><strong>Operação assistida</strong><span>Implantação conduzida ponta a ponta, com testes reais de compra, frete e pagamento antes de publicar o domínio.</span></div></div>
+        <div class="fact"><b>03</b><div><strong>Base para crescer</strong><span>Estrutura entregue pronta para mídia paga, SEO e novas integrações — sem precisar refazer o alicerce depois.</span></div></div>
+      </div>
+    </div>
+    <aside class="aside-card d2" data-reveal>
+      <h3>Por que uma implantação assistida</h3>
+      <p>Colocar uma loja no ar é rápido. Colocar uma loja que aprova pagamento, calcula frete com margem correta e alimenta as campanhas com dados confiáveis exige método, homologação e responsabilidade sobre cada configuração.</p>
+      <p class="quote">“Lançar e-commerce não é subir um site. É abrir uma nova unidade de negócio.”</p>
+      <span>Princípio de implantação ALVK</span>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================= DIAGNÓSTICO ============================= -->
+<section class="sec sec--soft" id="diagnostico">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="eyebrow" data-reveal><b>02</b><i></i> Diagnóstico</span>
+      <h2 class="title title--sm" data-reveal>O que separa uma loja no ar de uma loja que vende é o que ninguém vê.</h2>
+    </div>
+    <div class="compare">
+      <article class="panel" data-reveal>
+        <h3>O que você já tem <span>Ponto de partida</span></h3>
+        <ul>
+          <li>Produtos, preços e estoque definidos</li>
+          <li>Marca e identidade visual estabelecidas</li>
+          <li>Clientes e canais de relacionamento ativos</li>
+          <li>Demanda que hoje depende de atendimento manual</li>
+        </ul>
+      </article>
+      <article class="panel panel--new d1" data-reveal>
+        <h3>O que a ALVK ativa <span>Entrega</span></h3>
+        <ul>
+          <li>Loja virtual configurada com a identidade da marca</li>
+          <li>Catálogo publicado com SEO e navegação organizada</li>
+          <li>Pagamentos, frete e checkout testados ponta a ponta</li>
+          <li>Integrações de ERP, pixels e analytics validadas</li>
+        </ul>
+      </article>
+    </div>
+    <p class="note note--coral" data-reveal><strong>Decisão segura:</strong> o go-live só acontece depois de testes reais de compra, frete e pagamento. Lançar sem homologação transfere o erro direto para o cliente final — e para a fatura de mídia.</p>
+  </div>
+</section>
+
+<!-- ============================= INTERLÚDIO ============================= -->
+<section class="film" id="riscos">
+  <div class="wrap film__in">
+    <span class="eyebrow" data-reveal><b>·</b><i></i> O risco que ninguém vê no checkout</span>
+    <h2 class="title" data-reveal>Lançar sem processo custa barato no começo — e caro na primeira campanha.</h2>
+    <p class="lead" data-reveal>Checkout sem teste reprova pagamento. Frete mal configurado corrói a margem. Pixel sem validação zera o aprendizado das campanhas. Nenhum desses erros aparece no dia do lançamento: aparece semanas depois, na fatura de mídia e no relatório de vendas.</p>
+    <div class="chips" data-reveal>
+      <span>Checkout homologado</span>
+      <span>Frete testado por região</span>
+      <span>Pixel e Analytics validados</span>
+      <span>Equipe treinada</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 03 · MÉTODO ============================= -->
+<section class="sec" id="metodo">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="eyebrow" data-reveal><b>03</b><i></i> Método de implantação</span>
+      <h2 class="title title--sm" data-reveal>Construir em ambiente de testes, publicar só depois de validar.</h2>
+      <p class="lead" data-reveal>A loja é construída e populada nos bastidores. Você vê a versão final quando ela já estiver testada: catálogo completo, pagamentos processando e frete calculando corretamente.</p>
+    </div>
+    <div class="phases">
+      <article class="phase phase--a" data-reveal>
+        <span class="phase__label">Fase 1 · Construção</span>
+        <h3>Implantação em ambiente de testes</h3>
+        <p>A loja nasce completa, sem pressa e sem exposição pública.</p>
+        <ul>
+          <li>Plataforma configurada com tema e identidade da marca</li>
+          <li>Catálogo publicado: produtos, categorias, imagens e SEO</li>
+          <li>Pagamentos, frete e integrações configurados</li>
+          <li>Testes de compra reais em ambiente fechado</li>
+        </ul>
+      </article>
+      <article class="phase d1" data-reveal>
+        <span class="phase__label">Fase 2 · Go-live e estabilização</span>
+        <h3>Lançamento sem surpresa</h3>
+        <p>A publicação só acontece depois de tudo homologado — checkout, frete, pixels e domínio.</p>
+        <ul>
+          <li>Apontamento de DNS e SSL em horário planejado</li>
+          <li>Pixels Meta e Google ativados e testados com compra real</li>
+          <li>Checkout, frete e pagamento validados ponta a ponta</li>
+          <li>Acompanhamento pós-lançamento incluso no plano</li>
+        </ul>
+      </article>
+    </div>
+    <p class="note" data-reveal><strong>Limite de escopo:</strong> o tema segue os recursos padrão da plataforma contratada. Customizações de código além do tema, desenvolvimento de funcionalidades sob medida ou integrações fora das previstas dependem de análise técnica e orçamento específico.</p>
+  </div>
+</section>
+
+<!-- ============================= 04 · ESCOPO ============================= -->
+<section class="sec sec--soft" id="escopo">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="eyebrow" data-reveal><b>04</b><i></i> Escopo do projeto</span>
+      <h2 class="title title--sm" data-reveal>Da descoberta ao primeiro pedido processado.</h2>
+      <p class="lead" data-reveal>Seis frentes de trabalho conduzidas em sequência. O que muda entre os planos é o volume de catálogo, o nível de personalização e a profundidade das integrações — nunca o rigor do processo.</p>
+    </div>
+    <div class="scope">
+      <article class="scope-card" data-reveal><b>01</b><h3>Descoberta e planejamento</h3><ul><li>Levantamento de catálogo, preços e estoque</li><li>Definição de categorias e navegação</li><li>Escolha de plataforma, gateway e frete</li><li>Plano de implantação aprovado</li></ul></article>
+      <article class="scope-card d1" data-reveal><b>02</b><h3>Plataforma e domínio</h3><ul><li>Configuração completa da plataforma</li><li>Apontamento de DNS e certificado SSL</li><li>Instalação e adaptação do tema</li><li>Apoio na escolha do plano da plataforma</li></ul></article>
+      <article class="scope-card d2" data-reveal><b>03</b><h3>Catálogo completo</h3><ul><li>Produtos, variações e imagens publicados</li><li>Categorias e atributos organizados</li><li>Títulos, descrições e URLs otimizados para SEO</li><li>Sitemap e indexação configurados</li></ul></article>
+      <article class="scope-card" data-reveal><b>04</b><h3>Pagamentos e frete</h3><ul><li>Gateway de pagamento configurado e testado</li><li>Tabelas e serviços de frete ativos</li><li>Testes de compra, estorno e aprovação</li><li>Validação de margem por região de entrega</li></ul></article>
+      <article class="scope-card d1" data-reveal><b>05</b><h3>Integrações e mídia</h3><ul><li>ERP integrado quando aplicável</li><li>Pixel Meta e Catálogo/Shopping</li><li>Tag de conversão do Google Ads e Analytics</li><li>Testes de disparo com compra real</li></ul></article>
+      <article class="scope-card d2" data-reveal><b>06</b><h3>Go-live e treinamento</h3><ul><li>Homologação de checkout, frete e pagamento</li><li>Treinamento gravado da operação da loja</li><li>Publicação do domínio em horário planejado</li><li>Acompanhamento pós-lançamento incluso</li></ul></article>
+    </div>
+    <p class="note" data-reveal><strong>Dependências do cliente:</strong> acessos de domínio, plataforma, gateway, ERP e contas de mídia; definição do meio de pagamento; envio de fotos e descrições de produtos; disponibilidade para os testes na fase de homologação.</p>
+  </div>
+</section>
+
+<!-- ============================= 05 · PLANOS DE IMPLANTAÇÃO ============================= -->
+<section class="sec" id="planos">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="eyebrow" data-reveal><b>05</b><i></i> Planos de implantação · investimento único</span>
+      <h2 class="title title--sm" data-reveal>Três caminhos para colocar sua loja no ar.</h2>
+      <p class="lead" data-reveal>Todos os planos incluem plataforma configurada, catálogo publicado, homologação de checkout, treinamento e acompanhamento pós-lançamento. A diferença está no volume de catálogo, no nível de personalização e nas integrações ativadas.</p>
+    </div>
+
+    <div class="plans-grid">
+      <!-- Essencial -->
+      <article class="plan" data-reveal>
+        <span class="plan__tier">Plano 01</span>
+        <h3 class="plan__name">Essencial</h3>
+        <p class="plan__for">Para validar o canal digital com o essencial funcionando muito bem.</p>
+        <div class="plan__price">
+          <small>Investimento único</small>
+          <p class="plan__amount"><i>R$</i><b data-cfg="planEssValue">3.900,00</b></p>
+          <p class="plan__terms" data-cfg="planEssTerms">ou 12x de R$ 346,63 no cartão</p>
+        </div>
+        <dl class="plan__specs">
+          <div><dt>Catálogo incluso</dt><dd>até 60 SKUs</dd></div>
+          <div><dt>Prazo estimado</dt><dd>até 3 semanas</dd></div>
+          <div><dt>Acompanhamento</dt><dd>7 dias</dd></div>
+        </dl>
+        <ul class="plan__list">
+          <li>Tema padrão adaptado à identidade da marca</li>
+          <li>1 meio de pagamento e 1 serviço de frete configurados</li>
+          <li>Páginas institucionais e políticas da loja</li>
+          <li>SEO básico de produtos e categorias</li>
+          <li>Google Analytics configurado</li>
+          <li>Treinamento gravado da operação</li>
+        </ul>
+        <div class="plan__cta">
+          <a class="btn btn--outline magnetic" href="#aceite">Escolher Essencial</a>
+          <p class="plan__foot">Ideal para o primeiro e-commerce da marca</p>
+        </div>
+      </article>
+
+      <!-- Performance -->
+      <article class="plan plan--featured d1" data-reveal>
+        <span class="plan__ribbon">Recomendado</span>
+        <span class="plan__tier">Plano 02</span>
+        <h3 class="plan__name">Performance</h3>
+        <p class="plan__for">A implantação completa para operar sério desde o primeiro dia, com mídia pronta para escalar.</p>
+        <div class="plan__price">
+          <small>Investimento único</small>
+          <p class="plan__amount"><i>R$</i><b data-cfg="planPerfValue">6.900,00</b></p>
+          <p class="plan__terms" data-cfg="planPerfTerms">ou 12x de R$ 613,63 no cartão</p>
+        </div>
+        <dl class="plan__specs">
+          <div><dt>Catálogo incluso</dt><dd>até 200 SKUs</dd></div>
+          <div><dt>Prazo estimado</dt><dd>até 4 semanas</dd></div>
+          <div><dt>Acompanhamento</dt><dd>14 dias</dd></div>
+        </dl>
+        <ul class="plan__list">
+          <li>Personalização estendida do tema</li>
+          <li>Até 2 meios de pagamento e 2 serviços de frete</li>
+          <li>SEO completo: títulos, descrições, URLs e sitemap</li>
+          <li>Pixel Meta, Catálogo e tag de conversão do Google Ads</li>
+          <li>Integração com ERP (Bling ou similar)</li>
+          <li>Treinamento ao vivo + gravado da equipe</li>
+        </ul>
+        <div class="plan__cta">
+          <a class="btn btn--solid magnetic" href="#aceite">Escolher Performance</a>
+          <p class="plan__foot">A escolha da maioria das operações</p>
+        </div>
+      </article>
+
+      <!-- Escala -->
+      <article class="plan d2" data-reveal>
+        <span class="plan__tier">Plano 03</span>
+        <h3 class="plan__name">Escala</h3>
+        <p class="plan__for">Para catálogos grandes, múltiplas integrações e uma operação que já nasce em ritmo de crescimento.</p>
+        <div class="plan__price">
+          <small>Investimento único</small>
+          <p class="plan__amount"><i>R$</i><b data-cfg="planEscValue">11.900,00</b></p>
+          <p class="plan__terms" data-cfg="planEscTerms">ou 12x de R$ 1.058,04 no cartão</p>
+        </div>
+        <dl class="plan__specs">
+          <div><dt>Catálogo incluso</dt><dd>até 500 SKUs</dd></div>
+          <div><dt>Prazo estimado</dt><dd>até 6 semanas</dd></div>
+          <div><dt>Acompanhamento</dt><dd>30 dias</dd></div>
+        </dl>
+        <ul class="plan__list">
+          <li>Personalização avançada de layout e páginas</li>
+          <li>Múltiplos meios de pagamento e fretes por região</li>
+          <li>Stack completo de mídia: Meta, Google Ads e Merchant Center</li>
+          <li>Integração ERP + automações de operação</li>
+          <li>Revisão de margem por região de entrega</li>
+          <li>Treinamento presencial ou remoto da equipe</li>
+        </ul>
+        <div class="plan__cta">
+          <a class="btn btn--outline magnetic" href="#aceite">Escolher Escala</a>
+          <p class="plan__foot">Para quem já entra com volume e mídia</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="matrix" data-reveal>
+      <div class="matrix__head">
+        <h3>Comparativo de implantação</h3>
+        <p>Todos os planos incluem homologação de checkout e acompanhamento pós-lançamento.</p>
+      </div>
+      <div class="matrix__scroll" tabindex="0" role="region" aria-label="Comparativo dos planos de implantação">
+        <table>
+          <thead><tr><th scope="col">Item</th><th scope="col">Essencial</th><th scope="col" class="col-rec">Performance</th><th scope="col">Escala</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">SKUs publicados</th><td>60</td><td class="col-rec">200</td><td>500</td></tr>
+            <tr><th scope="row">Personalização do tema</th><td>Padrão</td><td class="col-rec">Estendida</td><td>Avançada</td></tr>
+            <tr><th scope="row">Meios de pagamento</th><td>1</td><td class="col-rec">2</td><td>Múltiplos</td></tr>
+            <tr><th scope="row">Serviços de frete</th><td>1</td><td class="col-rec">2</td><td>Por região</td></tr>
+            <tr><th scope="row">SEO de catálogo</th><td>Básico</td><td class="col-rec">Completo</td><td>Completo</td></tr>
+            <tr><th scope="row">Pixel Meta e Google Ads</th><td><span class="mk mk--no" role="img" aria-label="Não incluído"></span></td><td class="col-rec"><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td><td><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td></tr>
+            <tr><th scope="row">Merchant Center / Shopping</th><td><span class="mk mk--no" role="img" aria-label="Não incluído"></span></td><td class="col-rec"><span class="mk mk--no" role="img" aria-label="Não incluído"></span></td><td><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td></tr>
+            <tr><th scope="row">Integração com ERP</th><td><span class="mk mk--no" role="img" aria-label="Não incluído"></span></td><td class="col-rec"><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td><td><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td></tr>
+            <tr><th scope="row">Treinamento</th><td>Gravado</td><td class="col-rec">Ao vivo + gravado</td><td>Equipe completa</td></tr>
+            <tr><th scope="row">Acompanhamento pós-go-live</th><td>7 dias</td><td class="col-rec">14 dias</td><td>30 dias</td></tr>
+            <tr><th scope="row">Prazo estimado</th><td>3 semanas</td><td class="col-rec">4 semanas</td><td>6 semanas</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="note" data-reveal><strong>Catálogo acima do limite do plano:</strong> lotes adicionais de 100 SKUs são orçados à parte. A contratação da plataforma, do ERP e dos serviços de terceiros é feita diretamente pelo cliente — a ALVK configura, testa e entrega funcionando.</p>
+
+    <div class="credential" data-reveal>
+      <div>
+        <h3>Especialistas oficiais do ecossistema Nuvemshop.</h3>
+        <p>A ALVK atua com design, criação de loja, desenvolvimento, marketing e estratégia. A implantação é conduzida por quem vive a plataforma no dia a dia — não por quem está aprendendo no seu projeto.</p>
+        <a href="https://www.nuvemshop.com.br/especialistas/alavancador" target="_blank" rel="noopener">Ver perfil e avaliações verificadas <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="credential__stats">
+        <div><strong>+13 anos</strong><span>no mercado de TI</span></div>
+        <div><strong>+500</strong><span>projetos entregues</span></div>
+        <div><strong>ES</strong><span>atuação local</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 06 · PLANOS DE SUSTENTAÇÃO ============================= -->
+<section class="sec sec--soft" id="sustentacao">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="eyebrow" data-reveal><b>06</b><i></i> Planos de sustentação · mensal recorrente</span>
+      <h2 class="title title--sm" data-reveal>Depois do go-live, a loja precisa de quem cuide dela todos os dias.</h2>
+      <p class="lead" data-reveal>A sustentação mantém a operação saudável e evoluindo: atualizações, suporte, cadastros, melhorias contínuas e rotinas de crescimento, com um pacote de horas dedicadas por mês. Contratação opcional e independente do plano de implantação escolhido.</p>
+    </div>
+
+    <div class="plans-grid">
+      <!-- Sustentação Essencial -->
+      <article class="plan" data-reveal>
+        <span class="plan__tier">Sustentação 01</span>
+        <h3 class="plan__name">Essencial</h3>
+        <p class="plan__for">Manter a loja no ar, atualizada e sem falhas — o mínimo responsável depois do lançamento.</p>
+        <div class="plan__price">
+          <small>Mensalidade</small>
+          <p class="plan__amount"><i>R$</i><b data-cfg="ongoingEssValue">590,00</b><em>/mês</em></p>
+          <p class="plan__terms">Sem fidelidade obrigatória</p>
+        </div>
+        <dl class="plan__specs">
+          <div><dt>Horas técnicas</dt><dd>até 4h/mês</dd></div>
+          <div><dt>Suporte</dt><dd>E-mail · 48h úteis</dd></div>
+          <div><dt>Cadastros</dt><dd>até 10 produtos/mês</dd></div>
+        </dl>
+        <ul class="plan__list">
+          <li>Manutenção e monitoramento da loja</li>
+          <li>Atualizações de plataforma e tema</li>
+          <li>Correção de erros e ajustes pontuais</li>
+          <li>Backup e verificação de integrações</li>
+        </ul>
+        <div class="plan__cta">
+          <a class="btn btn--outline magnetic" href="#aceite">Escolher Essencial</a>
+          <p class="plan__foot">Para operações em ritmo estável</p>
+        </div>
+      </article>
+
+      <!-- Sustentação Operação -->
+      <article class="plan plan--featured d1" data-reveal>
+        <span class="plan__ribbon">Recomendado</span>
+        <span class="plan__tier">Sustentação 02</span>
+        <h3 class="plan__name">Operação</h3>
+        <p class="plan__for">Rotina de loja ativa: campanhas sazonais, novos produtos e ajustes contínuos com prioridade.</p>
+        <div class="plan__price">
+          <small>Mensalidade</small>
+          <p class="plan__amount"><i>R$</i><b data-cfg="ongoingOpValue">1.290,00</b><em>/mês</em></p>
+          <p class="plan__terms">Sem fidelidade obrigatória</p>
+        </div>
+        <dl class="plan__specs">
+          <div><dt>Horas técnicas</dt><dd>até 10h/mês</dd></div>
+          <div><dt>Suporte</dt><dd>WhatsApp · 8h úteis</dd></div>
+          <div><dt>Cadastros</dt><dd>até 30 produtos/mês</dd></div>
+        </dl>
+        <ul class="plan__list">
+          <li>Tudo do plano Essencial</li>
+          <li>Suporte prioritário por WhatsApp</li>
+          <li>Ajustes de layout, banners e vitrines</li>
+          <li>Montagem de campanhas e promoções sazonais</li>
+          <li>Relatório mensal de saúde da loja</li>
+        </ul>
+        <div class="plan__cta">
+          <a class="btn btn--solid magnetic" href="#aceite">Escolher Operação</a>
+          <p class="plan__foot">Combina com o plano Performance</p>
+        </div>
+      </article>
+
+      <!-- Sustentação Crescimento -->
+      <article class="plan d2" data-reveal>
+        <span class="plan__tier">Sustentação 03</span>
+        <h3 class="plan__name">Crescimento</h3>
+        <p class="plan__for">Para quem trata o e-commerce como canal principal e quer evolução contínua de conversão e tráfego.</p>
+        <div class="plan__price">
+          <small>Mensalidade</small>
+          <p class="plan__amount"><i>R$</i><b data-cfg="ongoingGrowValue">2.690,00</b><em>/mês</em></p>
+          <p class="plan__terms">Sem fidelidade obrigatória</p>
+        </div>
+        <dl class="plan__specs">
+          <div><dt>Horas técnicas</dt><dd>até 24h/mês</dd></div>
+          <div><dt>Suporte</dt><dd>WhatsApp · 4h úteis</dd></div>
+          <div><dt>Cadastros</dt><dd>por lote, sob demanda</dd></div>
+        </dl>
+        <ul class="plan__list">
+          <li>Tudo do plano Operação</li>
+          <li>Gestão de apps e integrações da loja</li>
+          <li>Rotinas de CRO e SEO técnico</li>
+          <li>Apoio técnico à mídia paga (tags, feeds e catálogo)</li>
+          <li>Reunião mensal de planejamento</li>
+        </ul>
+        <div class="plan__cta">
+          <a class="btn btn--outline magnetic" href="#aceite">Escolher Crescimento</a>
+          <p class="plan__foot">Para escalar com previsibilidade</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="matrix" data-reveal>
+      <div class="matrix__head">
+        <h3>Comparativo de sustentação</h3>
+        <p>Valores mensais. Horas não utilizadas não acumulam para o mês seguinte.</p>
+      </div>
+      <div class="matrix__scroll" tabindex="0" role="region" aria-label="Comparativo dos planos de sustentação">
+        <table>
+          <thead><tr><th scope="col">Item</th><th scope="col">Essencial</th><th scope="col" class="col-rec">Operação</th><th scope="col">Crescimento</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Horas técnicas por mês</th><td>4h</td><td class="col-rec">10h</td><td>24h</td></tr>
+            <tr><th scope="row">Canal de suporte</th><td>E-mail</td><td class="col-rec">WhatsApp</td><td>WhatsApp</td></tr>
+            <tr><th scope="row">Prazo de resposta</th><td>48h úteis</td><td class="col-rec">8h úteis</td><td>4h úteis</td></tr>
+            <tr><th scope="row">Cadastro de produtos</th><td>10/mês</td><td class="col-rec">30/mês</td><td>Por lote</td></tr>
+            <tr><th scope="row">Atualizações e correções</th><td><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td><td class="col-rec"><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td><td><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td></tr>
+            <tr><th scope="row">Ajustes de layout e banners</th><td><span class="mk mk--no" role="img" aria-label="Não incluído"></span></td><td class="col-rec"><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td><td><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td></tr>
+            <tr><th scope="row">Campanhas sazonais</th><td><span class="mk mk--no" role="img" aria-label="Não incluído"></span></td><td class="col-rec"><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td><td><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td></tr>
+            <tr><th scope="row">CRO e SEO técnico</th><td><span class="mk mk--no" role="img" aria-label="Não incluído"></span></td><td class="col-rec"><span class="mk mk--no" role="img" aria-label="Não incluído"></span></td><td><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td></tr>
+            <tr><th scope="row">Reunião mensal de planejamento</th><td><span class="mk mk--no" role="img" aria-label="Não incluído"></span></td><td class="col-rec"><span class="mk mk--no" role="img" aria-label="Não incluído"></span></td><td><span class="mk mk--yes" role="img" aria-label="Incluído"></span></td></tr>
+            <tr><th scope="row">Relatório de saúde da loja</th><td><span class="mk mk--no" role="img" aria-label="Não incluído"></span></td><td class="col-rec">Mensal</td><td>Mensal</td></tr>
+            <tr><th scope="row">Investimento mensal</th><td data-cfg="ongoingEssCell">R$ 590,00</td><td class="col-rec" data-cfg="ongoingOpCell">R$ 1.290,00</td><td data-cfg="ongoingGrowCell">R$ 2.690,00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="note" data-reveal><strong>Não incluídos na sustentação:</strong> verba de mídia paga; mensalidades de plataforma, ERP e aplicativos; produção de fotos, vídeos e textos; desenvolvimento de funcionalidades sob medida. Demandas fora do pacote mensal são estimadas em hora técnica adicional e aprovadas antes da execução.</p>
+  </div>
+</section>
+
+<!-- ============================= 07 · CRONOGRAMA ============================= -->
+<section class="sec" id="cronograma">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="eyebrow" data-reveal><b>07</b><i></i> Cronograma</span>
+      <h2 class="title title--sm" data-reveal data-cfg="timelineTitle">Implantação completa em até 4 semanas.</h2>
+    </div>
+    <div class="timeline">
+      <article class="step" data-reveal><b>01 · Semana 1</b><h3>Descoberta e planejamento</h3><p>Catálogo, plataforma, gateway, frete e plano de implantação aprovado.</p></article>
+      <article class="step d1" data-reveal><b>02 · Semanas 2–3</b><h3>Construção</h3><p>Plataforma, tema, identidade, catálogo e integrações em ambiente de testes.</p></article>
+      <article class="step d2" data-reveal><b>03 · Semana 4</b><h3>Testes e homologação</h3><p>Compra real, frete, pagamentos, pixels e revisão completa com o cliente.</p></article>
+      <article class="step d3" data-reveal><b>04 · Go-live</b><h3>Publicação e treinamento</h3><p>Domínio publicado, equipe treinada e início do acompanhamento assistido.</p></article>
+    </div>
+    <p class="note" data-reveal><strong>Contagem do prazo:</strong> começa após o pagamento inicial e o recebimento dos acessos e materiais. O prazo varia conforme o plano: até 3 semanas no Essencial, 4 no Performance e 6 no Escala. Atrasos no envio de conteúdo ou acessos deslocam o cronograma no mesmo número de dias.</p>
+  </div>
+</section>
+
+<!-- ============================= 08 · INVESTIMENTO ============================= -->
+<section class="sec sec--dark" id="investimento">
+  <div class="wrap invest">
+    <div data-reveal>
+      <span class="eyebrow"><b>08</b><i></i> Investimento e condições</span>
+      <h2 class="title title--sm">Uma rota clara para lançar — e continuar crescendo.</h2>
+      <p class="lead">O resumo ao lado considera o plano de implantação recomendado. Qualquer combinação entre os planos de implantação e de sustentação é possível: a sustentação é opcional e pode ser contratada no encerramento do período de acompanhamento.</p>
+      <p class="lead">As condições de pagamento abaixo valem para qualquer um dos três planos de implantação — o desconto à vista no Pix é aplicado sobre o valor do plano escolhido.</p>
+      <div class="chips" data-reveal>
+        <span>Desconto à vista no Pix</span>
+        <span>Parcelamento em até 12x</span>
+        <span>Sem fidelidade na sustentação</span>
+      </div>
+    </div>
+
+    <div class="d1" data-reveal>
+      <div class="pricebox">
+        <span class="pricebox__tag">Cenário recomendado</span>
+        <div class="price-row" style="margin-top:20px"><span data-cfg="serviceLabel">Implantação · Plano Performance</span><strong data-cfg="serviceValue">R$ 6.900,00</strong></div>
+        <div class="price-row"><span>Catálogo incluso</span><strong data-cfg="customizationValue">até 200 SKUs</strong></div>
+        <div class="price-row"><span>Prazo de entrega</span><strong data-cfg="deadlineShort">até 4 semanas</strong></div>
+        <div class="price-row"><span>Sustentação sugerida</span><strong data-cfg="ongoingSuggested">R$ 1.290,00/mês · Operação</strong></div>
+
+        <div class="price-total">
+          <small>Investimento da implantação</small>
+          <strong data-cfg="totalValue">R$ 6.900,00</strong>
+        </div>
+
+        <p class="pay-title">Condições de pagamento</p>
+        <div class="pays">
+          <div class="pay pay--best">
+            <b data-cfg="pixDiscountLabel">10% de desconto</b>
+            <strong data-cfg="pixValue">R$ 6.210,00</strong>
+            <span>À vista no Pix</span>
+            <small>Melhor condição</small>
+          </div>
+          <div class="pay">
+            <b data-cfg="cardInstallmentsLabel">Parcelado no cartão 12x</b>
+            <strong data-cfg="cardInstallmentLabel">12x de R$ 613,63</strong>
+            <span>Sem entrada</span>
+            <small data-cfg="cardTotalLabel">Total de R$ 7.363,56</small>
+          </div>
+        </div>
+
+        <p class="extras"><strong>Não incluídos na implantação:</strong> mensalidades de plataforma e ERP; verba de mídia paga; produção de fotos, vídeos e textos; catálogo acima do limite do plano (lote adicional de 100 SKUs sob orçamento); desenvolvimentos fora dos recursos do tema; aplicativos adicionais; sustentação recorrente após o período de acompanhamento incluso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 09 · TERMOS ============================= -->
+<section class="sec sec--soft" id="termos">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="eyebrow" data-reveal><b>09</b><i></i> Premissas e termos</span>
+      <h2 class="title title--sm" data-reveal>O que está combinado antes de começar.</h2>
+    </div>
+    <div class="terms">
+      <article class="term" data-reveal>
+        <h3>Responsabilidades do cliente</h3>
+        <ul>
+          <li>Fornecimento dos acessos de domínio, plataforma, gateway, ERP e contas de mídia</li>
+          <li>Envio de fotos, descrições, preços e estoque dos produtos</li>
+          <li>Definição dos meios de pagamento e das regras de frete</li>
+          <li>Um ponto focal disponível para aprovações e testes</li>
+        </ul>
+      </article>
+      <article class="term d1" data-reveal>
+        <h3>Contratações de terceiros</h3>
+        <ul>
+          <li>Mensalidade da plataforma de e-commerce</li>
+          <li>Mensalidade do ERP e de aplicativos adicionais</li>
+          <li>Taxas do gateway e das transportadoras</li>
+          <li>Verba de mídia paga e domínios</li>
+        </ul>
+      </article>
+      <article class="term d2" data-reveal>
+        <h3>Condições gerais</h3>
+        <ul>
+          <li>Validade da proposta: <span data-cfg="validity">15 dias corridos</span> a partir da emissão</li>
+          <li>Início do projeto após pagamento inicial e liberação dos acessos</li>
+          <li>Duas rodadas de ajuste visual inclusas por etapa aprovada</li>
+          <li>Demandas fora do escopo são orçadas em hora técnica adicional</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 10 · ACEITE ============================= -->
+<section class="sec" id="aceite">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="eyebrow" data-reveal><b>10</b><i></i> Próximos passos</span>
+      <h2 class="title title--sm" data-reveal>O próximo passo é colocar a implantação em rota segura.</h2>
+    </div>
+    <div class="accept">
+      <article class="accept__box" data-reveal>
+        <h3>Três movimentos até o kickoff.</h3>
+        <ol class="steps-ol">
+          <li><b>01</b><span>Aprovação da proposta e escolha do plano de implantação</span></li>
+          <li><b>02</b><span>Confirmação da forma de pagamento e emissão do contrato</span></li>
+          <li><b>03</b><span>Kickoff, liberação dos acessos e início da fase de descoberta</span></li>
+        </ol>
+        <a class="btn btn--primary btn--block magnetic" id="approveBtn" href="#" rel="noopener">Aprovar proposta por e-mail</a>
+      </article>
+      <article class="sign d1" data-reveal>
+        <h4>Aceite formal</h4>
+        <div class="sign__fields">
+          <div class="sign__line"><em></em><span>Nome e cargo do responsável</span></div>
+          <div class="sign__line"><em></em><span>Plano de implantação escolhido</span></div>
+          <div class="sign__line"><em></em><span>Plano de sustentação (opcional)</span></div>
+          <div class="sign__line"><em></em><span>Data e assinatura</span></div>
+        </div>
+        <p>O aceite pode ser feito por e-mail, assinatura digital ou resposta formal ao contato comercial. Após o aceite, o contrato de prestação de serviços é emitido com o escopo desta proposta.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div>
+      <span class="wordmark" role="img" aria-label="ALVK">ALVK<span class="wordmark__dot" aria-hidden="true"></span></span>
+      <p>Estratégia, tecnologia e performance para e-commerces. Especialistas oficiais do ecossistema Nuvemshop.</p>
+    </div>
+    <div class="footer__right">
+      Proposta preparada exclusivamente para <b data-cfg="clientName">[CLIENTE]</b>.<br>
+      Emitida em <span data-cfg="proposalDate">29 de agosto de 2026</span> · Válida por <span data-cfg="validity">15 dias corridos</span><br>
+      Vila Velha, ES
+    </div>
+  </div>
+  <div class="wrap footer__bottom">
+    <span>© <span data-cfg="year">2026</span> Alavancador Soluções Digitais LTDA. Todos os direitos reservados.</span>
+    <span>Breendel Lauret · contato@alavancador.com.br</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ==========================================================
+     CONFIGURAÇÃO DA PROPOSTA
+     Edite apenas este bloco a cada cliente. Todo o restante
+     do documento (valores, parcelas, comparativos) é gerado
+     automaticamente a partir daqui.
+     ========================================================== */
+  var proposta = {
+    clientName: '[CLIENTE]',
+    proposalDate: '29 de agosto de 2026',
+    year: '2026',
+    validity: '15 dias corridos',
+    deadline: 'Go-live em até 4 semanas',
+    timelineTitle: 'Implantação completa em até 4 semanas.',
+
+    /* Plano de implantação destacado na seção Investimento:
+       'essencial' | 'performance' | 'escala' */
+    highlightPlan: 'performance',
+
+    /* Planos de implantação (investimento único) */
+    implantacao: {
+      essencial:   { label: 'Implantação · Plano Essencial',   value: 3900,  skus: 'até 60 SKUs',  prazo: 'até 3 semanas' },
+      performance: { label: 'Implantação · Plano Performance', value: 6900,  skus: 'até 200 SKUs', prazo: 'até 4 semanas' },
+      escala:      { label: 'Implantação · Plano Escala',      value: 11900, skus: 'até 500 SKUs', prazo: 'até 6 semanas' }
+    },
+
+    /* Planos de sustentação (mensal recorrente) */
+    sustentacao: {
+      essencial:   590,
+      operacao:    1290,
+      crescimento: 2690
+    },
+    ongoingSuggestedPlan: 'operacao',
+    ongoingSuggestedName: 'Operação',
+
+    /* Condições de pagamento da implantação */
+    pixDiscountPercentage: 10,
+    cardFeePercentage: 3.99,
+    cardFeeFixed: 0.49,
+    cardInstallments: 12,
+    anticipationMonthlyPercentage: 1.74,
+    firstAnticipationPeriodDays: 35,
+    installmentIntervalDays: 30,
+    financialMonthDays: 30,
+
+    approvalEmail: 'contato@alavancador.com.br',
+    approvalSubject: 'Aprovação da proposta — Implantação de e-commerce',
+    approvalBody: 'Olá! Analisamos a proposta de implantação de e-commerce e gostaríamos de prosseguir com o projeto.'
+  };
+
+  /* ========================= FORMATAÇÃO ========================= */
+  var nf = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function num(v){ return nf.format(v); }
+  function brl(v){ return 'R$ ' + nf.format(v); }
+
+  /* ========================= CÁLCULO DE PAGAMENTO =========================
+     O líquido desejado no cartão é igual ao valor do Pix: o total parcelado
+     é calculado por gross-up sobre a taxa do gateway e a antecipação média. */
+  var cardFeeRate = proposta.cardFeePercentage / 100;
+  var anticipationMonthlyRate = proposta.anticipationMonthlyPercentage / 100;
+
+  var anticipationEffectiveRate = 0;
+  for (var i = 0; i < proposta.cardInstallments; i++) {
+    var days = proposta.firstAnticipationPeriodDays + i * proposta.installmentIntervalDays;
+    anticipationEffectiveRate += (anticipationMonthlyRate * (days / proposta.financialMonthDays)) / proposta.cardInstallments;
+  }
+
+  var grossUp = 1 - cardFeeRate - anticipationEffectiveRate;
+  if (grossUp <= 0) { throw new Error('As taxas configuradas tornam a cobrança inválida.'); }
+
+  function payment(value){
+    var pix = value * (1 - proposta.pixDiscountPercentage / 100);
+    var cardTotal = (pix + proposta.cardFeeFixed) / grossUp;
+    return {
+      value: value,
+      pix: pix,
+      cardTotal: cardTotal,
+      installment: cardTotal / proposta.cardInstallments
+    };
+  }
+
+  var payEss  = payment(proposta.implantacao.essencial.value);
+  var payPerf = payment(proposta.implantacao.performance.value);
+  var payEsc  = payment(proposta.implantacao.escala.value);
+
+  var featured = proposta.implantacao[proposta.highlightPlan] || proposta.implantacao.performance;
+  var payFeatured = payment(featured.value);
+  var ongoingSuggestedValue = proposta.sustentacao[proposta.ongoingSuggestedPlan];
+
+  function terms(p){
+    return 'ou ' + proposta.cardInstallments + 'x de ' + brl(p.installment) + ' no cartão';
+  }
+
+  /* ========================= RENDER ========================= */
+  var render = {
+    clientName: proposta.clientName,
+    proposalDate: proposta.proposalDate,
+    year: proposta.year,
+    validity: proposta.validity,
+    deadline: proposta.deadline,
+    timelineTitle: proposta.timelineTitle,
+
+    /* Cards de implantação */
+    planEssValue:  num(payEss.value),
+    planPerfValue: num(payPerf.value),
+    planEscValue:  num(payEsc.value),
+    planEssTerms:  terms(payEss),
+    planPerfTerms: terms(payPerf),
+    planEscTerms:  terms(payEsc),
+
+    /* Cards e comparativo de sustentação */
+    ongoingEssValue:   num(proposta.sustentacao.essencial),
+    ongoingOpValue:    num(proposta.sustentacao.operacao),
+    ongoingGrowValue:  num(proposta.sustentacao.crescimento),
+    ongoingEssCell:    brl(proposta.sustentacao.essencial),
+    ongoingOpCell:     brl(proposta.sustentacao.operacao),
+    ongoingGrowCell:   brl(proposta.sustentacao.crescimento),
+
+    /* Seção de investimento */
+    serviceLabel:         featured.label,
+    serviceValue:         brl(featured.value),
+    customizationValue:   featured.skus,
+    deadlineShort:        featured.prazo,
+    totalValue:           brl(featured.value),
+    ongoingSuggested:     brl(ongoingSuggestedValue) + '/mês · ' + proposta.ongoingSuggestedName,
+    pixDiscountLabel:     proposta.pixDiscountPercentage + '% de desconto',
+    pixValue:             brl(payFeatured.pix),
+    cardInstallmentsLabel:'Parcelado no cartão ' + proposta.cardInstallments + 'x',
+    cardInstallmentLabel: proposta.cardInstallments + 'x de ' + brl(payFeatured.installment),
+    cardTotalLabel:       'Total de ' + brl(payFeatured.cardTotal)
+  };
+
+  document.querySelectorAll('[data-cfg]').forEach(function(el){
+    var key = el.dataset.cfg;
+    if (render[key] !== undefined) { el.textContent = render[key]; }
+  });
+
+  document.title = 'Proposta comercial — Implantação de e-commerce · ' + proposta.clientName;
+
+  var approveBtn = document.getElementById('approveBtn');
+  if (approveBtn) {
+    approveBtn.href = 'mailto:' + proposta.approvalEmail
+      + '?subject=' + encodeURIComponent(proposta.approvalSubject + ' — ' + proposta.clientName)
+      + '&body=' + encodeURIComponent(proposta.approvalBody);
+  }
+
+  /* ========================= REVEAL ========================= */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var gsapDrives = document.documentElement.classList.contains('anim');
+  var reveals = document.querySelectorAll('[data-reveal]');
+  if (gsapDrives) {
+    /* GSAP/ScrollTrigger cuidam dos reveals no bloco seguinte */
+  } else if (reduced || !('IntersectionObserver' in window)) {
+    reveals.forEach(function(el){ el.classList.add('show'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+    }, { threshold: .05, rootMargin: '0px 0px -15% 0px' });
+    reveals.forEach(function(el){ io.observe(el); });
+    document.querySelectorAll('.hero [data-reveal]').forEach(function(el){ el.classList.add('show'); });
+  }
+
+  /* ========================= HEADER + PROGRESSO ========================= */
+  var header = document.getElementById('header');
+  var progress = document.getElementById('progress');
+  var ticking = false;
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var y = window.scrollY || document.documentElement.scrollTop;
+      header.classList.toggle('solid', y > 30);
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+      ticking = false;
+    });
+  }
+  onScroll();
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll, { passive: true });
+
+  /* ========================= MENU MOBILE ========================= */
+  var burger = document.getElementById('burger'),
+      drawer = document.getElementById('drawer'),
+      drawerBg = document.getElementById('drawerBg'),
+      drawerClose = document.getElementById('drawerClose'),
+      lastFocus = null;
+
+  function openMenu(){
+    lastFocus = document.activeElement;
+    drawer.inert = false;
+    drawer.classList.add('open');
+    drawerBg.classList.add('open');
+    drawer.setAttribute('aria-hidden','false');
+    burger.setAttribute('aria-expanded','true');
+    document.body.classList.add('locked');
+    drawerClose.focus();
+  }
+  function closeMenu(){
+    drawer.classList.remove('open');
+    drawerBg.classList.remove('open');
+    drawer.setAttribute('aria-hidden','true');
+    drawer.inert = true;
+    burger.setAttribute('aria-expanded','false');
+    document.body.classList.remove('locked');
+    if (lastFocus) lastFocus.focus();
+  }
+
+  burger.addEventListener('click', openMenu);
+  drawerClose.addEventListener('click', closeMenu);
+  drawerBg.addEventListener('click', closeMenu);
+  drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+
+  document.addEventListener('keydown', function(e){
+    if (!drawer.classList.contains('open')) return;
+    if (e.key === 'Escape') { closeMenu(); return; }
+    if (e.key === 'Tab') {
+      var f = drawer.querySelectorAll('a[href],button:not([disabled])'),
+          first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+})();
+</script>
+
+<script>
+/* ==========================================================
+   ANIMAÇÕES — Three.js + GSAP/ScrollTrigger (via CDN).
+   Porte do animations.js: constelação que morfa entre
+   nuvem orgânica → campo disperso → wordmark ALVK.
+
+   Degradação: se qualquer CDN falhar, html.anim não é
+   aplicado, este bloco não roda e a proposta renderiza
+   estática com todo o conteúdo visível.
+   ========================================================== */
+(function(){
+  'use strict';
+
+  var root = document.documentElement;
+  if (!root.classList.contains('anim')) return;
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ============================================================
+     1. REVEALS
+     ============================================================ */
+  function initReveals(){
+    var all = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+
+    if (reduced){
+      gsap.set(all, { opacity: 1, y: 0 });
+      return;
+    }
+
+    var hero = all.filter(function(el){ return el.closest('.hero'); });
+    var rest = all.filter(function(el){ return !el.closest('.hero'); });
+
+    hero.forEach(function(el, i){
+      gsap.fromTo(el,
+        { y: 60, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.4, delay: 0.1 + (i * 0.15), ease: 'power4.out' }
+      );
+    });
+
+    rest.forEach(function(el){
+      gsap.fromTo(el,
+        { y: 50, opacity: 0 },
+        {
+          scrollTrigger: { trigger: el, start: 'top 85%' },
+          y: 0, opacity: 1, duration: 1.2, ease: 'power3.out'
+        }
+      );
+    });
+  }
+
+  /* ============================================================
+     2. CONSTELAÇÃO (Three.js)
+     ============================================================ */
+  function initField(){
+    var canvas = document.getElementById('bg-canvas');
+    if (!canvas || !window.THREE || reduced) return;
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    /* Sprite: triângulo vazado */
+    function triangleTexture(){
+      var c = document.createElement('canvas');
+      c.width = c.height = 64;
+      var g = c.getContext('2d');
+      g.beginPath();
+      g.moveTo(32, 12); g.lineTo(54, 52); g.lineTo(10, 52);
+      g.closePath();
+      g.lineWidth = 6;
+      g.strokeStyle = '#ffffff';
+      g.stroke();
+      return new THREE.CanvasTexture(c);
+    }
+
+    var COUNT = window.innerWidth < 760 ? 1600 : 3500;
+    var geometry = new THREE.BufferGeometry();
+
+    var positions = new Float32Array(COUNT * 3);
+    var colors    = new Float32Array(COUNT * 3);
+    var sizes     = new Float32Array(COUNT);
+    var offsets   = new Float32Array(COUNT);
+
+    var cloudPos = new Float32Array(COUNT * 3);
+    var fieldPos = new Float32Array(COUNT * 3);
+    var markPos  = new Float32Array(COUNT * 3);
+
+    /* Paleta ALVK: coral + azure, com brancos pontuais */
+    var PALETTE = [
+      new THREE.Color('#ff8c42'),
+      new THREE.Color('#ff6b35'),
+      new THREE.Color('#ff4d00'),
+      new THREE.Color('#4386ea'),
+      new THREE.Color('#00c2ff'),
+      new THREE.Color('#ffffff')
+    ];
+
+    for (var i = 0; i < COUNT; i++){
+      /* --- Nuvem orgânica: esfera com dobras, dois lobos --- */
+      var u = Math.random(), v = Math.random();
+      var theta = u * 2.0 * Math.PI;
+      var phi = Math.acos(2.0 * v - 1.0);
+      var r = Math.cbrt(Math.random()) * 6;
+      r += (Math.sin(theta * 10) * Math.cos(phi * 10)) * 0.6;
+
+      var x = r * Math.sin(phi) * Math.cos(theta);
+      var y = r * Math.sin(phi) * Math.sin(theta) * 0.75;
+      var z = r * Math.cos(phi) * 1.1;
+      x += (x > 0 ? 0.4 : -0.4);
+      x += (Math.random() - 0.5) * 0.3;
+      y += (Math.random() - 0.5) * 0.3;
+      z += (Math.random() - 0.5) * 0.3;
+
+      positions[i*3] = cloudPos[i*3] = x;
+      positions[i*3+1] = cloudPos[i*3+1] = y;
+      positions[i*3+2] = cloudPos[i*3+2] = z;
+
+      /* --- Campo disperso --- */
+      fieldPos[i*3]   = (Math.random() - 0.5) * 50;
+      fieldPos[i*3+1] = (Math.random() - 0.5) * 50;
+      fieldPos[i*3+2] = (Math.random() - 0.5) * 30 - 15;
+
+      /* --- Wordmark: preenchido depois da fonte carregar --- */
+      markPos[i*3] = fieldPos[i*3];
+      markPos[i*3+1] = fieldPos[i*3+1];
+      markPos[i*3+2] = fieldPos[i*3+2];
+
+      var col = PALETTE[(Math.random() * PALETTE.length) | 0];
+      colors[i*3] = col.r; colors[i*3+1] = col.g; colors[i*3+2] = col.b;
+
+      sizes[i] = Math.random() * 0.3 + 0.1;
+      offsets[i] = Math.random() * Math.PI * 2;
+    }
+
+    /* --- Amostragem do wordmark ALVK pelo alpha do texto ---
+       Trocar por uma imagem: carregue um <img> de
+       /alvk/assets/logo.png e amostre o alpha do mesmo jeito. */
+    function sampleMark(){
+      var SW = 200, SH = 76;
+      var c = document.createElement('canvas');
+      c.width = SW; c.height = SH;
+      var g = c.getContext('2d', { willReadFrequently: true });
+      g.fillStyle = '#fff';
+      g.textAlign = 'center';
+      g.textBaseline = 'middle';
+      g.font = '800 54px Urbanist, system-ui, -apple-system, sans-serif';
+      g.fillText('ALVK', SW/2 - 6, SH/2);
+      var half = g.measureText('ALVK').width / 2;
+      g.beginPath();
+      g.arc(SW/2 - 6 + half + 9, SH/2 - 17, 6, 0, Math.PI * 2);
+      g.fill();
+
+      var d = g.getImageData(0, 0, SW, SH).data;
+      var pts = [];
+      for (var yy = 0; yy < SH; yy++){
+        for (var xx = 0; xx < SW; xx++){
+          if (d[(yy*SW + xx)*4 + 3] > 100){
+            pts.push({ x: (xx - SW/2) * 0.17, y: -(yy - SH/2) * 0.17, z: (Math.random() - 0.5) * 1.5 });
+          }
+        }
+      }
+      if (!pts.length) return;
+      pts.sort(function(){ return Math.random() - 0.5; });
+      for (var k = 0; k < COUNT; k++){
+        var p = pts[k % pts.length];
+        markPos[k*3] = p.x; markPos[k*3+1] = p.y; markPos[k*3+2] = p.z;
+      }
+    }
+
+    if (document.fonts && document.fonts.ready){
+      document.fonts.ready.then(sampleMark);
+    } else {
+      sampleMark();
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+    var material = new THREE.PointsMaterial({
+      size: 0.25,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.85,
+      sizeAttenuation: true,
+      map: triangleTexture(),
+      depthWrite: false,
+      blending: THREE.AdditiveBlending
+    });
+
+    var system = new THREE.Points(geometry, material);
+    var narrow = window.innerWidth < 1024;
+    system.position.set(narrow ? 0 : 10, narrow ? 5 : 0, -10);
+    scene.add(system);
+    camera.position.z = 8;
+
+    var state = { explode: 0, mark: 0 };
+
+    /* A nuvem explode quando o Contexto entra na tela */
+    ScrollTrigger.create({
+      trigger: '#contexto', start: 'top bottom', end: 'top 20%', scrub: 1.5,
+      onUpdate: function(self){ state.explode = Math.pow(self.progress, 1.5); }
+    });
+
+    /* E remonta como wordmark quando o Aceite chega ao centro */
+    ScrollTrigger.create({
+      trigger: '#aceite', start: 'top bottom', end: 'center center', scrub: 1.5,
+      onUpdate: function(self){ state.mark = Math.pow(self.progress, 1.5); }
+    });
+
+    var mx = 0, my = 0;
+    document.addEventListener('mousemove', function(e){
+      mx = (e.clientX - window.innerWidth/2) * 0.001;
+      my = (e.clientY - window.innerHeight/2) * 0.001;
+    }, { passive: true });
+
+    var clock = new THREE.Clock();
+    var raf = 0;
+    var lerp = THREE.MathUtils.lerp;
+
+    function animate(){
+      raf = requestAnimationFrame(animate);
+      var t = clock.getElapsedTime();
+      var isNarrow = window.innerWidth < 1024;
+
+      /* ao formar o wordmark, o sistema centraliza na tela */
+      var sysX = isNarrow ? 0 : 10 * (1 - state.mark);
+      var sysY = isNarrow ? 5 * (1 - state.mark) : 0;
+      system.position.x += 0.05 * ((sysX + mx * 0.3) - system.position.x);
+      system.position.y += 0.05 * ((sysY + my * 0.3) - system.position.y);
+
+      var rotMult = 1.0 - state.mark;
+      system.rotation.y += 0.005 * rotMult;
+      system.rotation.x = Math.sin(t * 0.2) * 0.1 * rotMult;
+
+      /* Desenrola até a volta completa mais próxima enquanto o wordmark
+         se forma — sem isso ele congela de perfil, num ângulo qualquer. */
+      if (state.mark > 0.001){
+        var turn = Math.round(system.rotation.y / (Math.PI * 2)) * Math.PI * 2;
+        system.rotation.y = lerp(system.rotation.y, turn, state.mark);
+      }
+
+      /* O wordmark se forma atrás dos cards do Aceite: ponto maior e mais
+         opaco para ele atravessar o vidro em vez de sumir sob o glow. */
+      material.size = 0.25 + state.mark * 0.20;
+      material.opacity = 0.85 + state.mark * 0.15;
+
+      var arr = geometry.attributes.position.array;
+      var drift = (0.15 + state.explode * 1.5) * (1.0 - state.mark * 0.95);
+
+      for (var i = 0; i < COUNT; i++){
+        var ix = i*3, iy = ix+1, iz = ix+2;
+        var o = offsets[i];
+
+        var cx = lerp(cloudPos[ix], fieldPos[ix], state.explode);
+        var cy = lerp(cloudPos[iy], fieldPos[iy], state.explode);
+        var cz = lerp(cloudPos[iz], fieldPos[iz], state.explode);
+
+        cx = lerp(cx, markPos[ix], state.mark);
+        cy = lerp(cy, markPos[iy], state.mark);
+        cz = lerp(cz, markPos[iz], state.mark);
+
+        arr[ix] = cx + Math.sin(t * 0.8 + o) * drift;
+        arr[iy] = cy + Math.cos(t * 0.9 + o) * drift;
+        arr[iz] = cz + Math.sin(t * 1.0 + o) * drift;
+      }
+      geometry.attributes.position.needsUpdate = true;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    /* Poupa bateria/CPU com a aba em segundo plano */
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden){ if (raf){ cancelAnimationFrame(raf); raf = 0; } }
+      else if (!raf){ clock.getDelta(); animate(); }
+    });
+
+    window.addEventListener('resize', function(){
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }, { passive: true });
+  }
+
+  /* ============================================================
+     3. BOTÕES MAGNÉTICOS
+     ============================================================ */
+  function initMagnetic(){
+    if (reduced || window.matchMedia('(hover: none)').matches) return;
+    document.querySelectorAll('.magnetic').forEach(function(el){
+      el.addEventListener('mousemove', function(e){
+        var r = el.getBoundingClientRect();
+        var x = e.clientX - r.left - r.width / 2;
+        var y = e.clientY - r.top - r.height / 2;
+        gsap.to(el, { x: x * 0.15, y: y * 0.3, duration: 0.5, ease: 'power2.out' });
+      });
+      el.addEventListener('mouseleave', function(){
+        gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.3)' });
+      });
+    });
+  }
+
+  function boot(){ initReveals(); initField(); initMagnetic(); }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+</body>
+</html>
