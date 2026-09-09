@@ -3063,7 +3063,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   function navigate(target) {
     cancelScroll();
     const from = scrollY;
-    const offset = document.querySelector('.header').getBoundingClientRect().height + 24;
+    const offset = (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) +
+      (parseFloat(getComputedStyle(target).scrollMarginTop) || 0);
     const wanted = target.id === 'topo' ? 0 : target.getBoundingClientRect().top + from - offset;
     const to = Math.max(0, Math.min(wanted, document.documentElement.scrollHeight - innerHeight));
     finishTarget(target);
