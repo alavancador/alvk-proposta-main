@@ -2504,6 +2504,28 @@ html::-webkit-scrollbar-corner { background: rgb(20, 20, 20); }
   .continuity-note {margin-top:5mm;}
 }
 </style>
+<style id="proposal-motion">
+@media screen {
+  /* JavaScript controls anchor duration; the native fallback remains available. */
+  html.js {scroll-behavior:auto;}
+  .motion-pending {opacity:0;}
+  .continuity .disclosure[data-animating] {overflow:hidden;overflow-anchor:none;}
+  .continuity .disclosure[data-expanded="false"] > summary::after {transform:rotate(0deg);}
+  .continuity .disclosure[data-expanded="true"] > summary::after {transform:rotate(45deg);}
+  .back-to-top {opacity:0;visibility:hidden;pointer-events:none;transform:none;transition:opacity .18s ease,visibility 0s linear .18s,background-color .16s ease;}
+  .back-to-top.is-visible {opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s;}
+  .back-to-top:hover {transform:none;}
+  main [tabindex="-1"]:focus:not(:focus-visible) {outline:none;}
+  @media (hover:none) {
+    .alvk-button:hover:not(:disabled),.alvk-button:active:not(:disabled) {transform:none;}
+  }
+  @media (prefers-reduced-motion:reduce) {
+    html {scroll-behavior:auto;}
+    .motion-pending {opacity:1;}
+    .back-to-top,.continuity summary::after {transition:none;}
+  }
+}
+</style>
 </head>
 <body class="alvk-scope">
 <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -2770,12 +2792,16 @@ html::-webkit-scrollbar-corner { background: rgb(20, 20, 20); }
   const menu = document.getElementById('menu');
   const openButton = document.getElementById('menuOpen');
   const closeButton = document.getElementById('menuClose');
+  let restoreMenuFocus = true;
   function resetMenuState() {
+    if (!document.body.classList.contains('menu-open')) return;
     openButton.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
-    openButton.focus({ preventScroll: true });
+    if (restoreMenuFocus) openButton.focus({ preventScroll: true });
+    restoreMenuFocus = true;
   }
-  function closeMenu() {
+  function closeMenu(restoreFocus = true) {
+    restoreMenuFocus = restoreFocus;
     if (menu.open) menu.close();
     resetMenuState();
   }
@@ -2786,14 +2812,14 @@ html::-webkit-scrollbar-corner { background: rgb(20, 20, 20); }
       document.body.classList.add('menu-open');
       closeButton.focus();
     });
-    closeButton.addEventListener('click', closeMenu);
+    closeButton.addEventListener('click', () => closeMenu());
     menu.addEventListener('cancel', event => { event.preventDefault(); closeMenu(); });
     menu.addEventListener('close', () => { if (!menu.open) resetMenuState(); });
     menu.addEventListener('click', event => {
       const rect = menu.getBoundingClientRect();
       if (event.target === menu && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) closeMenu();
     });
-    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeMenu(false)));
     // Explicit wrap supplements the browser's native modal inert behavior.
     menu.addEventListener('keydown', event => {
       if (event.key !== 'Tab') return;
@@ -2908,10 +2934,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 <script id="back-to-top-script">(function () {
   'use strict';
   const control = document.getElementById('backToTop');
-  const heading = document.getElementById('heroTitle');
   let scheduled = false;
   function refresh() {
-    control.hidden = window.scrollY < Math.min(650, window.innerHeight * .7);
+    const visible = window.scrollY >= Math.min(650, window.innerHeight * .7);
+    control.hidden = false;
+    control.classList.toggle('is-visible', visible);
+    control.setAttribute('aria-hidden', String(!visible));
+    control.tabIndex = visible ? 0 : -1;
     scheduled = false;
   }
   function scheduleRefresh() {
@@ -2920,13 +2949,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       window.requestAnimationFrame(refresh);
     }
   }
-  control.addEventListener('click', function (event) {
-    event.preventDefault();
-    heading.setAttribute('tabindex', '-1');
-    heading.focus({ preventScroll: true });
-    window.history.replaceState(null, '', '#topo');
-    window.scrollTo({ top: 0, left: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-  });
   window.addEventListener('scroll', scheduleRefresh, { passive: true });
   window.addEventListener('resize', scheduleRefresh, { passive: true });
   window.addEventListener('pageshow', refresh);
@@ -2936,114 +2958,230 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 <script id="proposal-loading-motion">
 (function () {
   'use strict';
-  // Enhancement only: HTML remains visible without JavaScript or animation support.
-  if (typeof Element.prototype.animate !== 'function' || typeof window.matchMedia !== 'function') return;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const screen = window.matchMedia('screen');
-  const active = new Map();
-  const revealed = new Set();
+  const canAnimate = typeof Element.prototype.animate === 'function';
+  const motionEnabled = () => canAnimate && screen.matches && !reduced.matches;
+  const pending = new Set();
+  const running = new Map();
+  const resting = new WeakMap();
   let observer;
-  const candidates = [...document.querySelectorAll([
-    '.section-top', '.diagnosis-heading', '.context-grid > *', '.facts > article',
+  let scrollFrame = 0;
+  let scrollDestination = null;
+  const elements = [...document.querySelectorAll([
+    '.hero-content > *', '.section-top', '.diagnosis-heading', '.context-grid > *',
     '.manifesto-inner > div', '.chapter-heading > .eyebrow',
-    '.chapter-heading > .section-heading', '.method-heading',
-    '.method-step', '.method-principle', '.scope-card', '.scope-boundary', '.operation-grid > *',
-    '.automation-note', '.timeline > li', '.after-launch',
-    '.editorial-band-image', '.editorial-band-copy', '.offer',
-    '.investment-aside > div', '.terms-grid > article',
-    '.continuity__head', '.continuity .disclosure',
-    '.next-step > *'
+    '.chapter-heading > .section-heading', '.method-heading', '.method-step',
+    '.scope-card', '.timeline > li', '.after-launch', '.editorial-band',
+    '.offer', '.investment-aside > div', '.continuity__head', '.next-step > *'
   ].join(','))];
-  const hero = [...document.querySelectorAll('.hero-content > *')];
-  const photo = document.querySelector('.hero-image img');
-  function enabled() { return screen.matches && !reduced.matches; }
+
+  // Pending elements are prepared before they enter the viewport, not after painting.
   function finish(element) {
-    revealed.add(element);
-    if (observer) observer.unobserve(element);
-    const animation = active.get(element);
-    if (animation) { animation.cancel(); active.delete(element); }
+    pending.delete(element);
+    observer?.unobserve(element);
+    element.classList.remove('motion-pending');
+    const animation = running.get(element);
+    running.delete(element);
+    animation?.cancel();
   }
   function finishAll() {
-    active.forEach(animation => animation.cancel());
-    active.clear();
+    new Set([...pending, ...running.keys()]).forEach(finish);
   }
-  function enter(element, delay, isPhoto) {
-    if (revealed.has(element)) return;
-    revealed.add(element);
-    if (observer) observer.unobserve(element);
-    if (!enabled() || element.contains(document.activeElement)) return;
-    const computed = getComputedStyle(element);
-    const opacity = computed.opacity;
-    const base = computed.transform;
-    const startTransform = isPhoto ? 'scale(1.035)' : (base === 'none' ? 'translateY(22px)' : base);
+  function reveal(element, delay = 0) {
+    if (!pending.has(element)) return;
+    if (!motionEnabled() || element.contains(document.activeElement)) return finish(element);
+    pending.delete(element);
+    observer?.unobserve(element);
+    const base = resting.get(element);
     try {
       const animation = element.animate([
-        { opacity: 0, transform: startTransform },
-        { opacity: opacity, transform: base }
-      ], {
-        duration: isPhoto ? 1200 : 680,
-        delay: delay,
-        easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-        fill: 'backwards'
-      });
-      active.set(element, animation);
+        { opacity: 0, transform: 'translateY(12px)' + (base.transform === 'none' ? '' : ' ' + base.transform) },
+        { opacity: base.opacity, transform: base.transform }
+      ], { duration: 420, delay, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'both' });
+      running.set(element, animation);
       animation.finished.then(() => {
-        if (active.get(element) === animation) active.delete(element);
+        if (running.get(element) === animation) finish(element);
       }).catch(() => {});
-    } catch (_) {
-      // Unsupported animation details leave the unchanged, visible HTML in place.
-    }
+    } catch (_) { finish(element); }
   }
-  function revealDestination(hash) {
-    let id;
-    try { id = decodeURIComponent(hash.slice(1)); } catch (_) { return; }
-    const target = document.getElementById(id);
-    if (!target) return;
-    [...candidates, ...hero, photo].filter(Boolean).forEach(element => {
+  function revealPath(from, to) {
+    const top = Math.min(from, to), bottom = Math.max(from, to) + innerHeight;
+    elements.forEach(element => {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom + scrollY >= top && rect.top + scrollY <= bottom) finish(element);
+    });
+  }
+  function resolveHash(hash) {
+    try { return document.getElementById(decodeURIComponent(hash.slice(1))); }
+    catch (_) { return null; }
+  }
+  function finishTarget(target) {
+    elements.forEach(element => {
       if (target.contains(element) || element.contains(target)) finish(element);
     });
   }
-  if (location.hash && location.hash !== '#topo') revealDestination(location.hash);
-  if (!enabled()) {
-    [...candidates, ...hero, photo].filter(Boolean).forEach(element => revealed.add(element));
-  } else {
-    if (photo) enter(photo, 0, true);
-    hero.forEach((element, index) => enter(element, 80 + index * 70, false));
-  }
-  if (typeof IntersectionObserver === 'function') {
-    observer = new IntersectionObserver(entries => {
-      const stagger = new Map();
-      entries.filter(entry => entry.isIntersecting).forEach(entry => {
-        const parent = entry.target.parentElement;
-        const index = stagger.get(parent) || 0;
-        stagger.set(parent, index + 1);
-        enter(entry.target, Math.min(index * 85, 170), false);
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-    candidates.forEach(element => { if (!revealed.has(element)) observer.observe(element); });
-  }
-  document.addEventListener('focusin', event => {
-    [...candidates, ...hero].forEach(element => {
-      if (element.contains(event.target)) finish(element);
+
+  // Direct links and restored scroll positions open with all content readable.
+  if (motionEnabled() && 'IntersectionObserver' in window &&
+      (!location.hash || location.hash === '#topo') && scrollY < 32) {
+    elements.forEach(element => {
+      const style = getComputedStyle(element);
+      resting.set(element, { opacity: style.opacity, transform: style.transform });
+      pending.add(element);
+      element.classList.add('motion-pending');
     });
-  });
+    const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
+    Promise.race([fonts, new Promise(resolve => setTimeout(resolve, 500))]).then(() => {
+      if (!motionEnabled() || scrollY > 32) return finishAll();
+      observer = new IntersectionObserver(entries => {
+        const groups = new Map();
+        entries.filter(entry => entry.isIntersecting).forEach(entry => {
+          const element = entry.target;
+          if (scrollFrame) return finish(element);
+          const index = groups.get(element.parentElement) || 0;
+          groups.set(element.parentElement, index + 1);
+          reveal(element, Math.min(index * 45, 90));
+        });
+      }, { threshold: 0, rootMargin: '0px 0px 80px 0px' });
+      pending.forEach(element => observer.observe(element));
+    }).catch(finishAll);
+  }
+
+  function focusDestination(target) {
+    const focus = target.querySelector('h1,h2,h3') || target;
+    const temporary = !focus.hasAttribute('tabindex');
+    if (temporary) focus.setAttribute('tabindex', '-1');
+    focus.focus({ preventScroll: true });
+    if (temporary) focus.addEventListener('blur', () => focus.removeAttribute('tabindex'), { once: true });
+  }
+  function cancelScroll() {
+    cancelAnimationFrame(scrollFrame);
+    scrollFrame = 0;
+    scrollDestination = null;
+  }
+  function navigate(target) {
+    cancelScroll();
+    const from = scrollY;
+    const offset = document.querySelector('.header').getBoundingClientRect().height + 24;
+    const wanted = target.id === 'topo' ? 0 : target.getBoundingClientRect().top + from - offset;
+    const to = Math.max(0, Math.min(wanted, document.documentElement.scrollHeight - innerHeight));
+    finishTarget(target);
+    revealPath(from, to);
+    if (!motionEnabled() || Math.abs(to - from) < 2) {
+      window.scrollTo({ top: to, behavior: 'instant' });
+      focusDestination(target);
+      return;
+    }
+    const started = performance.now();
+    const duration = Math.min(520, 300 + Math.abs(to - from) * .03);
+    scrollDestination = { target, to };
+    function frame(now) {
+      const progress = Math.min(1, (now - started) / duration);
+      const eased = progress * progress * (3 - 2 * progress);
+      window.scrollTo({ top: from + (to - from) * eased, behavior: 'instant' });
+      if (progress < 1) scrollFrame = requestAnimationFrame(frame);
+      else { scrollFrame = 0; scrollDestination = null; focusDestination(target); }
+    }
+    scrollFrame = requestAnimationFrame(frame);
+  }
   document.addEventListener('click', event => {
-    const link = event.target.closest('a[href^="#"]');
-    if (link) revealDestination(link.getAttribute('href'));
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest?.('a[href^="#"]');
+    if (!link) return;
+    const hash = link.getAttribute('href'), target = resolveHash(hash);
+    if (!target) return;
+    event.preventDefault();
+    if (link.id === 'backToTop') history.replaceState(null, '', hash);
+    else if (location.hash !== hash) history.pushState(null, '', hash);
+    navigate(target);
   });
-  window.addEventListener('hashchange', () => revealDestination(location.hash));
-  window.addEventListener('beforeprint', finishAll);
-  window.addEventListener('pageshow', event => { if (event.persisted) finishAll(); });
-  function motionPreferenceChanged() {
-    if (!enabled()) finishAll();
+  // Fast scrolling must reveal content immediately, even when observer callbacks lag.
+  let lastScrollY = scrollY;
+  let lastScrollTime = performance.now();
+  window.addEventListener('scroll', () => {
+    const now = performance.now();
+    const distance = Math.abs(scrollY - lastScrollY);
+    const fast = distance > innerHeight * .5 || distance / Math.max(16, now - lastScrollTime) > 1.5;
+    if (fast) revealPath(lastScrollY, scrollY);
+    else {
+      [...pending, ...running.keys()].forEach(element => {
+        if (element.getBoundingClientRect().bottom < 0) finish(element);
+      });
+    }
+    lastScrollY = scrollY;
+    lastScrollTime = now;
+  }, { passive: true });
+  document.addEventListener('focusin', event => {
+    elements.forEach(element => { if (element.contains(event.target)) finish(element); });
+  });
+  ['wheel', 'touchstart', 'pointerdown'].forEach(type =>
+    window.addEventListener(type, cancelScroll, { passive: true }));
+  window.addEventListener('keydown', event => {
+    if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' ','Escape'].includes(event.key)) cancelScroll();
+  });
+  window.addEventListener('hashchange', () => {
+    cancelScroll();
+    const target = resolveHash(location.hash);
+    if (target) { finishTarget(target); revealPath(scrollY, target.getBoundingClientRect().top + scrollY); }
+  });
+
+  // Only the disclosure height changes; repeated clicks reverse from the current frame.
+  const disclosures = [...document.querySelectorAll('.continuity .disclosure')].map(details => {
+    const summary = details.querySelector('summary');
+    let expanded = details.open;
+    let animation = null;
+    function settle() {
+      const previous = animation;
+      animation = null;
+      details.open = expanded;
+      details.removeAttribute('data-animating');
+      summary.setAttribute('aria-expanded', String(expanded));
+      previous?.cancel();
+    }
+    summary.setAttribute('aria-expanded', String(expanded));
+    details.dataset.expanded = String(expanded);
+    summary.addEventListener('click', event => {
+      event.preventDefault();
+      const from = details.getBoundingClientRect().height;
+      expanded = !expanded;
+      animation?.cancel();
+      animation = null;
+      details.dataset.expanded = String(expanded);
+      summary.setAttribute('aria-expanded', String(expanded));
+      if (!motionEnabled()) { settle(); return; }
+      details.open = true;
+      const border = parseFloat(getComputedStyle(details).borderTopWidth) + parseFloat(getComputedStyle(details).borderBottomWidth);
+      const to = expanded ? details.getBoundingClientRect().height : summary.getBoundingClientRect().height + border;
+      details.setAttribute('data-animating', '');
+      try {
+        const current = details.animate([{ height: from + 'px' }, { height: to + 'px' }],
+          { duration: 260, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'both' });
+        animation = current;
+        current.finished.then(() => { if (animation === current) settle(); }).catch(() => {});
+      } catch (_) { settle(); }
+    });
+    return { settle };
+  });
+  function settleMotion() {
+    finishAll();
+    disclosures.forEach(item => item.settle());
+    if (scrollDestination) {
+      const { target, to } = scrollDestination;
+      cancelScroll();
+      window.scrollTo({ top: to, behavior: 'instant' });
+      focusDestination(target);
+    }
   }
-  if (reduced.addEventListener) {
-    reduced.addEventListener('change', motionPreferenceChanged);
-    screen.addEventListener('change', motionPreferenceChanged);
-  } else {
-    reduced.addListener(motionPreferenceChanged);
-    screen.addListener(motionPreferenceChanged);
-  }
+  window.addEventListener('resize', () => { cancelScroll(); settleMotion(); });
+  window.addEventListener('beforeprint', settleMotion);
+  window.addEventListener('pageshow', event => { if (event.persisted) settleMotion(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) settleMotion(); });
+  [reduced, screen].forEach(query => {
+    const change = () => { if (!motionEnabled()) settleMotion(); };
+    if (query.addEventListener) query.addEventListener('change', change);
+    else query.addListener(change);
+  });
 })();
 </script>
 
