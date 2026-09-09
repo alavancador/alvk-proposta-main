@@ -3032,7 +3032,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     });
     const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
     Promise.race([fonts, new Promise(resolve => setTimeout(resolve, 500))]).then(() => {
-      if (!motionEnabled() || scrollY > 32) return finishAll();
+      if (!motionEnabled()) return finishAll();
+      // A scroll during font load only finishes what was already passed;
+      // it must not cancel the reveal for the rest of the page.
+      if (scrollY > 32) revealPath(0, scrollY);
+      if (!pending.size) return;
       observer = new IntersectionObserver(entries => {
         const groups = new Map();
         entries.filter(entry => entry.isIntersecting).forEach(entry => {
