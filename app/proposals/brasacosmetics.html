@@ -2631,7 +2631,11 @@ html::-webkit-scrollbar-corner { background: rgb(20, 20, 20); }
   .client-lockup strong {font-size:19px;}
   .client-lockup span {font-size:12px;}
   .hero-image img {object-position:center 36%;}
-  .editorial-band-image {aspect-ratio:1;height:auto;}
+  /* No celular, a imagem determina a altura por sua proporção natural.
+     Evita altura percentual em um filho absoluto de uma linha de grid. */
+  .editorial-band {display:block;min-height:0;}
+  .editorial-band-image {display:block;position:relative;align-self:auto;min-height:0;height:auto;aspect-ratio:auto;}
+  .editorial-band-image img {display:block;position:static;inset:auto;width:100%;height:auto;max-height:none;aspect-ratio:auto;object-fit:cover;object-position:center;}
   .hero h1 {font-size:52px;}
  }
 }
