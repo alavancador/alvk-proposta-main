@@ -1,10 +1,7 @@
 # ALVK Proposta Main
 
 Ambiente estático de propostas comerciais da ALVK, publicado pela Vercel a
-partir da branch `main`:
-
-- Produção: https://alvk-proposta-main.vercel.app/
-- JK Concept: https://alvk-proposta-main.vercel.app/jkconcept
+partir da branch `main`.
 
 A página inicial é neutra e cada proposta possui uma rota exclusiva. Não há
 listagem pública de clientes.
